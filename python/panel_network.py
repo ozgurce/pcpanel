@@ -1,4 +1,5 @@
-﻿import time
+# File Version: 1.0
+import time
 import psutil
 import threading
 from panel_logging import log_error

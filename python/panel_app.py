@@ -1,4 +1,4 @@
-﻿# Ver. 1.2
+# File Version: 1.0
 # Main orchestrator: imports topic modules and starts the app.
 
 import importlib

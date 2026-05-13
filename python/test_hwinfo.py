@@ -1,3 +1,4 @@
+# File Version: 1.0
 import json
 from panel_hwinfo_reader import read_hwinfo_metrics
 

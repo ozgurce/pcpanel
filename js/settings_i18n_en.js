@@ -1,4 +1,4 @@
-// Ver. 0.8
+// File Version: 1.0
 // Settings page EN language pack.
 // Loaded by settings_i18n.js; keep this file next to settings.html.
 (function(){

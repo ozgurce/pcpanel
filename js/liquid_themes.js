@@ -1,4 +1,4 @@
-// Ver. 0.7
+// File Version: 1.0
 /* liquid_themes.js
    Shared liquid theme presets.
    This file is the single source read by both the main panel script.js and settings.html.

@@ -1,4 +1,4 @@
-# Ver. 0.7
+# File Version: 1.0
 
 import ctypes
 from ctypes import wintypes

@@ -1,3 +1,4 @@
+# File Version: 1.0
 #!/usr/bin/env python3
 """Set NollieRGB canvas brightness to 0 and restore previous values."""
 

@@ -1,4 +1,4 @@
-# Ver. 0.8
+# File Version: 1.0
 import json
 import os
 import threading

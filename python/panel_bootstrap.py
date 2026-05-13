@@ -1,4 +1,5 @@
-﻿import asyncio
+# File Version: 1.0
+import asyncio
 import aiohttp
 import os
 import time

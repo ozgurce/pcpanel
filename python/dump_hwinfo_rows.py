@@ -1,3 +1,4 @@
+# File Version: 1.0
 # Dumps raw HWiNFO rows so sensor name matching can be fixed precisely.
 # Run: py dump_hwinfo_rows.py
 import json

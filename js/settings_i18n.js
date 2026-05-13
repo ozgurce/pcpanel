@@ -1,4 +1,4 @@
-// Ver. 0.8
+// File Version: 1.0
 (() => {
   const CACHE_TAG = '20260508a';
   const VERSION_MATCH = (() => {

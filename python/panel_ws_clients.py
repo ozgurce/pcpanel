@@ -1,3 +1,4 @@
+# File Version: 1.0
 import asyncio
 import threading
 from panel_globals import (

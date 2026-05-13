@@ -1,3 +1,4 @@
+# File Version: 1.0
 # Best-effort static audit for common split-module mistakes.
 # Run: py audit_runtime_names.py
 import ast, builtins, os

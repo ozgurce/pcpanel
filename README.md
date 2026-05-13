@@ -1,4 +1,4 @@
-<!-- Ver. 0.7 -->
+<!-- File Version: 1.0 -->
 # PC Control Panel
 
 A personal Windows-based PC monitoring, control, and automation dashboard.

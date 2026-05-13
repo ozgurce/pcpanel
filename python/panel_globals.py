@@ -1,3 +1,4 @@
+# File Version: 1.0
 from audio_runtime import AudioEndpointController
 import os
 import threading

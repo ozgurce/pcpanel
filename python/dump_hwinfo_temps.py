@@ -1,3 +1,4 @@
+# File Version: 1.0
 from panel_hwinfo_reader import _open_hwinfo_shared_blob, _parse_hwinfo_blob, read_hwinfo_metrics
 blob = _open_hwinfo_shared_blob()
 rows = _parse_hwinfo_blob(blob) if blob else []
