@@ -1,4 +1,4 @@
-# File Version: 1.0
+# File Version: 1.1
 import asyncio
 import aiohttp
 import os
@@ -50,13 +50,19 @@ def _get_setting_str(path, default=""):
 
 def _get_setting_int(path, default=0):
     try:
-        return int(float(_get_runtime_setting_cached(path, default)))
+        value = _get_runtime_setting_cached(path, default)
+        if isinstance(value, str):
+            value = value.strip().replace(",", ".")
+        return int(float(value))
     except Exception:
         return int(default)
 
 def _get_setting_float(path, default=0.0):
     try:
-        return float(_get_runtime_setting_cached(path, default))
+        value = _get_runtime_setting_cached(path, default)
+        if isinstance(value, str):
+            value = value.strip().replace(",", ".")
+        return float(value)
     except Exception:
         return float(default)
 

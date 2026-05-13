@@ -1,4 +1,4 @@
-# File Version: 1.0
+# File Version: 1.1
 import json
 import os
 import threading
@@ -352,10 +352,11 @@ def peek_setting(path, default=None, force_reload=False):
     return node
 
 
-def save_settings(new_settings):
+def save_settings(new_settings, replace=False):
     global CURRENT_SETTINGS, CURRENT_SETTINGS_MTIME_NS
     with SETTINGS_LOCK:
-        merged = _merge_settings(DEFAULT_SETTINGS, _normalize_settings(new_settings))
+        base = DEFAULT_SETTINGS if replace else _ensure_settings_loaded_locked(force_reload=True)
+        merged = _merge_settings(DEFAULT_SETTINGS, _merge_settings(base, _normalize_settings(new_settings)))
         os.makedirs(os.path.dirname(SETTINGS_PATH), exist_ok=True)
         with open(SETTINGS_PATH, 'w', encoding='utf-8') as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)
@@ -365,7 +366,7 @@ def save_settings(new_settings):
 
 
 def reset_settings():
-    return save_settings(DEFAULT_SETTINGS)
+    return save_settings(DEFAULT_SETTINGS, replace=True)
 
 
 def get_setting(path, default=None):

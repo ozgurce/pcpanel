@@ -1,4 +1,4 @@
-<!-- File Version: 1.0 -->
+<!-- File Version: 1.1 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1498,7 +1498,11 @@
  
     function parseFieldValue(el) {
       if (el.type === 'checkbox') return el.checked;
-      if (el.type === 'number') { const n = Number(el.value); return Number.isFinite(n) ? n : 0; }
+      if (el.type === 'number') {
+        const raw = String(el.value || '').trim().replace(',', '.');
+        const n = Number(raw);
+        return Number.isFinite(n) ? n : 0;
+      }
       return el.value;
     }
  
@@ -1771,6 +1775,7 @@
             if (el.matches && el.matches('[data-liquid-preview]')) {
               ensureSelectOption(el, val || el.dataset.default || SETTINGS_LIQUID_THEME_DEFAULT_KEY);
             }
+            if (el.type === 'number' && typeof val === 'string') val = val.trim().replace(',', '.');
             el.value = (val === undefined || val === null) ? '' : val;
           }
           if (index > 0 && index % 40 === 0) {
@@ -1889,7 +1894,10 @@
           body: JSON.stringify(payload),
         });
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        currentSettings = payload;
+        const data = await res.json().catch(() => ({}));
+        currentSettings = data && typeof data === 'object' && data.settings ? data.settings : payload;
+        await fillForm(currentSettings);
+        try { await fetch('/trigger_refresh', { cache: 'no-store' }); } catch (_) {}
         markSaved(true, settingsText('global.status_saved', 'Saved'), settingsText('dynamic.msg_saved_backend_desc', 'All settings written to backend.'));
       } catch (err) {
         console.error('saveSettings error:', err);

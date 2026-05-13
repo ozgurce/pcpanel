@@ -1,4 +1,4 @@
-// File Version: 1.0
+// File Version: 1.1
 const sketchSvgTemplateCache = new Map();
 
 function createSketchSVGTemplate(width, height, radius) {
@@ -126,14 +126,14 @@ function handleCmd(el, url) {
     const action = {
         command: url,
         method: 'GET',
-        confirmText: el ? (el.getAttribute('data-confirm') || '') : '',
-        label: (el && (el.getAttribute('aria-label') || el.getAttribute('title'))) || ''
+        confirmText: translatePanelCommandText(el ? (el.getAttribute('data-confirm') || '') : '', url, 'confirm'),
+        label: translatePanelCommandText((el && (el.getAttribute('aria-label') || el.getAttribute('title'))) || '', url, 'label')
     };
     if (typeof executePanelAction === 'function') return executePanelAction(action);
     pendingCmdUrl = url;
     const msgEl = document.getElementById('confirmMessage');
     if (!msgEl || !confirmOverlayEl) { cmd(url); return false; }
-    msgEl.textContent = action.confirmText || 'Are you sure?';
+    msgEl.textContent = action.confirmText || panelText('confirm_default') || 'Are you sure?';
     confirmOverlayEl.classList.remove('confirm-hidden');
     return false;
 }
@@ -240,16 +240,20 @@ function getPerformanceSetting(path, fallback = undefined) {
     return getPanelSetting(`performance.${path}`, fallback);
 }
 
-function getPerformanceNumber(path, fallback) {
-    const raw = getPerformanceSetting(path, fallback);
-    const n = Number(raw);
+function parsePanelNumber(value, fallback) {
+    if (typeof value === 'string') {
+        value = value.trim().replace(',', '.');
+    }
+    const n = Number(value);
     return Number.isFinite(n) ? n : fallback;
 }
 
+function getPerformanceNumber(path, fallback) {
+    return parsePanelNumber(getPerformanceSetting(path, fallback), fallback);
+}
+
 function getFrontendNumber(path, fallback) {
-    const raw = getFrontendSetting(path, fallback);
-    const n = Number(raw);
-    return Number.isFinite(n) ? n : fallback;
+    return parsePanelNumber(getFrontendSetting(path, fallback), fallback);
 }
 
 function getFrontendBool(path, fallback = false) {
@@ -279,7 +283,14 @@ const PANEL_I18N = {
         tomorrow: 'Tomorrow',
         brightness: 'Brightness',
         climate_settings: 'Climate Settings',
-        climate_hint: '18-23: Cooling 23-30: Heating'
+        climate_hint: '18-23: Cooling 23-30: Heating',
+        command_sleep: 'Sleep',
+        command_restart: 'Restart',
+        command_shutdown: 'Shutdown',
+        confirm_default: 'Are you sure?',
+        confirm_sleep: 'Put the PC to sleep?',
+        confirm_restart: 'Restart the computer?',
+        confirm_shutdown: 'Shut down the computer?'
     },
     tr: {
         title: 'PC Kontrol Paneli',
@@ -288,7 +299,14 @@ const PANEL_I18N = {
         tomorrow: 'Yarın',
         brightness: 'Parlaklık',
         climate_settings: 'Klima Ayarları',
-        climate_hint: '18-23: Soğutma 23-30: Isıtma'
+        climate_hint: '18-23: Soğutma 23-30: Isıtma',
+        command_sleep: 'Uyku',
+        command_restart: 'Yeniden Başlat',
+        command_shutdown: 'Kapat',
+        confirm_default: 'Emin misin?',
+        confirm_sleep: 'Bilgisayar uyku moduna alınsın mı?',
+        confirm_restart: 'Bilgisayar yeniden başlatılsın mı?',
+        confirm_shutdown: 'Bilgisayar kapatılsın mı?'
     }
 };
 
@@ -309,6 +327,43 @@ function applyPanelLanguageStatic() {
         const value = panelText(el.getAttribute('data-panel-i18n-aria'));
         if (value) setAttrIfChanged(el, 'aria-label', value);
     });
+}
+
+function translatePanelCommandText(value, command, kind = 'label') {
+    const text = String(value || '').trim();
+    const path = String(command || '').trim().toLowerCase();
+    if (getPanelLanguage() !== 'tr') return text;
+
+    const labelByCommand = {
+        '/sleep': panelText('command_sleep'),
+        '/restart': panelText('command_restart'),
+        '/shutdown': panelText('command_shutdown'),
+    };
+    const confirmByCommand = {
+        '/sleep': panelText('confirm_sleep'),
+        '/restart': panelText('confirm_restart'),
+        '/shutdown': panelText('confirm_shutdown'),
+    };
+    const knownConfirm = {
+        'Are you sure?': panelText('confirm_default'),
+        'Put the PC to sleep?': panelText('confirm_sleep'),
+        'Restart the computer?': panelText('confirm_restart'),
+        'Shut down the computer?': panelText('confirm_shutdown'),
+    };
+    const knownLabel = {
+        'Sleep': panelText('command_sleep'),
+        'Restart': panelText('command_restart'),
+        'Shutdown': panelText('command_shutdown'),
+    };
+
+    if (kind === 'confirm') {
+        if (text && knownConfirm[text]) return knownConfirm[text];
+        if (text) return text;
+        return confirmByCommand[path] || text;
+    }
+    if (text && knownLabel[text]) return knownLabel[text];
+    if (text) return text;
+    return labelByCommand[path] || text;
 }
 
 function getIdleText() {
@@ -589,11 +644,13 @@ function renderPanelLeftButtons(force = false) {
     const html = buttons.map((button) => {
         const domId = panelButtonDomId(button.id);
         const safeVariant = String(button.variant || 'white-glow').replace(/[^a-zA-Z0-9_-]/g, '');
-        const label = escapeHtml(button.label || button.id);
+        const translatedLabel = translatePanelCommandText(button.label || button.id, button.command, 'label');
+        const translatedConfirm = translatePanelCommandText(button.confirmText || '', button.command, 'confirm');
+        const label = escapeHtml(translatedLabel);
         const command = escapeHtml(button.command);
         const secondary = escapeHtml(button.secondaryCommand || '');
         const method = escapeHtml(button.method || 'GET');
-        const confirmText = escapeHtml(button.confirmText || '');
+        const confirmText = escapeHtml(translatedConfirm);
         const icon = button.iconSvg || `<span class="panel-button-label">${label}</span>`;
         return `<button type="button" id="${domId}" class="btn sketch-button ${safeVariant}" data-panel-action="1" data-command="${command}" data-secondary-command="${secondary}" data-method="${method}" data-confirm="${confirmText}" aria-label="${label}" title="${label}">${icon}</button>`;
     }).join('');
@@ -629,9 +686,10 @@ async function runPanelAction(action) {
 async function executePanelAction(action) {
     if (!action || !action.command) return false;
     if (action.confirmText) {
-        pendingAction = action;
+        const confirmText = translatePanelCommandText(action.confirmText, action.command, 'confirm');
+        pendingAction = { ...action, confirmText };
         const msgEl = document.getElementById('confirmMessage');
-        if (msgEl) msgEl.textContent = action.confirmText;
+        if (msgEl) msgEl.textContent = confirmText || panelText('confirm_default') || action.confirmText;
         if (confirmOverlayEl) confirmOverlayEl.classList.remove('confirm-hidden');
         else await runPanelAction(action);
         return false;
@@ -684,8 +742,8 @@ function bindPanelButtons(container) {
         executePanelAction({
             command: btn.dataset.command || '',
             method: btn.dataset.method || 'GET',
-            confirmText: btn.dataset.confirm || '',
-            label: btn.getAttribute('aria-label') || ''
+            confirmText: translatePanelCommandText(btn.dataset.confirm || '', btn.dataset.command || '', 'confirm'),
+            label: translatePanelCommandText(btn.getAttribute('aria-label') || '', btn.dataset.command || '', 'label')
         });
     });
 }
