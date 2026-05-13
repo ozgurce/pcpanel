@@ -1,0 +1,2697 @@
+﻿<!-- Ver. 0.8 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Settings</title>
+  <link id="settingsThemeStylesheet" rel="stylesheet" href="settings-theme-dark.css?v=__ASSET_VERSION__">
+</head>
+<body class="settings-lite-render">
+  <div class="app-shell">
+ 
+    <!-- ══════════════════════════════════════════
+         SIDEBAR
+    ═══════════════════════════════════════════ -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="sidebar-brand-text"><span>Panel</span> Settings</div>
+      </div>
+ 
+      <nav class="sidebar-nav">
+        <div class="nav-label"><svg class="nav-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"/><path d="M3 6h10"/><path d="M3 18h14"/></svg>MAIN</div>
+ 
+        <!-- Tab buttons — JS keepleri: class="tab-button" + data-tab-target -->
+        <button class="nav-item tab-button is-active" type="button" data-tab-target="section-home">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span>Home</span>
+        </button>
+ 
+        <div class="nav-label"><svg class="nav-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06A2 2 0 1 1 3.37 17l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L3.21 7.24A2 2 0 1 1 6.04 4.4l.06.06a1.65 1.65 0 0 0 1.82.33h0A1.65 1.65 0 0 0 9 3.28V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06A2 2 0 1 1 20.63 7l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H22a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>SETTINGS</div>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-performance">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Performance</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-ui">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+          <span>Media</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-window">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+          <span>Appearance</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-frontend">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span>Effects</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-panel-buttons">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Buttons</span>
+        </button>
+ 
+        <div class="nav-label"><svg class="nav-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="8.5" y="13" width="7" height="7" rx="1.5"/><path d="M10 8h4"/><path d="M12 11v2"/></svg>INTEGRATIONS</div>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-tuya">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+          <span>Tuya</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-api">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+          </svg>
+          <span>Services</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-calendar">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <span>Calendar</span>
+        </button>
+ 
+        <div class="nav-label"><svg class="nav-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg>SYSTEM</div>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-health">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+          <span>Health</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-logs">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span>Logs</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-logging">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span>Log Config</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-sitemap">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><line x1="12" y1="12" x2="6" y2="14"/><line x1="12" y1="12" x2="18" y2="14"/>
+          </svg>
+          <span>Sitemap</span>
+        </button>
+ 
+        <button class="nav-item tab-button" type="button" data-tab-target="section-reset">
+          <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.55"/>
+          </svg>
+          <span>Reset</span>
+        </button>
+      </nav>
+ 
+      <div class="sidebar-footer">
+        <div class="sidebar-status">
+          <span id="statusDot" class="status-dot"></span>
+          <div class="status-copy">
+            <strong id="statusText">Loading</strong>
+            <span id="statusSubtext">Connecting...</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+ 
+    <!-- ══════════════════════════════════════════
+         MAIN WRAPPER
+    ═══════════════════════════════════════════ -->
+    <div class="main-wrapper">
+ 
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar-page-title">
+          <strong id="summarySection">Home</strong>
+          <span id="summaryDescription">General settings and quick overview.</span>
+        </div>
+ 
+        <div class="topbar-divider"></div>
+
+        <div class="top-actions">
+          <select id="langToggleBtn" class="settings-language-select" title="Settings Language" aria-label="Settings Language">
+            <option value="en">Settings: EN</option>
+            <option value="tr">Settings: TR</option>
+          </select>
+          <select id="frontend.panel_language_top" class="panel-language-select" title="Panel Language" aria-label="Panel Language">
+            <option value="en">Panel: EN</option>
+            <option value="tr">Panel: TR</option>
+          </select>
+ 
+          <div class="search-panel">
+            <input id="searchSettings" class="search-input" type="search" placeholder="Search settings..." />
+          </div>
+ 
+          <button id="saveBtn" class="primary" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save Settings
+          </button>
+ 
+          <button id="panelRefreshBtn" class="icon-btn" type="button" title="Panel Refresh">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.55"/></svg>
+          </button>
+ 
+          <button id="panelRestartBtn" class="icon-btn" type="button" title="Panel Restart">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+ 
+          <span id="summaryStatus" style="display:none">Ready</span>
+          <span id="summaryMode" style="display:none">API</span>
+        </div>
+      </header>
+ 
+      <!-- SCROLLABLE CONTENT -->
+      <main class="main-content">
+        <input type="file" id="importFile" accept="application/json" hidden />
+ 
+        <!-- ── HOME ─────────────────────────────── -->
+        <section class="section is-active" id="section-home" data-section-title="Home">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">OVERVIEW</div>
+              <h2>Welcome</h2>
+              <p>Manage panel performance, devices, integrations, logs, and diagnostics from one place.</p>
+            </div>
+          </div>
+ 
+          <!-- Stat cards like dashboard image -->
+          <div class="stat-cards-grid">
+            <div class="stat-card" data-home-target="section-window" role="button" tabindex="0" aria-label="Open Appearance settings">
+              <div class="stat-card-left-bar"></div>
+              <div class="stat-card-body">
+                <div class="stat-card-value">Display</div>
+                <div class="stat-card-label">Window & Appearance</div>
+                <div class="stat-card-change up">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                  Open layout settings
+                </div>
+              </div>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+            </div>
+ 
+            <div class="stat-card" data-home-target="section-api" role="button" tabindex="0" aria-label="Open Services settings">
+              <div class="stat-card-left-bar"></div>
+              <div class="stat-card-body">
+                <div class="stat-card-value">Services</div>
+                <div class="stat-card-label">API & Integration</div>
+                <div class="stat-card-change up">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                  Manage tokens
+                </div>
+              </div>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              </div>
+            </div>
+ 
+            <div class="stat-card" data-home-target="section-health" role="button" tabindex="0" aria-label="Open Health diagnostics">
+              <div class="stat-card-left-bar"></div>
+              <div class="stat-card-body">
+                <div class="stat-card-value">Health</div>
+                <div class="stat-card-label">System Status</div>
+                <div class="stat-card-change up">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                  View diagnostics
+                </div>
+              </div>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+            </div>
+ 
+            <div class="stat-card" data-home-target="section-tuya" role="button" tabindex="0" aria-label="Open Tuya device settings">
+              <div class="stat-card-left-bar"></div>
+              <div class="stat-card-body">
+                <div class="stat-card-value">Tuya</div>
+                <div class="stat-card-label">Smart Home</div>
+                <div class="stat-card-change up">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                  Configure devices
+                </div>
+              </div>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="native-groups">
+            <section class="native-group">
+              <div class="native-group-head">
+                <h3>What You Can Do Here</h3>
+                <span class="native-meta">Overview</span>
+              </div>
+              <div style="padding:16px;display:grid;gap:12px;">
+                <div class="native-item" data-home-target="section-performance" role="button" tabindex="0" aria-label="Open Performance settings">
+                  <div class="native-title">Tune panel speed</div>
+                  <div class="native-item-copy">Adjust polling intervals, WebSocket timing, and animation density.</div>
+                  <div class="quick-link-row">
+                    <button type="button" class="quick-link-chip" data-tab-link="section-performance">Performance</button>
+                    <button type="button" class="quick-link-chip" data-tab-link="section-frontend">Effects</button>
+                  </div>
+                </div>
+                <div class="native-item" data-home-target="section-api" role="button" tabindex="0" aria-label="Open integration settings">
+                  <div class="native-title">Manage integrations</div>
+                  <div class="native-item-copy">Configure Tuya, SmartThings, weather, and shift sources.</div>
+                  <div class="quick-link-row">
+                    <button type="button" class="quick-link-chip" data-tab-link="section-api">Services</button>
+                    <button type="button" class="quick-link-chip" data-tab-link="section-tuya">Tuya</button>
+                    <button type="button" class="quick-link-chip" data-tab-link="section-calendar">Calendar</button>
+                  </div>
+                </div>
+                <div class="native-item" data-home-target="section-health" role="button" tabindex="0" aria-label="Open health and logs">
+                  <div class="native-title">Inspect health and logs</div>
+                  <div class="native-item-copy">Open Health for live diagnostics and Logs for recent backend activity.</div>
+                  <div class="quick-link-row">
+                    <button type="button" class="quick-link-chip" data-tab-link="section-health">Health</button>
+                    <button type="button" class="quick-link-chip" data-tab-link="section-logs">Logs</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="native-group">
+              <div class="native-group-head">
+                <h3>Recommended Setup Flow</h3>
+                <span class="native-meta">First-time setup</span>
+              </div>
+              <div style="padding:16px;display:grid;gap:12px;">
+                <div class="native-item" data-home-target="section-window" role="button" tabindex="0" aria-label="Open Appearance section">
+                  <div class="native-title">1. Appearance</div>
+                  <div class="native-item-copy">Choose the monitor, panel size, and visible cards.</div>
+                  <div class="quick-link-row">
+                    <button type="button" class="quick-link-chip" data-tab-link="section-window">Open Appearance</button>
+                  </div>
+                </div>
+                <div class="native-item" data-home-target="section-api" role="button" tabindex="0" aria-label="Open Services section">
+                  <div class="native-title">2. Services</div>
+                  <div class="native-item-copy">Enter API keys and external integration details.</div>
+                  <div class="quick-link-row">
+                    <button type="button" class="quick-link-chip" data-tab-link="section-api">Open Services</button>
+                  </div>
+                </div>
+                <div class="native-item" data-home-target="section-health" role="button" tabindex="0" aria-label="Open Health section">
+                  <div class="native-title">3. Health</div>
+                  <div class="native-item-copy">Verify that sensors, devices, and background services are online.</div>
+                  <div class="quick-link-row">
+                    <button type="button" class="quick-link-chip" data-tab-link="section-health">Open Health</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+ 
+        <!-- ── PERFORMANCE ──────────────────────── -->
+        <section class="section" id="section-performance" data-section-title="Performance">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Performance & Speed</h2>
+              <p>Manage how often the panel reads and broadcasts data. Lower values make the UI smoother but may increase system I/O.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Core update cadence</strong>
+                <span>Panel, WebSocket, fallback polling, and hardware cache timing.</span>
+              </div>
+              <div class="field"><label>UI update interval (ms)</label><input type="number" id="performance.ui_update_interval_ms"><small>Frontend global refresh cycle.</small></div>
+              <div class="field"><label>WebSocket broadcast (ms)</label><input type="number" id="performance.websocket_broadcast_interval_ms"><small>Backend-to-client push frequency.</small></div>
+              <div class="field"><label>Status poll interval (ms)</label><input type="number" id="performance.status_poll_interval_ms"><small>Fallback status polling interval.</small></div>
+              <div class="field"><label>HWiNFO refresh (ms)</label><input type="number" id="performance.hwinfo_refresh_interval_ms"><small>Hardware data generation interval.</small></div>
+              <div class="field"><label>HWiNFO cache read (ms)</label><input type="number" id="performance.hwinfo_cache_read_interval_ms"><small>Runtime cache read frequency.</small></div>
+              <div class="field"><label>Startup delay (sec)</label><input type="number" step="0.1" id="startup.initial_delay_seconds"><small>Startup service delay.</small></div>
+            </div>
+
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>HWiNFO service</strong>
+                <span>Restart behavior and executable discovery.</span>
+              </div>
+              <div class="field"><div class="toggle"><div><strong>HWiNFO auto restart</strong><span>Restarts HWiNFO when its wall-clock age passes the configured limit.</span></div><input type="checkbox" id="hwinfo.auto_restart_enabled"></div></div>
+              <div class="field"><label>HWiNFO max age (hour)</label><input type="number" step="0.5" id="hwinfo.auto_restart_max_uptime_hours"><small>Calculated from the HWiNFO process start time and the current clock, including sleep time.</small></div>
+              <div class="field full"><label>HWiNFO exe path</label><input type="text" id="hwinfo.executable_path"><small>Leave empty to reuse the running HWiNFO process path.</small></div>
+              <div class="field full">
+                <label>HWiNFO Manual Restart</label>
+                <div class="quick-link-row">
+                  <button type="button" class="btn danger" id="hwinfoRestartBtn">Restart HWiNFO</button>
+                  <span id="hwinfoRestartStatus" class="hint">You can see the HWiNFO uptime on the Health screen.</span>
+                </div>
+                <small>This closes running HWiNFO processes and opens the same executable again. If HWiNFO is not running, it starts it when the executable path is set.</small>
+                <small>Current status: <span id="hwinfoCurrentUptime">loading...</span></small>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Panel data widgets</strong>
+                <span>Media, weather, FPS, network, uptime, and power estimates.</span>
+              </div>
+              <div class="field"><label>Media refresh (ms)</label><input type="number" id="performance.media_refresh_interval_ms"><small>Now playing and media session polling.</small></div>
+              <div class="field"><label>Volume refresh (ms)</label><input type="number" id="performance.volume_refresh_interval_ms"><small>Volume sync update interval.</small></div>
+              <div class="field"><label>Mute refresh (ms)</label><input type="number" id="performance.mute_refresh_interval_ms"><small>Mute state refresh interval.</small></div>
+              <div class="field"><label>FPS refresh (ms)</label><input type="number" id="performance.fps_refresh_interval_ms"><small>FPS UI update frequency.</small></div>
+              <div class="field"><label>Weather refresh (min)</label><input type="number" id="performance.weather_refresh_interval_minutes"><small>Weather service refresh period.</small></div>
+              <div class="field"><label>Shift cache check (min)</label><input type="number" id="performance.shift_cache_check_interval_minutes"><small>Shift cache file check interval.</small></div>
+              <div class="field"><label>Network refresh (ms)</label><input type="number" id="performance.network_refresh_interval_ms"><small>Download and upload speed refresh interval.</small></div>
+              <div class="field"><label>Uptime refresh (ms)</label><input type="number" id="performance.uptime_refresh_interval_ms"><small>System uptime refresh interval.</small></div>
+              <div class="field full"><label>Other system power (W)</label><input type="number" step="0.1" id="power.other_system_power_estimate_w"><small>Power estimate excluding CPU and GPU.</small></div>
+            </div>
+
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Interface behavior</strong>
+                <span>Language, animation density, keep-alive, and write-back delays.</span>
+              </div>
+              <div class="field"><label>Panel Language</label><select id="frontend.panel_language"><option value="en">English</option><option value="tr">Türkçe</option></select><small>Main panel language. Settings page language stays independent.</small></div>
+              <div class="field"><label>Animation level</label><select id="frontend.animation_level"><option value="off">Off</option><option value="low">Low</option><option value="normal">Normal</option><option value="high">High</option></select><small>General animation density.</small></div>
+              <div class="field"><div class="toggle"><div><strong>Low performance mode</strong><span>Calm interface behavior.</span></div><input type="checkbox" id="frontend.low_performance_mode"></div></div>
+              <div class="field"><label>Keep window alive (ms)</label><input type="number" id="window.keep_window_alive_interval_ms"><small>Window keep-alive check interval.</small></div>
+              <div class="field"><label>Keep window min interval (ms)</label><input type="number" id="window.keep_window_alive_min_interval_ms"><small>Keep-alive minimum wait threshold.</small></div>
+              <div class="field"><label>Volume remote sync delay (ms)</label><input type="number" id="frontend.volume_remote_sync_delay_ms"><small>Local volume overwrite delay.</small></div>
+              <div class="field"><label>Mute remote sync delay (ms)</label><input type="number" id="frontend.mute_remote_sync_delay_ms"><small>Mute state write-back delay.</small></div>
+            </div>
+
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>FPS filtering</strong>
+                <span>Exclude noisy applications from FPS detection.</span>
+              </div>
+              <div class="field full"><label>FPS ignore apps</label><textarea id="hwinfo.fps_ignore_apps_text"></textarea><small>Enter one app per line.</small></div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── MEDIA ────────────────────────────── -->
+        <section class="section" id="section-ui" data-section-title="Media">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Media Player</h2>
+              <p>Control now playing, lyrics, seekbar timing, and idle media behavior here.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Playback cadence</strong>
+                <span>Seekbar, lyrics, and progress update timing.</span>
+              </div>
+              <div class="field"><label>Seekbar update (ms)</label><input type="number" id="frontend.seekbar_update_interval_ms"></div>
+              <div class="field"><label>Lyrics refresh (ms)</label><input type="number" id="frontend.lyrics_refresh_interval_ms"></div>
+              <div class="field"><label>Lyric offset (sec)</label><input type="number" step="0.1" id="frontend.lyric_offset_sec"></div>
+              <div class="field"><label>Progress playing (ms)</label><input type="number" id="frontend.media_progress_interval_playing_ms"></div>
+              <div class="field"><label>Progress paused (ms)</label><input type="number" id="frontend.media_progress_interval_paused_ms"></div>
+              <div class="field"><label>Lyrics animation (ms)</label><input type="number" id="frontend.lyrics_animation_interval_ms"><small>Lyric animation tick interval.</small></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Media card behavior</strong>
+                <span>Now playing card visibility and idle text states.</span>
+              </div>
+              <div class="field"><div class="toggle"><div><strong>Show playing card</strong><span>Now playing display.</span></div><input type="checkbox" id="frontend.show_now_playing_card"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Hide seekbar on idle</strong><span>Hide when no music is playing.</span></div><input type="checkbox" id="frontend.hide_seekbar_when_idle"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Show progress on idle</strong><span>Show the progress bar while idle.</span></div><input type="checkbox" id="frontend.show_media_progress_when_idle"></div></div>
+              <div class="field full"><label>Idle Text</label><textarea id="frontend.idle_text"></textarea></div>
+              <div class="field full"><label>Lyrics Waiting Text</label><input type="text" id="frontend.lyrics_waiting_text"></div>
+              <div class="field full"><label>No Media Placeholder Title</label><input type="text" id="frontend.no_media_placeholder_title"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>YouTube Integration</strong>
+                <span>External YouTube window URL, title matching, and monitor target.</span>
+              </div>
+              <div class="field full"><label>URL</label><input type="text" id="external_windows.youtube.url"></div>
+              <div class="field"><label>Window Title</label><input type="text" id="external_windows.youtube.window_title"></div>
+              <div class="field"><label>Target Monitor</label><select id="external_windows.youtube.target_monitor_device_proxy"></select></div>
+              <input type="hidden" id="external_windows.youtube.target_monitor_device">
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Spotify Integration</strong>
+                <span>External Spotify window URL, title matching, and monitor target.</span>
+              </div>
+              <div class="field full"><label>URL</label><input type="text" id="external_windows.spotify.url"></div>
+              <div class="field"><label>Window Title</label><input type="text" id="external_windows.spotify.window_title"></div>
+              <div class="field"><label>Target Monitor</label><select id="external_windows.spotify.target_monitor_device_proxy"></select></div>
+              <input type="hidden" id="external_windows.spotify.target_monitor_device">
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── APPEARANCE ───────────────────────── -->
+        <section class="section" id="section-window" data-section-title="Appearance">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Window & Appearance</h2>
+              <p>Configure the target monitor, window placement, and visible cards.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Application Window</strong>
+                <span>Monitor, port, layout, size, and window flags.</span>
+              </div>
+              <div class="field full"><label>Target Monitor</label><select id="window.target_monitor_device_proxy"></select></div>
+              <input type="hidden" id="window.target_monitor_device">
+              <div class="field"><label>Layout Mode</label><select id="window.layout_mode"><option value="landscape">Landscape</option><option value="portrait">Portrait</option></select></div>
+              <div class="field"><label>Window Title</label><input type="text" id="window.title"></div>
+              <div class="field"><label>Server Port</label><input type="number" id="window.port" min="1" max="65535"></div>
+              <div class="field"><label>Panel Width (px)</label><input type="number" id="window.panel_width"></div>
+              <div class="field"><label>Panel Height (px)</label><input type="number" id="window.panel_height"></div>
+              <div class="field"><div class="toggle"><div><strong>Always on top</strong><span>Keep the window on top.</span></div><input type="checkbox" id="window.always_on_top"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Hide from taskbar</strong><span>Hide the app from the taskbar.</span></div><input type="checkbox" id="window.hide_from_taskbar"></div></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Fallback Window Coordinates</strong>
+                <span>Manual geometry used when monitor detection cannot resolve a target.</span>
+              </div>
+              <div class="field"><label>Target monitor left</label><input type="number" id="window.target_monitor_left"></div>
+              <div class="field"><label>Target monitor top</label><input type="number" id="window.target_monitor_top"></div>
+              <div class="field"><label>Target width</label><input type="number" id="window.target_monitor_width"></div>
+              <div class="field"><label>Target height</label><input type="number" id="window.target_monitor_height"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>UI Card Visibility</strong>
+                <span>Choose which optional cards appear on the main panel.</span>
+              </div>
+              <div class="field"><div class="toggle"><div><strong>FPS Card</strong></div><input type="checkbox" id="frontend.show_fps_card"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Date &amp; Weather</strong></div><input type="checkbox" id="frontend.show_date_weather_block"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Tuya Smart Card</strong></div><input type="checkbox" id="frontend.show_tuya_card"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Lyrics Card</strong></div><input type="checkbox" id="frontend.show_lyrics_card"></div></div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── TUYA ─────────────────────────────── -->
+        <section class="section" id="section-tuya" data-section-title="Tuya">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Tuya &amp; Smart Home</h2>
+              <p>Manage which smart devices appear on the panel and track local/cloud connection status.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group tuya-visible-group">
+              <div class="settings-group-head">
+                <strong>Visible Panel Devices</strong>
+                <span>Choose the smart devices and their order on the panel.</span>
+              </div>
+              <div class="field full"><div id="tuyaDevicePicker" class="device-picker"></div></div>
+            </div>
+            <div class="settings-group tuya-identity-group">
+              <div class="settings-group-head">
+                <strong>Device identity</strong>
+                <span>PC plug mapping and preferred Tuya data source.</span>
+              </div>
+              <div class="field"><label>PC Plug Key</label><input type="text" id="tuya.pc_plug_key"></div>
+              <div class="field">
+                <label>Tuya Data Source</label>
+                <select id="tuya.read_mode">
+                  <option value="local">Local</option>
+                  <option value="cloud">Cloud</option>
+                </select>
+              </div>
+            </div>
+            <div class="settings-group tuya-feedback-group">
+              <div class="settings-group-head">
+                <strong>Panel feedback timing</strong>
+                <span>Touch feedback and pending state duration.</span>
+              </div>
+              <div class="field"><label>Brightness Popup Timeout (ms)</label><input type="number" id="tuya.brightness_popup_timeout_ms"></div>
+              <div class="field"><label>Tuya Pending Timeout (ms)</label><input type="number" id="frontend.tuya_pending_ms"></div>
+            </div>
+            <div class="settings-group tuya-source-group">
+              <div class="settings-group-head">
+                <strong>Live Data Source Status</strong>
+                <span>Current local/cloud read mode resolved from saved settings.</span>
+              </div>
+              <div class="field source-status-field">
+                <div class="source-status-grid" id="tuyaSourceCards">
+                  <div class="native-card"><div class="native-card-label">Tuya source</div><div class="native-card-value">Loading</div></div>
+                  <div class="native-card"><div class="native-card-label">PC plug key</div><div class="native-card-value">Loading</div></div>
+                  <div class="native-card"><div class="native-card-label">Device query</div><div class="native-card-value">Loading</div></div>
+                  <div class="native-card"><div class="native-card-label">Power query</div><div class="native-card-value">Loading</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="settings-group tuya-maintenance-group">
+              <div class="settings-group-head">
+                <strong>Connection Reset &amp; Check</strong>
+                <span>Clear Tuya connections and verify current device status.</span>
+              </div>
+              <div class="field full">
+                <div class="tuya-maintenance-actions">
+                  <button type="button" class="primary" id="tuyaCheckBtn">Check Devices</button>
+                  <button type="button" class="danger" id="tuyaResetBtn">Reset Connection</button>
+                  <button type="button" id="tuyaClearLogsBtn">Clear Tuya Logs</button>
+                  <span class="tuya-maintenance-status" id="tuyaMaintenanceStatus">Ready.</span>
+                </div>
+                <div class="source-status-grid" id="tuyaMaintenanceCards">
+                  <div class="native-card"><div class="native-card-label">Total</div><div class="native-card-value">-</div></div>
+                  <div class="native-card"><div class="native-card-label">Online</div><div class="native-card-value">-</div></div>
+                  <div class="native-card"><div class="native-card-label">Offline</div><div class="native-card-value">-</div></div>
+                  <div class="native-card"><div class="native-card-label">Errors</div><div class="native-card-value">-</div></div>
+                </div>
+                <div class="native-table-wrap tuya-maintenance-table">
+                  <table class="native-table">
+                    <thead><tr><th>Device</th><th>Status</th><th>Data</th><th>Source</th><th>Error</th></tr></thead>
+                    <tbody id="tuyaMaintenanceDeviceRows">
+                      <tr><td colspan="5">No check run yet.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="settings-group tuya-behavior-group">
+              <div class="settings-group-head"><strong>Connection Behavior &amp; Polling</strong></div>
+              <div class="field"><label>Device Timeout (ms)</label><input type="number" id="tuya.device_timeout_ms"></div>
+              <div class="field"><label>Local Command Timeout (ms)</label><input type="number" id="tuya.local_command_timeout_ms"></div>
+              <div class="field"><label>Cloud Command Timeout (ms)</label><input type="number" id="tuya.cloud_command_timeout_ms"></div>
+              <div class="field"><label>PC Query Interval (sec)</label><input type="number" step="0.1" id="panel.pc_plug_query_interval_seconds"></div>
+              <div class="field"><label>Refresh Interval (ms)</label><input type="number" id="performance.tuya_refresh_interval_ms"></div>
+              <div class="field"><label>Status Batch Size</label><input type="number" min="1" max="32" id="tuya.status_batch_size"></div>
+              <div class="field"><label>Parallel Workers</label><input type="number" min="1" max="8" id="tuya.max_parallel_status_workers"></div>
+              <div class="field"><label>Retry Count</label><input type="number" id="performance.tuya_retry_count"></div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── LOG CONFIG ───────────────────────── -->
+        <section class="section" id="section-logging" data-section-title="Log">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Log Files &amp; Developer</h2>
+              <p>Choose which error and debug records are written to disk.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Tracked Channels</strong>
+                <span>Enable only the log streams you actually need.</span>
+              </div>
+              <div class="field"><div class="toggle"><div><strong>Debug Logs</strong></div><input type="checkbox" id="logging.debug_logging_enabled"></div></div>
+              <div class="field"><div class="toggle"><div><strong>WebSocket Logs</strong></div><input type="checkbox" id="logging.websocket_logging_enabled"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Performance Logs</strong></div><input type="checkbox" id="logging.performance_logging_enabled"></div></div>
+              <div class="field"><div class="toggle"><div><strong>Tuya Errors</strong></div><input type="checkbox" id="logging.tuya_error_logging_enabled"></div></div>
+              <div class="field"><div class="toggle"><div><strong>HWiNFO Errors</strong></div><input type="checkbox" id="logging.hwinfo_error_logging_enabled"></div></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>File Limits</strong>
+                <span>Log retention size and cleanup maintenance.</span>
+              </div>
+              <div class="field full"><label>Max Lines</label><input type="number" id="logging.max_lines"></div>
+              <div class="field full"><label>Cleanup Interval (sec)</label><input type="number" id="logging.cleanup_interval_seconds"></div>
+              <div class="field full">
+                <label>Maintenance</label>
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                  <button type="button" class="btn danger" id="clearLogsConfigBtn">Clear Logs</button>
+                  <span id="clearLogsConfigStatus" style="font-size:13px;color:var(--text-soft);">Deletes the current log contents and starts fresh.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── EFFECTS ──────────────────────────── -->
+        <section class="section" id="section-frontend" data-section-title="Effects">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Visual Effects</h2>
+              <p>Animation feel, visual density, and liquid theme selection for the interface.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Liquid Animation Performance</strong>
+                <span>Adjust the effective liquid SVG animation rate and layer density.</span>
+              </div>
+              <div class="field">
+                <label>Liquid animation FPS limit</label>
+                <input type="number" id="frontend.liquid_animation_fps" min="1" max="60" step="1" data-default="16">
+                <small>Tip: 10-16 is light, 18-24 is balanced, and 30+ is smoother but uses more CPU.</small>
+              </div>
+              <div class="field">
+                <label>Liquid animation mode</label>
+                <select id="frontend.liquid_animation_mode" data-default="light">
+                  <option value="static">Static — level only</option>
+                  <option value="light">Light — single soft wave</option>
+                  <option value="normal">Normal — front wave + gloss</option>
+                  <option value="full">Full — dual-layer 3D</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="toggle">
+                  <div><strong>Liquid animation</strong><span>Enable or disable liquid animation entirely.</span></div>
+                  <input type="checkbox" id="frontend.liquid_animation_enabled">
+                </div>
+              </div>
+              <div class="field">
+                <div class="toggle">
+                  <div><strong>Liquid wave when idle</strong><span>Keep a very small wave motion even when the card value is idle.</span></div>
+                  <input type="checkbox" id="frontend.liquid_wave_when_idle">
+                </div>
+              </div>
+              <div class="field">
+                <div class="toggle">
+                  <div><strong>Settings liquid live preview</strong><span>Animate the theme preview strips only when you want a live demo.</span></div>
+                  <input type="checkbox" id="frontend.settings_liquid_live_preview_enabled">
+                </div>
+              </div>
+              <div class="field">
+                <div class="toggle">
+                  <div><strong>Settings page visual effects</strong><span>Enable heavier shadows and transitions on the Settings screen.</span></div>
+                  <input type="checkbox" id="frontend.settings_visual_effects_enabled">
+                </div>
+              </div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Liquid Theme Selection</strong>
+                <span>Select the inner liquid color for each card individually.</span>
+              </div>
+              <div class="liquid-theme-grid">
+                <div class="field">
+                  <label>CPU liquid theme</label>
+                  <select id="frontend.liquid_theme_cpu" data-liquid-preview="cpu" data-default="default_glass">
+                    <option value="default_glass">Default Glass / Ice</option>
+                    <option value="magma_turuncusu">Magma Orange</option>
+                    <option value="zumrut_yesili">Emerald Green</option>
+                    <option value="ametist_moru">Amethyst Purple</option>
+                    <option value="bakir_pembe_altin">Copper / Rose Gold</option>
+                    <option value="siber_macenta">Cyber Magenta</option>
+                    <option value="derin_indigo">Deep Indigo</option>
+                    <option value="gunes_sarisi">Sun Yellow</option>
+                    <option value="gunbatimi_seftali">Sunset Peach</option>
+                    <option value="okyanus_turkuazi">Ocean Turquoise</option>
+                    <option value="zeytinyagi">Olive Oil</option>
+                    <option value="mavi_kokteyl">Blue Cocktail</option>
+                    <option value="sut">Milk</option>
+                    <option value="portakal_suyu">Orange Juice</option>
+                    <option value="matcha_cayi">Matcha Tea</option>
+                    <option value="absinthe">Absinthe</option>
+                  </select>
+                  <div class="liquid-preview-strip" id="liquidPreviewCpu"></div>
+                  <small>CPU card <code>.liquid-svg.theme-cpu</code></small>
+                </div>
+                <div class="field">
+                  <label>GPU liquid theme</label>
+                  <select id="frontend.liquid_theme_gpu" data-liquid-preview="gpu" data-default="default_glass">
+                    <option value="default_glass">Default Glass / Ice</option>
+                    <option value="magma_turuncusu">Magma Orange</option>
+                    <option value="zumrut_yesili">Emerald Green</option>
+                    <option value="ametist_moru">Amethyst Purple</option>
+                    <option value="bakir_pembe_altin">Copper / Rose Gold</option>
+                    <option value="siber_macenta">Cyber Magenta</option>
+                    <option value="derin_indigo">Deep Indigo</option>
+                    <option value="gunes_sarisi">Sun Yellow</option>
+                    <option value="gunbatimi_seftali">Sunset Peach</option>
+                    <option value="okyanus_turkuazi">Ocean Turquoise</option>
+                    <option value="zeytinyagi">Olive Oil</option>
+                    <option value="mavi_kokteyl">Blue Cocktail</option>
+                    <option value="sut">Milk</option>
+                    <option value="portakal_suyu">Orange Juice</option>
+                    <option value="matcha_cayi">Matcha Tea</option>
+                    <option value="absinthe">Absinthe</option>
+                  </select>
+                  <div class="liquid-preview-strip" id="liquidPreviewGpu"></div>
+                  <small>GPU card <code>.liquid-svg.theme-gpu</code></small>
+                </div>
+                <div class="field">
+                  <label>RAM liquid theme</label>
+                  <select id="frontend.liquid_theme_ram" data-liquid-preview="ram" data-default="default_glass">
+                    <option value="default_glass">Default Glass / Ice</option>
+                    <option value="magma_turuncusu">Magma Orange</option>
+                    <option value="zumrut_yesili">Emerald Green</option>
+                    <option value="ametist_moru">Amethyst Purple</option>
+                    <option value="bakir_pembe_altin">Copper / Rose Gold</option>
+                    <option value="siber_macenta">Cyber Magenta</option>
+                    <option value="derin_indigo">Deep Indigo</option>
+                    <option value="gunes_sarisi">Sun Yellow</option>
+                    <option value="gunbatimi_seftali">Sunset Peach</option>
+                    <option value="okyanus_turkuazi">Ocean Turquoise</option>
+                    <option value="zeytinyagi">Olive Oil</option>
+                    <option value="mavi_kokteyl">Blue Cocktail</option>
+                    <option value="sut">Milk</option>
+                    <option value="portakal_suyu">Orange Juice</option>
+                    <option value="matcha_cayi">Matcha Tea</option>
+                    <option value="absinthe">Absinthe</option>
+                  </select>
+                  <div class="liquid-preview-strip" id="liquidPreviewRam"></div>
+                  <small>RAM card <code>.liquid-svg.theme-ram</code></small>
+                </div>
+                <div class="field">
+                  <label>FPS liquid theme</label>
+                  <select id="frontend.liquid_theme_fps" data-liquid-preview="fps" data-default="default_glass"></select>
+                  <div class="liquid-preview-strip" id="liquidPreviewFps"></div>
+                  <small>Applies to <code>.liquid-svg.theme-fps</code></small>
+                </div>
+                <div class="field">
+                  <label>Power liquid theme</label>
+                  <select id="frontend.liquid_theme_power" data-liquid-preview="power" data-default="default_glass"></select>
+                  <div class="liquid-preview-strip" id="liquidPreviewPower"></div>
+                  <small>Applies to <code>.liquid-svg.theme-power</code></small>
+                </div>
+                <div class="field">
+                  <label>Shift liquid theme</label>
+                  <select id="frontend.liquid_theme_shift" data-liquid-preview="shift" data-default="default_glass"></select>
+                  <div class="liquid-preview-strip" id="liquidPreviewShift"></div>
+                  <small>Shift card <code>.liquid-svg.theme-shift</code></small>
+                </div>
+              </div>
+              <div class="field full">
+                <label>Selected theme code</label>
+                <textarea id="liquidThemeCodePreview" class="liquid-code-preview" readonly spellcheck="false"></textarea>
+                <small>Preview-only. Select themes from the lists above.</small>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── BUTTONS ──────────────────────────── -->
+        <section class="section" id="section-panel-buttons" data-section-title="Action Buttons">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Shortcut Buttons</h2>
+              <p>Configure the 9 customizable buttons shown on the panel.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group settings-full">
+              <div class="settings-group-head">
+                <strong>Button layout and actions</strong>
+                <span>Edit labels, commands, visibility, method, and SVG icons.</span>
+              </div>
+              <div class="field full">
+                <div id="panelButtonsEditor" class="button-editor-grid"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── CALENDAR ─────────────────────────── -->
+        <section class="section" id="section-calendar" data-section-title="Calendar">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Shift &amp; Calendar</h2>
+              <p>Excel links and row/column mappings for the shift reader.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Document Link</strong>
+                <span>Workbook URL and sheet name used for shift data.</span>
+              </div>
+              <div class="field full"><label>Share URL</label><input type="text" id="api.shift.share_url"></div>
+              <div class="field full"><label>Sheet Name</label><input type="text" id="api.shift.sheet_name"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Cell Mapping</strong>
+                <span>Employee name and row/column coordinates inside the workbook.</span>
+              </div>
+              <div class="field"><label>Employee Name</label><input type="text" id="api.shift.employee_name"></div>
+              <div class="field"><label>Name Column (Index)</label><input type="number" id="api.shift.name_column"></div>
+              <div class="field"><label>Date Row (Index)</label><input type="number" id="api.shift.date_row"></div>
+              <div class="field full">
+                <label>Manual Refresh</label>
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                  <button type="button" class="btn" id="shiftRefreshBtn">Refresh Shift Now</button>
+                  <span id="shiftRefreshStatus" style="font-size:13px;color:var(--text-soft);">Uses the same daily cache, but forces a re-download when pressed.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── HEALTH ───────────────────────────── -->
+        <section class="section" id="section-health" data-section-title="Health">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Integration Health Center</h2>
+              <p>Track background services, recent sync times, and action items on one screen.</p>
+            </div>
+          </div>
+          <div class="section-body native-health">
+            <div class="toolbar">
+              <button id="healthRefreshBtn" type="button">Refresh Now</button>
+              <button id="healthAutoRefreshBtn" type="button">Auto Refresh: On</button>
+              <div class="native-status"><span class="native-status-dot"></span><span id="healthOverallText">Ready</span></div>
+              <div></div>
+              <div class="native-status"><span class="native-status-dot"></span><span id="healthStatusText">Waiting for data</span></div>
+            </div>
+            <div class="native-cards health-top" id="healthSummaryCards"></div>
+            <div class="native-cards health-snapshot" id="healthSnapshotsGrid"></div>
+            <div class="health-check-grid" id="healthConfigGrid"></div>
+            <div class="health-check-grid" id="healthChecksGrid"></div>
+            <div class="native-groups">
+              <section class="native-group">
+                <div class="native-group-head">
+                  <h3>Needs Attention</h3>
+                  <span class="native-meta" id="healthIssuesMeta">0 records</span>
+                </div>
+                <div style="padding:16px;">
+                  <div class="health-issues-list" id="healthIssuesList"></div>
+                </div>
+              </section>
+              <section class="native-group">
+                <div class="native-group-head">
+                  <h3>Recent Events</h3>
+                  <span class="native-meta" id="healthEventsMeta">0 records</span>
+                </div>
+                <div style="padding:16px;">
+                  <div class="health-events-list" id="healthEventsList"></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── LOGS ─────────────────────────────── -->
+        <section class="section" id="section-logs" data-section-title="Logs">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Live Log Viewer</h2>
+              <p>Filter and read application logs directly on this screen.</p>
+            </div>
+          </div>
+          <div class="section-body native-logs">
+            <div class="toolbar">
+              <input id="logsSearchInput" class="search-input" type="text" placeholder="Filter... (e.g. ip, tuya, error)">
+              <select id="logsWhichSelect">
+                <option value="all">All logs</option>
+                <option value="errors">Errors only</option>
+                <option value="logs">General logs only</option>
+                <option value="tuya">Tuya logs only</option>
+              </select>
+              <select id="logsLevelSelect">
+                <option value="all">All levels</option>
+                <option value="error">Errors only</option>
+                <option value="warn">Warnings only</option>
+                <option value="info">Info only</option>
+              </select>
+              <select id="logsLineSelect">
+                <option value="100">100 lines</option>
+                <option value="250">250 lines</option>
+                <option value="500" selected>500 lines</option>
+                <option value="1000">1000 lines</option>
+              </select>
+              <button type="button" class="btn" id="clearLogsBtn">Clear Logs</button>
+              <div class="native-status"><span class="native-status-dot"></span><span id="logsStatusText">Ready</span></div>
+            </div>
+            <div class="native-cards six" id="logsSummaryCards"></div>
+            <div class="native-log-grid">
+              <section class="native-panel" id="logsErrorsPanel">
+                <div class="native-panel-head">
+                  <h3>Error Logs</h3>
+                  <div class="native-meta" id="logsErrorsMeta">0 records</div>
+                </div>
+                <div class="native-table-wrap">
+                  <table class="native-table logs-table">
+                    <colgroup>
+                      <col class="logs-col-time">
+                      <col class="logs-col-main">
+                    </colgroup>
+                    <thead><tr><th>Time</th><th>Source Module / Message</th></tr></thead>
+                    <tbody id="logsErrorsBody"></tbody>
+                  </table>
+                </div>
+              </section>
+              <section class="native-panel" id="logsGeneralPanel">
+                <div class="native-panel-head">
+                  <h3>General Logs</h3>
+                  <div class="native-meta" id="logsGeneralMeta">0 records</div>
+                </div>
+                <div class="native-table-wrap">
+                  <table class="native-table logs-table">
+                    <colgroup>
+                      <col class="logs-col-time">
+                      <col class="logs-col-main">
+                    </colgroup>
+                    <thead><tr><th>Time</th><th>Source Module / Message</th></tr></thead>
+                    <tbody id="logsGeneralBody"></tbody>
+                  </table>
+                </div>
+              </section>
+              <section class="native-panel" id="logsTuyaPanel">
+                <div class="native-panel-head">
+                  <h3>Tuya Logs</h3>
+                  <div class="native-meta" id="logsTuyaMeta">0 records</div>
+                </div>
+                <div class="native-table-wrap">
+                  <table class="native-table logs-table">
+                    <colgroup>
+                      <col class="logs-col-time">
+                      <col class="logs-col-main">
+                    </colgroup>
+                    <thead><tr><th>Time</th><th>Tuya Event / Message</th></tr></thead>
+                    <tbody id="logsTuyaBody"></tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── SITEMAP ───────────────────────────── -->
+        <section class="section" id="section-sitemap" data-section-title="Sitemap">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>API Sitemap</h2>
+              <p>Complete list of HTTP endpoints exposed by the application.</p>
+            </div>
+          </div>
+          <div class="section-body native-sitemap">
+            <div class="toolbar">
+              <input id="sitemapSearchInput" class="search-input" type="text" placeholder="Search endpoints...">
+              <select id="sitemapCategorySelect"><option value="all">All categories</option></select>
+              <select id="sitemapMethodSelect"><option value="all">All methods</option><option value="GET">GET</option></select>
+              <div class="native-status"><span class="native-status-dot"></span><span id="sitemapStatusText">Ready</span></div>
+            </div>
+            <div class="native-stats" id="sitemapStats"></div>
+            <div class="native-groups" id="sitemapGroups"></div>
+          </div>
+        </section>
+ 
+        <!-- ── RESET ─────────────────────────────── -->
+        <section class="section" id="section-reset" data-section-title="Reset">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>Factory Defaults</h2>
+              <p>Reset panel settings to installation defaults.</p>
+            </div>
+          </div>
+          <div class="section-body section-reset-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Danger zone</strong>
+                <span>Restore defaults only when the current configuration is no longer useful.</span>
+              </div>
+              <div class="field field-full">
+                <label>Restore Default Settings</label>
+                <p class="hint">This action clears all saved configuration and refills the form with default values.</p>
+                <div style="margin-top:12px;">
+                  <button id="resetBtn" class="danger" type="button">Reset Settings (Risky)</button>
+                </div>
+              </div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Backup &amp; Restore</strong>
+                <span>Move settings in or out as JSON before risky changes.</span>
+              </div>
+              <div class="field full" style="flex-direction:row;gap:12px;align-items:center;">
+                <button id="exportBtn" type="button">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Export JSON
+                </button>
+                <button id="importBtn" type="button">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Import JSON
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ── SERVICES ──────────────────────────── -->
+        <section class="section" id="section-api" data-section-title="Services">
+          <div class="section-head">
+            <div class="section-head-text">
+              <div class="section-kicker">CATEGORY</div>
+              <h2>External Services &amp; API Keys</h2>
+              <p>Weather (Open-Meteo), SmartThings, and Tuya Cloud integration settings.</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Open-Meteo endpoints</strong>
+                <span>Forecast and geocoding service URLs.</span>
+              </div>
+              <div class="field full"><label>Forecast URL</label><input type="text" id="api.meteo.forecast_url"></div>
+              <div class="field full"><label>Geocoding URL</label><input type="text" id="api.meteo.geocoding_url"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Weather location</strong>
+                <span>Panel weather position, label, timezone, and language.</span>
+              </div>
+              <div class="field"><label>Location Query</label><input type="text" id="api.meteo.location_query"></div>
+              <div class="field"><label>Location Label</label><input type="text" id="api.meteo.location_label"></div>
+              <div class="field"><label>Latitude</label><input type="number" step="0.0001" id="api.meteo.latitude"></div>
+              <div class="field"><label>Longitude</label><input type="number" step="0.0001" id="api.meteo.longitude"></div>
+              <div class="field"><label>Timezone</label><input type="text" id="api.meteo.timezone"></div>
+              <div class="field"><label>Language</label><input type="text" id="api.meteo.language"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>SmartThings device</strong>
+                <span>Base API URL and target device identifiers.</span>
+              </div>
+              <div class="field full"><label>Access Token</label><input type="text" id="api.smartthings.api_key"></div>
+              <div class="field"><label>Base URL</label><input type="text" id="api.smartthings.base_url"></div>
+              <div class="field"><label>Location ID</label><input type="text" id="api.smartthings.location_id"></div>
+              <div class="field"><label>Device ID</label><input type="text" id="api.smartthings.device_id"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>SmartThings OAuth</strong>
+                <span>OAuth app credentials and cached token state.</span>
+              </div>
+              <div class="field full"><label>OAuth Client ID</label><input type="text" id="api.smartthings.oauth_client_id"></div>
+              <div class="field full"><label>OAuth Client Secret</label><input type="text" id="api.smartthings.oauth_client_secret"></div>
+              <div class="field full"><label>OAuth Redirect URI</label><input type="text" id="api.smartthings.oauth_redirect_uri"></div>
+              <div class="field full"><label>OAuth Refresh Token</label><input type="text" id="api.smartthings.oauth_refresh_token"></div>
+              <div class="field full"><label>OAuth Cached Access Token</label><input type="text" id="api.smartthings.oauth_access_token"></div>
+              <div class="field"><label>OAuth Access Token Expires At (Unix)</label><input type="text" id="api.smartthings.oauth_access_token_expires_at"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Tuya Cloud OpenAPI</strong>
+                <span>Cloud API credentials and base endpoint.</span>
+              </div>
+              <div class="field full"><label>Access ID</label><input type="text" id="api.tuya.access_id"></div>
+              <div class="field full"><label>Access Secret</label><input type="text" id="api.tuya.access_secret"></div>
+              <div class="field full"><label>Base URL</label><input type="text" id="api.tuya.base_url"></div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-head">
+                <strong>Command Paths</strong>
+                <span>Local helper executables and RGB control state used by panel actions.</span>
+              </div>
+              <div class="field full"><label>DNS Redirection CMD Path</label><input type="text" id="commands.dnsredir_cmd"></div>
+              <div class="field full"><label>Nollie Brightness Script</label><input type="text" id="commands.nollie_brightness_script"></div>
+              <div class="field full"><label>Nollie Brightness State Path</label><input type="text" id="commands.nollie_state_path"><small>Stores the previous Nollie canvas brightness values before lights are turned off.</small></div>
+              <div class="field"><div class="toggle"><div><strong>Nollie Boot Canvases</strong><span>Include startup canvas brightness values in off/restore.</span></div><input type="checkbox" id="commands.nollie_include_boot_canvases"></div></div>
+              <div class="field full"><label>L-Connect Control Script</label><input type="text" id="commands.lian_control_script"></div>
+              <div class="field full"><label>L-Connect Profile Path</label><input type="text" id="commands.lian_profile_path"></div>
+              <div class="field full"><label>L-Connect Effect Cache Path</label><input type="text" id="commands.lian_state_cache_path"><small>Stores the last active L-Connect effect before the lights are turned off.</small></div>
+              <div class="field full"><label>L-Connect Data Folder</label><input type="text" id="commands.lian_data_dir"></div>
+              <div class="field full"><label>L-Connect Merge State File</label><input type="text" id="commands.lian_merge_state_path"><small>Leave empty to auto-detect the merge state file.</small></div>
+              <div class="field"><label>L-Connect Service URL</label><input type="text" id="commands.lian_service_url"></div>
+              <div class="field"><label>L-Connect Timeout (sec)</label><input type="number" step="0.1" min="0.5" max="30" id="commands.lian_timeout_seconds"></div>
+            </div>
+          </div>
+        </section>
+ 
+      </main><!-- /main-content -->
+    </div><!-- /main-wrapper -->
+  </div><!-- /app-shell -->
+ 
+  <script src="/settings_i18n.js?v=__ASSET_VERSION__&i18n=20260508a"></script>
+ 
+  <script>
+    let fieldIds = [];
+    let SETTINGS_MONITORS_CACHE = [];
+    let SETTINGS_MONITORS_READY = false;
+    let SETTINGS_MONITORS_LOADING = null;
+    let SETTINGS_TUYA_DEVICES_READY = false;
+    let SETTINGS_TUYA_DEVICES_LOADING = null;
+    let SETTINGS_BUTTONS_EDITOR_READY = false;
+ 
+    function getTrackedFieldIds() {
+      const seen = new Set();
+      return Array.from(document.querySelectorAll('.section input[id], .section textarea[id], .section select[id]'))
+        .filter((el) => !el.closest('#section-logs') && !el.closest('#section-sitemap') && !el.closest('#section-health'))
+        .map((el) => String(el.id || '').trim())
+        .filter((id) => {
+          if (!id || id === 'liquidThemeCodePreview' || id.endsWith('_proxy') || seen.has(id)) return false;
+          seen.add(id);
+          return true;
+        });
+    }
+ 
+    let SETTINGS_LIQUID_THEME_PRESETS = window.LIQUID_THEME_PRESETS || Object.freeze({
+      default_glass: { label: 'Default Glass / Ice', vars: {} }
+    });
+    let SETTINGS_LIQUID_THEME_PRESETS_LOADED = !!window.LIQUID_THEME_PRESETS;
+    let SETTINGS_LIQUID_CONTROLS_READY = false;
+    let SETTINGS_LIQUID_CONTROLS_LOADING = null;
+ 
+    function extractObjectLiteralAfterMarker(source, markerText) {
+      const markerIndex = source.indexOf(markerText);
+      if (markerIndex < 0) return '';
+      const freezeIndex = source.indexOf('Object.freeze', markerIndex);
+      const searchFrom = freezeIndex >= 0 ? freezeIndex : markerIndex;
+      const startIndex = source.indexOf('{', searchFrom);
+      if (startIndex < 0) return '';
+      let depth = 0, quote = '', escaped = false, lineComment = false, blockComment = false;
+      for (let i = startIndex; i < source.length; i++) {
+        const ch = source[i], next = source[i + 1];
+        if (lineComment) { if (ch === '\n' || ch === '\r') lineComment = false; continue; }
+        if (blockComment) { if (ch === '*' && next === '/') { blockComment = false; i++; } continue; }
+        if (quote) { if (escaped) { escaped = false; continue; } if (ch === '\\') { escaped = true; continue; } if (ch === quote) quote = ''; continue; }
+        if (ch === '/' && next === '/') { lineComment = true; i++; continue; }
+        if (ch === '/' && next === '*') { blockComment = true; i++; continue; }
+        if (ch === '"' || ch === "'" || ch === '`') { quote = ch; continue; }
+        if (ch === '{') depth++;
+        if (ch === '}') { depth--; if (depth === 0) return source.slice(startIndex, i + 1); }
+      }
+      return '';
+    }
+ 
+    async function loadSettingsLiquidThemePresetsLocal(force = false) {
+      const hasUsefulThemes = () => (
+        window.LIQUID_THEME_PRESETS
+        && typeof window.LIQUID_THEME_PRESETS === 'object'
+        && Object.keys(window.LIQUID_THEME_PRESETS).length > 1
+      );
+
+      const adoptWindowThemes = () => {
+        if (hasUsefulThemes()) {
+          SETTINGS_LIQUID_THEME_PRESETS = window.LIQUID_THEME_PRESETS;
+          SETTINGS_LIQUID_THEME_PRESETS_LOADED = true;
+          return true;
+        }
+        return false;
+      };
+
+      if (!force && adoptWindowThemes()) {
+        return SETTINGS_LIQUID_THEME_PRESETS;
+      }
+
+      // /liquid_themes.js can sometimes be stale or not loaded yet.
+      // Fetch it with no-store and run it in the same page context so the
+      // settings page always has the complete theme list.
+      try {
+        const res = await fetch(`/liquid_themes.js?_settings_reload=${Date.now()}`, { cache: 'no-store' });
+        if (res.ok) {
+          const source = await res.text();
+          if (source && source.includes('LIQUID_THEME_PRESETS')) {
+            Function(source)();
+            adoptWindowThemes();
+          }
+        }
+      } catch (err) {
+        console.warn('Liquid themes reload failed:', err);
+      }
+
+      if (!adoptWindowThemes()) {
+        SETTINGS_LIQUID_THEME_PRESETS_LOADED = true;
+      }
+      return SETTINGS_LIQUID_THEME_PRESETS;
+    }
+ 
+    const SETTINGS_LIQUID_THEME_DEFAULT_KEY = window.LIQUID_THEME_DEFAULT_KEY || 'default_glass';
+ 
+    function getSettingsLiquidThemePreset(themeKey) {
+      const key = String(themeKey || '').trim();
+      return SETTINGS_LIQUID_THEME_PRESETS[key] || SETTINGS_LIQUID_THEME_PRESETS[SETTINGS_LIQUID_THEME_DEFAULT_KEY];
+    }
+ 
+    function buildSettingsLiquidThemeCode(themeKey) {
+      const preset = getSettingsLiquidThemePreset(themeKey);
+      const lines = [`/* ${preset.label} */`, '{'];
+      Object.entries(preset.vars || {}).forEach(([name, value]) => { lines.push(`    ${name}: ${value};`); });
+      lines.push('}');
+      return lines.join('\n');
+    }
+ 
+    function applySettingsLiquidPreview(selectEl) {
+      if (!selectEl) return;
+      const target = selectEl.dataset.liquidPreview || '';
+      const preview = document.getElementById(`liquidPreview${target.charAt(0).toUpperCase() + target.slice(1)}`);
+      const preset = getSettingsLiquidThemePreset(selectEl.value || selectEl.dataset.default || SETTINGS_LIQUID_THEME_DEFAULT_KEY);
+      if (preview && preset && preset.vars) {
+        Object.entries(preset.vars).forEach(([name, value]) => {
+          preview.style.setProperty(name.replace('--', '--preview-'), value);
+        });
+        preview.style.setProperty('--preview-shadow', preset.vars['--shadow'] || preset.vars['--liq-6'] || 'rgba(0,0,0,.35)');
+        preview.title = preset.label || selectEl.value || '';
+        preview.setAttribute('aria-label', `${selectEl.dataset.liquidPreview || 'liquid'} preview: ${preset.label || selectEl.value || ''}`);
+      }
+    }
+ 
+    function updateSettingsLiquidCodePreview() {
+      const codeEl = document.getElementById('liquidThemeCodePreview');
+      if (!codeEl) return;
+      const parts = [];
+      ['cpu','gpu','ram','fps','power','shift'].forEach(k => {
+        const el = document.getElementById(`frontend.liquid_theme_${k}`);
+        if (el) parts.push(`.liquid-svg.theme-${k} ${buildSettingsLiquidThemeCode(el.value)}`);
+      });
+      codeEl.value = parts.join('\n\n');
+    }
+ 
+    function syncSettingsLiquidThemePreviews() {
+      document.querySelectorAll('[data-liquid-preview]').forEach((selectEl) => applySettingsLiquidPreview(selectEl));
+      updateSettingsLiquidCodePreview();
+    }
+
+    function syncSettingsLiquidLivePreview() {
+      const control = document.getElementById('frontend.settings_liquid_live_preview_enabled');
+      document.body.classList.toggle('settings-liquid-live-preview', !!(control && control.checked));
+    }
+
+    function syncSettingsRenderMode() {
+      const control = document.getElementById('frontend.settings_visual_effects_enabled');
+      document.body.classList.toggle('settings-lite-render', !(control && control.checked));
+    }
+
+    function ensureSelectOption(selectEl, value, label = '') {
+      if (!selectEl || value === undefined || value === null || value === '') return;
+      const strValue = String(value);
+      const exists = Array.from(selectEl.options || []).some((option) => option.value === strValue);
+      if (exists) return;
+      const option = document.createElement('option');
+      option.value = strValue;
+      option.textContent = label || strValue;
+      selectEl.appendChild(option);
+    }
+ 
+    function populateSettingsLiquidThemeOptions() {
+      const optionEntries = [];
+      const seenThemeKeys = new Set();
+
+      if (Array.isArray(window.LIQUID_THEME_OPTIONS)) {
+        window.LIQUID_THEME_OPTIONS.forEach((item) => {
+          const key = String((item && item.key) || '').trim();
+          if (!key || seenThemeKeys.has(key) || !SETTINGS_LIQUID_THEME_PRESETS[key]) return;
+          seenThemeKeys.add(key);
+          optionEntries.push([key, SETTINGS_LIQUID_THEME_PRESETS[key]]);
+        });
+      }
+
+      Object.entries(SETTINGS_LIQUID_THEME_PRESETS).forEach(([key, preset]) => {
+        if (seenThemeKeys.has(key)) return;
+        seenThemeKeys.add(key);
+        optionEntries.push([key, preset]);
+      });
+
+      document.querySelectorAll('[data-liquid-preview]').forEach((selectEl) => {
+        if (!selectEl) return;
+        const savedValue = getByPath(currentSettings || {}, selectEl.id, '');
+        const current = savedValue || selectEl.value || selectEl.dataset.default || SETTINGS_LIQUID_THEME_DEFAULT_KEY;
+        const fragment = document.createDocumentFragment();
+        optionEntries.forEach(([key, preset]) => {
+          const option = document.createElement('option');
+          option.value = key;
+          option.textContent = preset && preset.label ? preset.label : key;
+          fragment.appendChild(option);
+        });
+        selectEl.innerHTML = '';
+        selectEl.appendChild(fragment);
+        selectEl.value = SETTINGS_LIQUID_THEME_PRESETS[current] ? current : SETTINGS_LIQUID_THEME_DEFAULT_KEY;
+      });
+    }
+ 
+    async function bindSettingsLiquidThemeControls() {
+      if (SETTINGS_LIQUID_CONTROLS_READY) return;
+      if (SETTINGS_LIQUID_CONTROLS_LOADING) return SETTINGS_LIQUID_CONTROLS_LOADING;
+      SETTINGS_LIQUID_CONTROLS_LOADING = (async () => {
+      await loadSettingsLiquidThemePresetsLocal(true);
+      populateSettingsLiquidThemeOptions();
+      document.querySelectorAll('[data-liquid-preview]').forEach((selectEl) => {
+        if (selectEl.dataset.liquidBound === '1') return;
+        selectEl.dataset.liquidBound = '1';
+        selectEl.addEventListener('change', syncSettingsLiquidThemePreviews);
+      });
+      syncSettingsLiquidThemePreviews();
+        SETTINGS_LIQUID_CONTROLS_READY = true;
+      })();
+      try {
+        await SETTINGS_LIQUID_CONTROLS_LOADING;
+      } finally {
+        SETTINGS_LIQUID_CONTROLS_LOADING = null;
+      }
+    }
+ 
+    function getSectionIconSvg(sectionId) {
+      const icons = {
+        'section-home': '<svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>',
+        'section-performance': '<svg viewBox="0 0 24 24"><path d="M4 14a8 8 0 1 1 16 0"/><path d="M12 12l4-4"/><path d="M12 12l3 5"/></svg>',
+        'section-ui': '<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+        'section-window': '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 20V9"/></svg>',
+        'section-tuya': '<svg viewBox="0 0 24 24"><path d="M12 2v8"/><path d="M8 6h8"/><path d="M6 13a6 6 0 1 0 12 0c0-2.2-1.2-3.8-3-5"/></svg>',
+        'section-logging': '<svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 16V8"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg>',
+        'section-frontend': '<svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg>',
+        'section-panel-buttons': '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg>',
+        'section-calendar': '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 10h18"/></svg>',
+        'section-health': '<svg viewBox="0 0 24 24"><path d="M22 12h-4l-2 5-4-10-3 7H2"/></svg>',
+        'section-logs': '<svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>',
+        'section-sitemap': '<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M12 7.5V12"/><path d="M12 12L6 15.5"/><path d="M12 12l6 3.5"/></svg>',
+        'section-reset': '<svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>',
+        'section-api': '<svg viewBox="0 0 24 24"><path d="M8 12h8"/><path d="M12 8v8"/><rect x="3" y="6" width="5" height="12" rx="2"/><rect x="16" y="6" width="5" height="12" rx="2"/></svg>',
+      };
+      return icons[sectionId] || '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>';
+    }
+
+    function injectSectionHeadIcons() {
+      document.querySelectorAll('.section').forEach((section) => {
+        const headText = section.querySelector('.section-head-text');
+        const title = headText ? headText.querySelector('h2') : null;
+        if (!headText || !title || headText.querySelector('.section-title-row')) return;
+        const row = document.createElement('div');
+        row.className = 'section-title-row';
+        const icon = document.createElement('div');
+        icon.className = 'section-title-icon';
+        icon.innerHTML = getSectionIconSvg(section.id);
+        title.parentNode.insertBefore(row, title);
+        row.appendChild(icon);
+        row.appendChild(title);
+      });
+    }
+ 
+    const statusDot     = document.getElementById('statusDot');
+    const statusText    = document.getElementById('statusText');
+    const statusSubtext = document.getElementById('statusSubtext');
+    const summarySection = document.getElementById('summarySection');
+    const summaryDescription = document.getElementById('summaryDescription');
+    const settingsThemeStylesheet = document.getElementById('settingsThemeStylesheet');
+    const summaryStatus  = document.getElementById('summaryStatus');
+    const summaryMode    = document.getElementById('summaryMode');
+    const panelLanguageTop = document.getElementById('frontend.panel_language_top');
+    const panelButtonsEditor = document.getElementById('panelButtonsEditor');
+    let currentSettings = {};
+
+    const SETTINGS_FIELD_DEFAULTS = Object.freeze({
+      'commands.nollie_state_path': 'D:\\Program\\pc-control\\nollie\\nollie_brightness_state.json',
+      'commands.nollie_include_boot_canvases': true,
+      'commands.lian_profile_path': 'D:\\Program\\pc-control\\lian\\lconnect_profiles.json',
+      'commands.lian_state_cache_path': 'D:\\Program\\pc-control\\lian\\last_lconnect_state.json',
+      'commands.lian_data_dir': 'C:\\ProgramData\\Lian-Li\\L-Connect 3',
+      'commands.lian_merge_state_path': '',
+      'commands.lian_service_url': 'http://127.0.0.1:11021/',
+      'commands.lian_timeout_seconds': 2.5,
+    });
+
+    function getSettingsFieldDefault(id) {
+      return Object.prototype.hasOwnProperty.call(SETTINGS_FIELD_DEFAULTS, id) ? SETTINGS_FIELD_DEFAULTS[id] : undefined;
+    }
+
+    const SECTION_SUMMARIES = Object.freeze({
+      'section-home': 'sections.home.desc',
+      'section-performance': 'sections.performance.desc',
+      'section-ui': 'sections.ui.desc',
+      'section-window': 'sections.window.desc',
+      'section-tuya': 'sections.tuya.desc',
+      'section-logging': 'sections.logging.desc',
+      'section-frontend': 'sections.frontend.desc',
+      'section-panel-buttons': 'sections.buttons.desc',
+      'section-calendar': 'sections.calendar.desc',
+      'section-health': 'sections.health.desc',
+      'section-logs': 'sections.logs.desc',
+      'section-sitemap': 'sections.sitemap.desc',
+      'section-reset': 'sections.reset.desc',
+      'section-api': 'sections.api.desc',
+    });
+ 
+    function applySettingsTheme() {
+      const nextTheme = 'dark';
+      if (settingsThemeStylesheet) {
+        settingsThemeStylesheet.setAttribute('href', 'settings-theme-dark.css?v=__ASSET_VERSION__');
+      }
+      try { localStorage.setItem('settings_theme', nextTheme); } catch (_) {}
+      return nextTheme;
+    }
+
+    function initSettingsTheme() {
+      applySettingsTheme();
+    }
+ 
+    function markSaved(saved, text, subtext = '') {
+      const trText = (value, fallbackKey) => {
+        if (typeof translateSettingsText === 'function') return translateSettingsText(value || (typeof t === 'function' ? t(fallbackKey, value) : value));
+        return value || fallbackKey;
+      };
+      statusDot.classList.toggle('saved', !!saved);
+      statusText.textContent = trText(text, saved ? 'global.status_saved' : 'global.not_saved');
+      statusSubtext.textContent = trText(subtext, saved ? 'global.saved_default' : 'global.draft_default');
+      if (summaryStatus) summaryStatus.textContent = trText(saved ? 'Saved' : 'Taslak', saved ? 'global.status_saved' : 'global.status_draft');
+    }
+ 
+    function setByPath(obj, path, value) {
+      const parts = path.split('.');
+      let node = obj;
+      for (let i = 0; i < parts.length - 1; i++) {
+        const key = parts[i];
+        if (!node[key] || typeof node[key] !== 'object') node[key] = {};
+        node = node[key];
+      }
+      node[parts[parts.length - 1]] = value;
+    }
+ 
+    function getByPath(obj, path, fallback = '') {
+      return path.split('.').reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), obj) ?? fallback;
+    }
+
+    function normalizePanelLanguageValue(value) {
+      return String(value || '').trim().toLowerCase() === 'tr' ? 'tr' : 'en';
+    }
+
+    function syncPanelLanguageControls(value, source = '') {
+      const next = normalizePanelLanguageValue(value);
+      const mainSelect = document.getElementById('frontend.panel_language');
+      if (panelLanguageTop && source !== 'top') panelLanguageTop.value = next;
+      if (mainSelect && source !== 'main') mainSelect.value = next;
+    }
+ 
+    function parseFieldValue(el) {
+      if (el.type === 'checkbox') return el.checked;
+      if (el.type === 'number') { const n = Number(el.value); return Number.isFinite(n) ? n : 0; }
+      return el.value;
+    }
+ 
+    function getSections() { return Array.from(document.querySelectorAll('.section')); }
+    function getTabButtons() { return Array.from(document.querySelectorAll('.tab-button')); }
+ 
+    function activateTab(sectionId) {
+      getSections().forEach((section) => section.classList.toggle('is-active', section.id === sectionId));
+      getTabButtons().forEach((button) => button.classList.toggle('is-active', button.dataset.tabTarget === sectionId));
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        if (summarySection) summarySection.textContent = activeSection.dataset.sectionTitle || 'Settings';
+        if (summaryDescription) summaryDescription.textContent = settingsText(SECTION_SUMMARIES[sectionId], 'Settings and tools for this section.');
+        try { localStorage.setItem('panel_active_tab', sectionId); } catch (_) {}
+        try { const nextHash = '#' + sectionId; if (window.location.hash !== nextHash) history.replaceState(null, '', nextHash); } catch (_) {}
+        if (sectionId === 'section-frontend') {
+          bindSettingsLiquidThemeControls().catch(console.error);
+        }
+        if (sectionId === 'section-window' || sectionId === 'section-ui') {
+          ensureMonitorOptionsLoaded().catch(console.error);
+        }
+        if (sectionId === 'section-tuya') {
+          ensureTuyaDeviceOptionsLoaded().catch(console.error);
+          refreshTuyaSourceCards(currentSettings || {});
+        }
+        if (sectionId === 'section-panel-buttons') {
+          ensurePanelButtonsEditorRendered();
+        }
+        if (sectionId === 'section-performance') {
+          refreshHwinfoSettingsStatus();
+        }
+        if (typeof applySettingsLanguage === 'function') {
+          requestAnimationFrame(() => applySettingsLanguage());
+        }
+      }
+    }
+ 
+    function initTabs() {
+      getTabButtons().forEach((button) => {
+        button.addEventListener('click', () => activateTab(button.dataset.tabTarget));
+      });
+      let hashTab = '';
+      try { hashTab = String(window.location.hash || '').replace(/^#/, '').trim(); } catch (_) {}
+      const defaultTab = 'section-home';
+      const preferredTab = (hashTab && document.getElementById(hashTab) && hashTab) || defaultTab;
+      activateTab(preferredTab);
+    }
+
+    function initHomeQuickNav() {
+      const navigateToSection = (sectionId) => {
+        const nextId = String(sectionId || '').trim();
+        if (!nextId || !document.getElementById(nextId)) return;
+        activateTab(nextId);
+      };
+
+      document.querySelectorAll('[data-home-target]').forEach((card) => {
+        card.addEventListener('click', (event) => {
+          if (event.target.closest('[data-tab-link]')) return;
+          navigateToSection(card.getAttribute('data-home-target'));
+        });
+        card.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          navigateToSection(card.getAttribute('data-home-target'));
+        });
+      });
+
+      document.querySelectorAll('[data-tab-link]').forEach((linkButton) => {
+        linkButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          navigateToSection(linkButton.getAttribute('data-tab-link'));
+        });
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function settingsText(key, fallback = '') {
+      return (typeof t === 'function') ? t(key, fallback) : fallback;
+    }
+
+    function settingsErrorText(error) {
+      const raw = String((error && error.message) || error || '').trim();
+      if (!raw) return settingsText('dynamic.network_error', 'Backend connection could not be reached.');
+      if (/failed to fetch|networkerror|load failed/i.test(raw)) {
+        return settingsText('dynamic.network_error', 'Backend connection could not be reached.');
+      }
+      return raw;
+    }
+
+    function settingsTranslate(value) {
+      return (typeof translateSettingsText === 'function') ? translateSettingsText(value) : value;
+    }
+
+    function settingsRecordsText(count) {
+      return `${count} ${settingsText('dynamic.records', 'records')}`;
+    }
+ 
+    function moveArrayItem(items, fromIndex, toIndex) {
+      const next = Array.isArray(items) ? items.slice() : [];
+      if (fromIndex < 0 || toIndex < 0 || fromIndex >= next.length || toIndex >= next.length || fromIndex === toIndex) return next;
+      const [item] = next.splice(fromIndex, 1);
+      next.splice(toIndex, 0, item);
+      return next;
+    }
+ 
+    function normalizePanelButton(raw = {}, index = 0) {
+      const fallbackId = `button_${index + 1}`;
+      return {
+        id: String(raw.id || fallbackId).trim() || fallbackId,
+        label: String(raw.label || `${settingsText('tabs.buttons', 'Button')} ${index + 1}`),
+        visible: raw.visible !== false,
+        variant: String(raw.variant || 'white-glow'),
+        command: String(raw.command || ''),
+        secondary_command: String(raw.secondary_command || ''),
+        method: String(raw.method || 'GET').toUpperCase(),
+        confirm_text: String(raw.confirm_text || ''),
+        icon_svg: String(raw.icon_svg || '').trim(),
+      };
+    }
+ 
+    function renderPanelButtonsEditor(buttons = []) {
+      if (!panelButtonsEditor) return;
+      const normalized = Array.isArray(buttons) ? buttons.map(normalizePanelButton) : [];
+      panelButtonsEditor.innerHTML = `
+        ${normalized.map((button, index) => `
+          <details class="button-editor-card" id="buttonCard-${index}">
+            <summary>
+              <div class="button-card-preview">${button.icon_svg ? button.icon_svg : `<div class="button-preview-empty">${escapeHtml(settingsText('sections.buttons.editor.svg', 'SVG'))}</div>`}</div>
+              <div class="button-card-copy">
+                <strong>${escapeHtml(button.label || `${settingsText('tabs.buttons', 'Button')} ${index + 1}`)}</strong>
+                <div class="button-card-badges">
+                  <span class="button-card-badge">${escapeHtml(button.id)}</span>
+                  <span class="button-card-badge">${button.visible ? settingsText('dynamic.btn_visible', 'Visible') : settingsText('dynamic.btn_hidden', 'Hidden')}</span>
+                  <span class="button-card-badge">${escapeHtml(button.method)}</span>
+                </div>
+              </div>
+            </summary>
+            <div class="button-editor-body">
+              <div class="field"><label>${escapeHtml(settingsText('sections.buttons.editor.label', 'Label'))}</label><input type="text" data-btn="${index}" data-key="label" value="${escapeHtml(button.label)}"></div>
+              <div class="field"><label>${escapeHtml(settingsText('sections.buttons.editor.variant', 'Variant'))}</label><input type="text" data-btn="${index}" data-key="variant" value="${escapeHtml(button.variant)}"></div>
+              <div class="field"><label>${escapeHtml(settingsText('sections.buttons.editor.method', 'Method'))}</label><select data-btn="${index}" data-key="method"><option${button.method==='GET'?' selected':''}>GET</option><option${button.method==='POST'?' selected':''}>POST</option><option${button.method==='PUT'?' selected':''}>PUT</option><option${button.method==='DELETE'?' selected':''}>DELETE</option></select></div>
+              <div class="field"><div class="toggle"><div><strong>${escapeHtml(settingsText('sections.buttons.editor.visible', 'Visible'))}</strong><span>${escapeHtml(settingsText('sections.buttons.editor.visible_desc', 'Show on panel.'))}</span></div><input type="checkbox" data-btn="${index}" data-key="visible"${button.visible?' checked':''}></div></div>
+              <div class="field full"><label>${escapeHtml(settingsText('sections.buttons.editor.cmd', 'Command / URL'))}</label><input type="text" data-btn="${index}" data-key="command" value="${escapeHtml(button.command)}"></div>
+              <div class="field full"><label>${escapeHtml(settingsText('sections.buttons.editor.scmd', 'Secondary Command'))}</label><input type="text" data-btn="${index}" data-key="secondary_command" value="${escapeHtml(button.secondary_command)}"></div>
+              <div class="field full"><label>${escapeHtml(settingsText('sections.buttons.editor.confirm', 'Confirm Text'))}</label><input type="text" data-btn="${index}" data-key="confirm_text" value="${escapeHtml(button.confirm_text)}"></div>
+              <div class="field full"><label>${escapeHtml(settingsText('sections.buttons.editor.svg', 'Icon SVG'))}</label><textarea data-btn="${index}" data-key="icon_svg">${escapeHtml(button.icon_svg)}</textarea></div>
+              <div class="button-preview"><div class="button-preview-empty">${button.icon_svg || escapeHtml(settingsText('dynamic.svg_preview', '(no icon)'))}</div></div>
+            </div>
+          </details>`).join('')}`;
+    }
+
+    function ensurePanelButtonsEditorRendered() {
+      if (SETTINGS_BUTTONS_EDITOR_READY) return;
+      const buttons = getByPath(currentSettings || {}, 'panel.left_buttons', []);
+      renderPanelButtonsEditor(Array.isArray(buttons) ? buttons : []);
+      SETTINGS_BUTTONS_EDITOR_READY = true;
+    }
+ 
+    async function fetchMonitorOptionsFromBackend() {
+      try {
+        const response = await fetch('/api/monitors', { cache: 'no-store' });
+        const payload = await response.json();
+        const monitors = payload && Array.isArray(payload.monitors) ? payload.monitors : [];
+        return monitors;
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function monitorDisplayName(mon, index) {
+      if (!mon || typeof mon !== 'object') return `Monitor ${index + 1}`;
+      const label = mon.label || mon.name || mon.device || mon.device_name || `Monitor ${index + 1}`;
+      const left = mon.logical_left ?? mon.left ?? mon.x;
+      const top = mon.logical_top ?? mon.top ?? mon.y;
+      const width = mon.logical_width ?? mon.width;
+      const height = mon.logical_height ?? mon.height;
+      const geometry = (width && height) ? ` — ${width}×${height}` : '';
+      const pos = (left !== undefined && top !== undefined) ? ` @ ${left},${top}` : '';
+      return `${label}${geometry}${pos}`;
+    }
+
+    function monitorValue(mon) {
+      if (!mon || typeof mon !== 'object') return '';
+      return String(mon.device || mon.device_id || mon.device_name || mon.id || mon.name || '');
+    }
+
+    function applyMonitorGeometryToWindowFields(deviceValue) {
+      const mon = (SETTINGS_MONITORS_CACHE || []).find((item) => monitorValue(item) === String(deviceValue || ''));
+      if (!mon) return;
+
+      const pairs = [
+        ['window.target_monitor_left', mon.logical_left ?? mon.left ?? mon.x],
+        ['window.target_monitor_top', mon.logical_top ?? mon.top ?? mon.y],
+        ['window.target_monitor_width', mon.logical_width ?? mon.width],
+        ['window.target_monitor_height', mon.logical_height ?? mon.height],
+      ];
+
+      pairs.forEach(([id, value]) => {
+        const el = document.getElementById(id);
+        if (el && value !== undefined && value !== null && value !== '') el.value = value;
+      });
+    }
+
+    function setMonitorProxyPlaceholders(settings) {
+      ['window.target_monitor_device_proxy', 'external_windows.youtube.target_monitor_device_proxy', 'external_windows.spotify.target_monitor_device_proxy'].forEach((proxyId) => {
+        const select = document.getElementById(proxyId);
+        if (!select) return;
+        const realId = proxyId.replace('_proxy', '');
+        const realVal = getByPath(settings, realId, '');
+        select.innerHTML = '<option value="">— Select monitor —</option>';
+        if (realVal) ensureSelectOption(select, realVal, realVal);
+        select.value = realVal || '';
+      });
+    }
+
+    function populateMonitorProxyOptions(settings, monitors) {
+      ['window.target_monitor_device_proxy', 'external_windows.youtube.target_monitor_device_proxy', 'external_windows.spotify.target_monitor_device_proxy'].forEach((proxyId) => {
+        const select = document.getElementById(proxyId);
+        if (!select) return;
+        const realId = proxyId.replace('_proxy', '');
+        const realVal = getByPath(settings, realId, '');
+        select.innerHTML = '<option value="">— Select monitor —</option>' + (monitors || []).map((m, index) => {
+          const value = monitorValue(m);
+          const label = monitorDisplayName(m, index);
+          return `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`;
+        }).join('');
+        if (realVal) ensureSelectOption(select, realVal, realVal);
+        select.value = realVal || '';
+      });
+    }
+
+    async function ensureMonitorOptionsLoaded() {
+      if (SETTINGS_MONITORS_READY) return;
+      if (SETTINGS_MONITORS_LOADING) return SETTINGS_MONITORS_LOADING;
+      SETTINGS_MONITORS_LOADING = (async () => {
+        const monitorsRaw = getByPath(currentSettings || {}, 'monitors', []);
+        let monitors = Array.isArray(monitorsRaw) ? monitorsRaw : [];
+        if (!monitors.length) monitors = await fetchMonitorOptionsFromBackend();
+        SETTINGS_MONITORS_CACHE = Array.isArray(monitors) ? monitors : [];
+        populateMonitorProxyOptions(currentSettings || {}, SETTINGS_MONITORS_CACHE);
+        SETTINGS_MONITORS_READY = true;
+      })();
+      try {
+        await SETTINGS_MONITORS_LOADING;
+      } finally {
+        SETTINGS_MONITORS_LOADING = null;
+      }
+    }
+
+    // ─── fill / collect form ────────────────────────────────────────────────
+    async function fillForm(settings) {
+      window.__settingsBulkUpdating = true;
+      try {
+        fieldIds = getTrackedFieldIds();
+        for (let index = 0; index < fieldIds.length; index += 1) {
+          const id = fieldIds[index];
+          const el = document.getElementById(id);
+          if (!el) continue;
+          const fallback = getSettingsFieldDefault(id);
+          let val = getByPath(settings, id, fallback);
+          if (typeof val === 'string' && !val.trim() && fallback !== undefined && fallback !== '') val = fallback;
+          if (el.type === 'checkbox') el.checked = !!val;
+          else {
+            if (el.matches && el.matches('[data-liquid-preview]')) {
+              ensureSelectOption(el, val || el.dataset.default || SETTINGS_LIQUID_THEME_DEFAULT_KEY);
+            }
+            el.value = (val === undefined || val === null) ? '' : val;
+          }
+          if (index > 0 && index % 40 === 0) {
+            await new Promise((resolve) => requestAnimationFrame(resolve));
+          }
+        }
+        syncPanelLanguageControls(getByPath(settings, 'frontend.panel_language', 'en'));
+        setMonitorProxyPlaceholders(settings);
+        syncSettingsLiquidLivePreview();
+        syncSettingsRenderMode();
+      } finally {
+        window.__settingsBulkUpdating = false;
+      }
+    }
+ 
+    function collectForm() {
+      const out = {};
+      const mainPanelLanguage = document.getElementById('frontend.panel_language');
+      if (mainPanelLanguage && panelLanguageTop) mainPanelLanguage.value = normalizePanelLanguageValue(panelLanguageTop.value);
+      fieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        setByPath(out, id, parseFieldValue(el));
+      });
+ 
+      ['window.target_monitor_device', 'external_windows.youtube.target_monitor_device', 'external_windows.spotify.target_monitor_device'].forEach((realId) => {
+        const proxyId = realId + '_proxy';
+        const proxy = document.getElementById(proxyId);
+        if (proxy) {
+          const preserved = getByPath(currentSettings || {}, realId, '');
+          setByPath(out, realId, proxy.value || preserved || '');
+        }
+      });
+
+      const mainMonitorProxy = document.getElementById('window.target_monitor_device_proxy');
+      if (mainMonitorProxy && SETTINGS_MONITORS_READY) {
+        const selectedMonitor = (SETTINGS_MONITORS_CACHE || []).find((item) => monitorValue(item) === String(mainMonitorProxy.value || ''));
+        if (selectedMonitor) {
+          const geometryMap = {
+            'window.target_monitor_left': selectedMonitor.logical_left ?? selectedMonitor.left ?? selectedMonitor.x,
+            'window.target_monitor_top': selectedMonitor.logical_top ?? selectedMonitor.top ?? selectedMonitor.y,
+            'window.target_monitor_width': selectedMonitor.logical_width ?? selectedMonitor.width,
+            'window.target_monitor_height': selectedMonitor.logical_height ?? selectedMonitor.height,
+          };
+          Object.entries(geometryMap).forEach(([path, value]) => {
+            if (value !== undefined && value !== null && value !== '') setByPath(out, path, value);
+          });
+        }
+      }
+ 
+      const buttonCards = panelButtonsEditor ? panelButtonsEditor.querySelectorAll('.button-editor-body') : [];
+      const buttons = [];
+      buttonCards.forEach((card, index) => {
+        const btn = normalizePanelButton({}, index);
+        card.querySelectorAll('[data-btn]').forEach((el) => {
+          const key = el.dataset.key;
+          if (!key) return;
+          btn[key] = parseFieldValue(el);
+        });
+        buttons.push(btn);
+      });
+      if (buttons.length) setByPath(out, 'panel.left_buttons', buttons);
+      else setByPath(out, 'panel.left_buttons', getByPath(currentSettings || {}, 'panel.left_buttons', []));
+
+      const selectedTuyaKeys = collectSelectedTuyaDeviceKeys();
+      setByPath(
+        out,
+        'tuya.visible_device_keys',
+        selectedTuyaKeys.length ? selectedTuyaKeys : getByPath(currentSettings || {}, 'tuya.visible_device_keys', [])
+      );
+ 
+      return out;
+    }
+ 
+    async function refreshHwinfoSettingsStatus() {
+      const uptimeEl = document.getElementById('hwinfoCurrentUptime');
+      if (!uptimeEl) return;
+      try {
+        const res = await fetch('/api/health/report', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const checks = Array.isArray(data.checks) ? data.checks : [];
+        const hwinfo = checks.find((item) => item && item.key === 'hwinfo');
+        const meta = hwinfo && hwinfo.meta ? hwinfo.meta : {};
+        const running = meta.hwinfo_running ? settingsText('dynamic.running', 'running') : settingsText('dynamic.not_running', 'not running');
+        const uptime = meta.hwinfo_uptime || '-';
+        const started = meta.hwinfo_started_at || '-';
+        const pid = meta.hwinfo_pid || '-';
+        uptimeEl.textContent = `${running} | ${settingsText('dynamic.age', 'age')}: ${uptime} | ${settingsText('dynamic.started', 'started')}: ${started} | ${settingsText('dynamic.pid', 'pid')}: ${pid}`;
+      } catch (err) {
+        uptimeEl.textContent = settingsText('dynamic.status_unavailable', 'status unavailable');
+      }
+    }
+
+    async function loadSettings() {
+      try {
+        const res = await fetch('/api/settings', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        currentSettings = data && typeof data === 'object' && data.settings ? data.settings : data;
+        await fillForm(currentSettings);
+        if (summaryMode) summaryMode.textContent = 'API';
+        markSaved(true, settingsText('dynamic.msg_loaded', 'Settings loaded'), settingsText('dynamic.msg_loaded_desc', 'Live data from API endpoint.'));
+      } catch (err) {
+        console.error('loadSettings error:', err);
+        markSaved(false, settingsText('dynamic.msg_load_failed', 'Load failed'), settingsErrorText(err));
+      }
+    }
+ 
+    async function saveSettings() {
+      try {
+        const payload = collectForm();
+        const res = await fetch('/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        currentSettings = payload;
+        markSaved(true, settingsText('global.status_saved', 'Saved'), settingsText('dynamic.msg_saved_backend_desc', 'All settings written to backend.'));
+      } catch (err) {
+        console.error('saveSettings error:', err);
+        markSaved(false, settingsText('dynamic.msg_save_err', 'Save failed'), settingsErrorText(err));
+      }
+    }
+ 
+    function exportJson() {
+      const payload = collectForm();
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'panel_settings.json'; a.click();
+      URL.revokeObjectURL(url);
+    }
+ 
+    function importJson(file) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          currentSettings = data && typeof data === 'object' && data.settings ? data.settings : data;
+          await fillForm(currentSettings);
+          markSaved(false, settingsText('dynamic.msg_imported', 'Imported'), settingsText('dynamic.msg_review_save', 'Review and save to apply.'));
+        } catch (err) {
+          markSaved(false, settingsText('dynamic.msg_import_failed', 'Import failed'), settingsErrorText(err));
+        }
+      };
+      reader.readAsText(file);
+    }
+ 
+    function normalizeSearchText(text) { return String(text || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+ 
+    function initSearch() {
+      const searchInput = document.getElementById('searchSettings');
+      if (!searchInput) return;
+      searchInput.addEventListener('input', () => {
+        const q = normalizeSearchText(searchInput.value);
+        if (!q) {
+          document.querySelectorAll('.field, .settings-group').forEach((el) => el.classList.remove('hidden-by-search'));
+          return;
+        }
+        document.querySelectorAll('.field').forEach((el) => {
+          const text = normalizeSearchText(el.textContent + (el.querySelector('input,select,textarea')?.id || ''));
+          el.classList.toggle('hidden-by-search', !text.includes(q));
+        });
+        document.querySelectorAll('.settings-group').forEach((group) => {
+          const visibleFields = group.querySelectorAll('.field:not(.hidden-by-search)');
+          group.classList.toggle('hidden-by-search', visibleFields.length === 0);
+        });
+      });
+    }
+ 
+    // ─── Tuya Device Picker ─────────────────────────────────────────────────
+    async function loadTuyaDeviceOptions(preferredOrder = null) {
+      const picker = document.getElementById('tuyaDevicePicker');
+      if (!picker) return;
+      try {
+        const res = await fetch('/tuya/status?all=1', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Tuya status could not be loaded');
+        const data = await res.json();
+        const rawDevices = Array.isArray(data) ? data : (Array.isArray(data && data.devices) ? data.devices : []);
+
+        const devices = [];
+        const seenKeys = new Set();
+        for (const raw of rawDevices) {
+          if (!raw || typeof raw !== 'object') continue;
+          const key = String(raw.key || raw.device_key || raw.id || '').trim();
+          if (!key || seenKeys.has(key)) continue;
+          seenKeys.add(key);
+          devices.push({
+            key,
+            name: String(raw.name || raw.label || key),
+            ip: String(raw.ip || ''),
+            type: String(raw.type || raw.category || ''),
+          });
+        }
+
+        const savedSelected = getByPath(currentSettings, 'tuya.visible_device_keys', []);
+        const selectedKeys = (Array.isArray(preferredOrder) ? preferredOrder : (Array.isArray(savedSelected) ? savedSelected : []))
+          .map((key) => String(key || '').trim())
+          .filter(Boolean);
+
+        const allKeys = devices.map((d) => d.key);
+        const orderedKeys = [...new Set([
+          ...selectedKeys.filter((key) => allKeys.includes(key)),
+          ...allKeys,
+        ])];
+
+        picker.innerHTML = orderedKeys.map((key) => {
+          const device = devices.find((d) => d.key === key) || { name: key, key, ip: '', type: '' };
+          const isSelected = selectedKeys.includes(key);
+          const selIdx = selectedKeys.indexOf(key);
+          return `<div class="device-chip${isSelected ? ' is-selected' : ''}" data-device-key="${escapeHtml(key)}">
+            <div class="device-chip-main">
+              <input type="checkbox" class="tuya-visible-device" data-device-key="${escapeHtml(key)}"${isSelected ? ' checked' : ''}>
+              <div class="device-chip-meta">
+                <strong>${escapeHtml(device.name || key)}</strong>
+                <span>${escapeHtml(device.ip || device.type || key)}</span>
+              </div>
+            </div>
+            <div class="device-chip-actions">
+              <button type="button" class="device-order-btn tuya-device-move" data-device-key="${escapeHtml(key)}" data-direction="up"${!isSelected || selIdx <= 0 ? ' disabled' : ''}>▲</button>
+              <button type="button" class="device-order-btn tuya-device-move" data-device-key="${escapeHtml(key)}" data-direction="down"${!isSelected || selIdx >= selectedKeys.length - 1 ? ' disabled' : ''}>▼</button>
+            </div>
+          </div>`;
+        }).join('');
+      } catch (err) {
+        console.error('loadTuyaDeviceOptions error:', err);
+        if (picker) picker.innerHTML = `<p style="color:var(--text-muted);font-size:13px;padding:8px 0;">${escapeHtml(settingsText('dynamic.tuya_load_err', 'Tuya devices could not be loaded. Check backend connectivity.'))}</p>`;
+      }
+    }
+
+    async function ensureTuyaDeviceOptionsLoaded(preferredOrder = null) {
+      if (preferredOrder) {
+        SETTINGS_TUYA_DEVICES_READY = false;
+      }
+      if (SETTINGS_TUYA_DEVICES_READY) return;
+      if (SETTINGS_TUYA_DEVICES_LOADING) return SETTINGS_TUYA_DEVICES_LOADING;
+      SETTINGS_TUYA_DEVICES_LOADING = (async () => {
+        await loadTuyaDeviceOptions(preferredOrder);
+        SETTINGS_TUYA_DEVICES_READY = true;
+      })();
+      try {
+        await SETTINGS_TUYA_DEVICES_LOADING;
+      } finally {
+        SETTINGS_TUYA_DEVICES_LOADING = null;
+      }
+    }
+
+    function collectSelectedTuyaDeviceKeys() {
+      return Array.from(document.querySelectorAll('.tuya-visible-device:checked')).map((el) => String(el.dataset.deviceKey || '').trim()).filter(Boolean);
+    }
+
+    function renderTuyaMaintenanceResult(data, actionLabel) {
+      const cards = document.getElementById('tuyaMaintenanceCards');
+      const rows = document.getElementById('tuyaMaintenanceDeviceRows');
+      const status = document.getElementById('tuyaMaintenanceStatus');
+      const total = Number(data && data.total) || 0;
+      const online = Number(data && data.online) || 0;
+      const offline = Number(data && data.offline) || 0;
+      const errors = Number(data && data.error_count) || 0;
+      if (cards) {
+        cards.innerHTML = [
+          { label: settingsText('extra.total', 'Total'), value: total },
+          { label: settingsText('extra.online', 'Online'), value: online },
+          { label: settingsText('extra.offline', 'Offline'), value: offline },
+          { label: settingsText('extra.errors', 'Errors'), value: errors },
+        ].map((item) => `<div class="native-card"><div class="native-card-label">${escapeHtml(item.label)}</div><div class="native-card-value">${escapeHtml(String(item.value))}</div></div>`).join('');
+      }
+      const devices = Array.isArray(data && data.devices) ? data.devices : [];
+      if (rows) {
+        rows.innerHTML = devices.length ? devices.map((device) => {
+          const key = String((device && (device.key || device.device_key || device.id)) || '').trim();
+          const name = String((device && device.name) || key || '-');
+          const isOnline = !!(device && device.online === true);
+          const rawPowerState = String((device && device.power_state) || (device && device.is_on === true ? 'On' : (device && device.is_on === false ? 'Off' : 'Unknown')));
+          const powerState = rawPowerState === 'On'
+            ? settingsText('global.on', 'On')
+            : (rawPowerState === 'Off' ? settingsText('global.off', 'Off') : settingsText('dynamic.tuya_val_unknown', 'Unknown'));
+          const type = String((device && device.type) || '');
+          const ip = String((device && device.ip) || '');
+          const details = String((device && device.details) || '-');
+          const source = String((device && device.source) || '-');
+          const error = String((device && device.error) || '');
+          return `<tr>
+            <td>${escapeHtml(name)}${key && key !== name ? `<span class="tuya-device-detail">${escapeHtml(key)}</span>` : ''}${(type || ip) ? `<span class="tuya-device-detail">${escapeHtml([type, ip].filter(Boolean).join(' | '))}</span>` : ''}</td>
+            <td class="${isOnline ? 'tuya-device-ok' : 'tuya-device-warn'}">${isOnline ? settingsText('extra.online', 'Online') : settingsText('extra.offline', 'Offline')}<span class="tuya-device-detail">${escapeHtml(powerState)}</span></td>
+            <td>${escapeHtml(details)}</td>
+            <td>${escapeHtml(source)}</td>
+            <td>${escapeHtml(error || '-')}</td>
+          </tr>`;
+        }).join('') : `<tr><td colspan="5">${escapeHtml(settingsText('extra.no_device', 'No device returned.'))}</td></tr>`;
+      }
+      if (status) status.textContent = `${actionLabel} ${settingsText('dynamic.tuya_complete', 'complete')}: ${online}/${total} ${settingsText('extra.online', 'online')}, ${errors} ${settingsText('extra.errors', 'errors')}.`;
+    }
+
+    async function runTuyaMaintenance(action) {
+      const checkBtn = document.getElementById('tuyaCheckBtn');
+      const resetBtn = document.getElementById('tuyaResetBtn');
+      const status = document.getElementById('tuyaMaintenanceStatus');
+      const isReset = action === 'reset';
+      const endpoint = isReset ? '/api/tuya/reset' : '/api/tuya/check';
+      const actionLabel = isReset ? settingsText('dynamic.tuya_reset', 'Reset') : settingsText('dynamic.tuya_check', 'Check');
+      try {
+        if (checkBtn) checkBtn.disabled = true;
+        if (resetBtn) resetBtn.disabled = true;
+        if (status) status.textContent = `${actionLabel} ${settingsText('dynamic.tuya_running', 'running...')}`;
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ clear_logs: false }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data || data.ok !== true) throw new Error((data && data.error) || `HTTP ${res.status}`);
+        renderTuyaMaintenanceResult(data, actionLabel);
+        SETTINGS_TUYA_DEVICES_READY = false;
+        await ensureTuyaDeviceOptionsLoaded();
+        refreshTuyaSourceCards(currentSettings || {});
+        markSaved(true, `Tuya ${actionLabel.toLowerCase()} ${settingsText('dynamic.tuya_complete', 'complete')}`, `${Number(data.online) || 0}/${Number(data.total) || 0} ${settingsText('dynamic.tuya_devices_online', 'devices online.')}`);
+      } catch (err) {
+        if (status) status.textContent = `${actionLabel} ${settingsText('dynamic.tuya_failed', 'failed')}: ${settingsErrorText(err)}`;
+        markSaved(false, `Tuya ${actionLabel.toLowerCase()} ${settingsText('dynamic.tuya_failed', 'failed')}`, settingsErrorText(err));
+      } finally {
+        if (checkBtn) checkBtn.disabled = false;
+        if (resetBtn) resetBtn.disabled = false;
+      }
+    }
+
+    function initTuyaMaintenanceTools() {
+      const checkBtn = document.getElementById('tuyaCheckBtn');
+      const resetBtn = document.getElementById('tuyaResetBtn');
+      const clearLogsBtn = document.getElementById('tuyaClearLogsBtn');
+      if (checkBtn) checkBtn.addEventListener('click', () => runTuyaMaintenance('check'));
+      if (resetBtn) resetBtn.addEventListener('click', () => {
+        if (!confirm(settingsText('dynamic.confirm_tuya_reset', 'Reset Tuya connection pool and check devices again?'))) return;
+        runTuyaMaintenance('reset');
+      });
+      if (clearLogsBtn) {
+        clearLogsBtn.addEventListener('click', async () => {
+          if (!confirm(settingsText('extra.clear_only_tuya_logs', 'Clear only Tuya logs?'))) return;
+          const originalText = clearLogsBtn.textContent;
+          const status = document.getElementById('tuyaMaintenanceStatus');
+          try {
+            clearLogsBtn.disabled = true;
+            clearLogsBtn.textContent = settingsText('dynamic.msg_clearing', 'Clearing...');
+            const res = await fetch('/api/tuya/logs/clear', { method: 'POST' });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok || !data || data.ok !== true) throw new Error((data && data.error) || `HTTP ${res.status}`);
+            if (status) status.textContent = settingsText('extra.tuya_logs_cleared', 'Tuya logs cleared.');
+            markSaved(true, settingsText('extra.tuya_logs_cleared', 'Tuya logs cleared.'), settingsText('dynamic.only_tuya_log_cleared', 'Only Tuya log file was cleared.'));
+          } catch (err) {
+            if (status) status.textContent = settingsText('extra.tuya_log_clear_failed', 'Tuya log clear failed.');
+            markSaved(false, settingsText('extra.tuya_log_clear_failed', 'Tuya log clear failed.'), settingsErrorText(err));
+          } finally {
+            clearLogsBtn.disabled = false;
+            clearLogsBtn.textContent = originalText;
+          }
+        });
+      }
+    }
+ 
+    function refreshTuyaSourceCards(settings) {
+      const container = document.getElementById('tuyaSourceCards');
+      if (!container) return;
+      const plugKey = getByPath(settings, 'tuya.pc_plug_key', '—');
+      const normalizeMode = (value) => {
+        const text = String(value || '').trim().toLowerCase();
+        return text === 'cloud' ? 'cloud' : 'local';
+      };
+      const deviceMode = normalizeMode(getByPath(settings, 'tuya.read_mode', 'local'));
+      const modeLabel = (mode) => mode === 'cloud'
+        ? settingsText('dynamic.tuya_val_cloud_only', 'Cloud only')
+        : settingsText('dynamic.tuya_val_local_only', 'Local only');
+      container.innerHTML = [
+        { label: settingsText('dynamic.tuya_mode_device', 'Tuya source'), value: modeLabel(deviceMode) },
+        { label: settingsText('dynamic.tuya_mode_plug', 'PC plug key'), value: plugKey ? String(plugKey).slice(0, 12) + '...' : '-' },
+        { label: settingsText('dynamic.tuya_mode_local', 'Device query'), value: modeLabel(deviceMode) },
+        { label: settingsText('dynamic.tuya_mode_cloud', 'Power query'), value: modeLabel(deviceMode) },
+      ].map((item) => `<div class="native-card"><div class="native-card-label">${escapeHtml(item.label)}</div><div class="native-card-value">${escapeHtml(item.value)}</div></div>`).join('');
+    }
+ 
+    // ─── Health ──────────────────────────────────────────────────────────────
+    function initNativeHealthV2() {
+      const refreshBtn = document.getElementById('healthRefreshBtn');
+      const autoRefreshBtn = document.getElementById('healthAutoRefreshBtn');
+      const overallText = document.getElementById('healthOverallText');
+      const statusText2 = document.getElementById('healthStatusText');
+      if (!refreshBtn) return;
+      let autoRefreshEnabled = true, autoRefreshTimer = null;
+ 
+      async function fetchHealth() {
+        if (statusText2) statusText2.textContent = settingsText('dynamic.msg_loading', 'Loading...');
+        try {
+          const res = await fetch('/api/health/report', { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const data = await res.json();
+          renderHealth(data);
+          if (statusText2) statusText2.textContent = `${settingsText('dynamic.updated_at', 'Updated:')} ${new Date().toLocaleTimeString('tr-TR')}`;
+          if (overallText) overallText.textContent = String((data.summary && data.summary.overall_status) || data.status || 'ok').toUpperCase();
+        } catch (err) {
+          if (statusText2) statusText2.textContent = `${settingsText('dynamic.health_error', 'Error')}: ${settingsErrorText(err)}`;
+        }
+      }
+ 
+      function renderHealth(data) {
+        const summaryEl = document.getElementById('healthSummaryCards');
+        const snapshotsEl = document.getElementById('healthSnapshotsGrid');
+        const configEl = document.getElementById('healthConfigGrid');
+        const checksEl = document.getElementById('healthChecksGrid');
+        const issuesList = document.getElementById('healthIssuesList');
+        const issuesMeta = document.getElementById('healthIssuesMeta');
+        const eventsList = document.getElementById('healthEventsList');
+        const eventsMeta = document.getElementById('healthEventsMeta');
+ 
+        const summary = data.summary || {};
+        const snapshots = Array.isArray(data.snapshots) ? data.snapshots : [];
+        const configuration = Array.isArray(data.configuration) ? data.configuration : [];
+        const checks = Array.isArray(data.checks) ? data.checks : [];
+        const issues = Array.isArray(data.issues) ? data.issues : [];
+        const events = Array.isArray(data.recent_events) ? data.recent_events : (Array.isArray(data.events) ? data.events : []);
+        const toMetaRows = (meta) => {
+          if (Array.isArray(meta)) return meta;
+          if (meta && typeof meta === 'object') return Object.entries(meta).map(([label, value]) => ({ label, value }));
+          return [];
+        };
+ 
+        if (summaryEl) {
+          summaryEl.innerHTML = Object.entries(summary).slice(0, 6).map(([k, v]) =>
+            `<div class="native-card"><div class="native-card-label">${escapeHtml(k)}</div><div class="native-card-value">${escapeHtml(String(v))}</div></div>`
+          ).join('');
+        }
+        if (snapshotsEl) {
+          snapshotsEl.innerHTML = snapshots.map((s) =>
+            `<div class="health-snapshot-card native-card"><div class="native-card-label">${escapeHtml(s.label || '')}</div><div class="native-card-value">${escapeHtml(String(s.value || '-'))}</div><div class="health-snapshot-sub">${escapeHtml(s.subvalue || s.sub || '')}</div></div>`
+          ).join('');
+        }
+        if (configEl) {
+          configEl.innerHTML = configuration.map((item) => `
+            <div class="health-check-card">
+              <div class="health-check-head"><div class="health-check-title">${escapeHtml(item.label || item.title || '')}</div><span class="health-status-badge ${item.status || ''}">${escapeHtml(String(item.status || '').toUpperCase())}</span></div>
+              <div class="health-check-summary">${escapeHtml(item.value || '')}</div>
+              <div class="health-check-detail">${escapeHtml(item.detail || '')}</div>
+            </div>`).join('');
+        }
+        if (checksEl) {
+          checksEl.innerHTML = checks.map((check) => `
+            <div class="health-check-card">
+              <div class="health-check-head"><div class="health-check-title">${escapeHtml(check.label || check.title || '')}</div><span class="health-status-badge ${check.status || ''}">${escapeHtml((check.status || '').toUpperCase())}</span></div>
+              <div class="health-check-summary">${escapeHtml(check.summary || '')}</div>
+              <div class="health-check-detail">${escapeHtml(check.detail || '')}</div>
+              <div class="health-meta-list">${toMetaRows(check.meta).map((m) => `<div class="health-meta-row"><span>${escapeHtml(m.label || '')}</span><span>${escapeHtml(String(m.value || ''))}</span></div>`).join('')}</div>
+            </div>`).join('');
+        }
+        if (issuesList) {
+          if (!issues.length) issuesList.innerHTML = `<div class="health-empty">${escapeHtml(settingsText('dynamic.empty_issues', 'No issues found.'))}</div>`;
+          else issuesList.innerHTML = issues.map((issue) => `<div class="health-issue-card"><div class="health-issue-head"><div class="health-issue-title">${escapeHtml(issue.label || issue.title || '')}</div><span class="health-status-badge ${issue.status || 'error'}">${escapeHtml(String(issue.status || 'error').toUpperCase())}</span></div><div class="health-issue-detail">${escapeHtml(issue.detail || '')}</div>${issue.suggestion ? `<div class="health-issue-detail">${escapeHtml(issue.suggestion)}</div>` : ''}</div>`).join('');
+          if (issuesMeta) issuesMeta.textContent = settingsRecordsText(issues.length);
+        }
+        if (eventsList) {
+          if (!events.length) eventsList.innerHTML = `<div class="health-empty">${escapeHtml(settingsText('dynamic.empty_events', 'No events.'))}</div>`;
+          else eventsList.innerHTML = events.map((ev) => `<div class="health-event-item"><div class="health-event-top"><span class="health-event-source">${escapeHtml(ev.source || '')}</span><span class="health-event-time">${escapeHtml(ev.time || ev.ts || '')}</span></div><div>${escapeHtml(ev.message || ev.detail || '')}</div></div>`).join('');
+          if (eventsMeta) eventsMeta.textContent = settingsRecordsText(events.length);
+        }
+      }
+ 
+      function startAutoRefresh() { autoRefreshTimer = setInterval(fetchHealth, 10000); }
+      function stopAutoRefresh() { clearInterval(autoRefreshTimer); autoRefreshTimer = null; }
+ 
+      refreshBtn.addEventListener('click', fetchHealth);
+      if (autoRefreshBtn) {
+        autoRefreshBtn.addEventListener('click', () => {
+          autoRefreshEnabled = !autoRefreshEnabled;
+          autoRefreshBtn.textContent = autoRefreshEnabled
+            ? settingsText('sections.health.toolbar.auto_on', 'Auto Refresh: On')
+            : settingsText('sections.health.toolbar.auto_off', 'Auto Refresh: Off');
+          autoRefreshEnabled ? startAutoRefresh() : stopAutoRefresh();
+        });
+      }
+ 
+      const healthSection = document.getElementById('section-health');
+      if (healthSection) {
+        new MutationObserver(() => {
+          if (healthSection.classList.contains('is-active')) { fetchHealth(); if (autoRefreshEnabled) startAutoRefresh(); }
+          else stopAutoRefresh();
+        }).observe(healthSection, { attributes: true, attributeFilter: ['class'] });
+        if (healthSection.classList.contains('is-active')) {
+          fetchHealth();
+          if (autoRefreshEnabled) startAutoRefresh();
+        }
+      }
+    }
+ 
+    // ─── Live Logs ───────────────────────────────────────────────────────────
+    function initNativeLogs() {
+      const searchInput = document.getElementById('logsSearchInput');
+      const whichSelect = document.getElementById('logsWhichSelect');
+      const levelSelect = document.getElementById('logsLevelSelect');
+      const lineSelect  = document.getElementById('logsLineSelect');
+      const clearBtn    = document.getElementById('clearLogsBtn');
+      const statusEl    = document.getElementById('logsStatusText');
+      if (!statusEl) return;
+ 
+      let logsData = { errors: [], logs: [], tuya: [] };
+ 
+      function renderLogs() {
+        const q     = normalizeSearchText(searchInput ? searchInput.value : '');
+        const which = whichSelect ? whichSelect.value : 'all';
+        const level = levelSelect ? levelSelect.value : 'all';
+ 
+        const filterRows = (rows) => rows.filter((r) => {
+          if (level !== 'all' && r.level !== level) return false;
+          if (q && !normalizeSearchText(JSON.stringify(r)).includes(q)) return false;
+          return true;
+        });
+ 
+        const errors  = which === 'all' || which === 'errors' ? filterRows(logsData.errors) : [];
+        const general = which === 'all' || which === 'logs' ? filterRows(logsData.logs) : [];
+        const tuya    = which === 'all' || which === 'tuya' ? filterRows(logsData.tuya) : [];
+ 
+        const renderRows = (rows) => rows.map((r) => `
+          <tr>
+            <td>${escapeHtml(r.time || r.ts || '')}</td>
+            <td>
+              <div class="log-main-cell">
+                <div class="log-source">${escapeHtml(r.source || '')}</div>
+                <div class="log-message">${escapeHtml(r.message || '')}</div>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+
+        const errorsBody = document.getElementById('logsErrorsBody');
+        const generalBody = document.getElementById('logsGeneralBody');
+        const tuyaBody = document.getElementById('logsTuyaBody');
+        const summaryCards = document.getElementById('logsSummaryCards');
+        if (errorsBody)  errorsBody.innerHTML  = renderRows(errors);
+        if (generalBody) generalBody.innerHTML = renderRows(general);
+        if (tuyaBody)    tuyaBody.innerHTML    = renderRows(tuya);
+        if (summaryCards) {
+          summaryCards.innerHTML = [
+            { label: settingsText('dynamic.stats_err', 'Error records'), value: errors.length },
+            { label: settingsText('dynamic.stats_log', 'General records'), value: general.length },
+            { label: settingsText('extra.tuya_logs', 'Tuya records'), value: tuya.length },
+          ].map((item) => `<div class="native-stat"><div class="native-stat-k">${escapeHtml(item.label)}</div><div class="native-stat-v">${escapeHtml(String(item.value))}</div></div>`).join('');
+        }
+ 
+        const errMeta  = document.getElementById('logsErrorsMeta');
+        const genMeta  = document.getElementById('logsGeneralMeta');
+        const tuyaMeta = document.getElementById('logsTuyaMeta');
+        if (errMeta)  errMeta.textContent  = settingsRecordsText(errors.length);
+        if (genMeta)  genMeta.textContent  = settingsRecordsText(general.length);
+        if (tuyaMeta) tuyaMeta.textContent = settingsRecordsText(tuya.length);
+      }
+ 
+      async function fetchLogs() {
+        if (statusEl) statusEl.textContent = settingsText('dynamic.msg_loading', 'Loading...');
+        try {
+          const lines = lineSelect ? lineSelect.value : 500;
+          const res = await fetch(`/hata/data?lines=${lines}`, { cache: 'no-store' });
+          if (!res.ok) throw new Error();
+          const data = await res.json();
+          logsData = {
+            errors: Array.isArray(data.errors) ? data.errors : [],
+            logs: Array.isArray(data.logs) ? data.logs : [],
+            tuya: Array.isArray(data.tuya) ? data.tuya : [],
+          };
+          renderLogs();
+          if (statusEl) statusEl.textContent = `${settingsText('dynamic.updated_at', 'Updated:')} ${new Date().toLocaleTimeString('tr-TR')}`;
+        } catch {
+          if (statusEl) statusEl.textContent = settingsText('global.api_error', 'API error');
+        }
+      }
+ 
+      if (searchInput) searchInput.addEventListener('input', renderLogs);
+      if (whichSelect) whichSelect.addEventListener('change', renderLogs);
+      if (levelSelect) levelSelect.addEventListener('change', renderLogs);
+      if (lineSelect)  lineSelect.addEventListener('change', fetchLogs);
+      if (clearBtn) {
+        clearBtn.addEventListener('click', async () => {
+          if (!confirm(settingsText('dynamic.confirm_clear_logs', 'Clear all log files?'))) return;
+          const originalText = clearBtn.textContent;
+          try {
+            clearBtn.disabled = true;
+            clearBtn.textContent = settingsText('dynamic.msg_clearing', 'Clearing...');
+            const res = await fetch('/api/logs/clear', { method: 'POST' });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok || !data || data.ok !== true) throw new Error((data && data.error) || `HTTP ${res.status}`);
+            logsData = { errors: [], logs: [], tuya: [] };
+            renderLogs();
+            if (statusEl) statusEl.textContent = settingsText('dynamic.msg_logs_cleared', 'Logs cleared');
+            markSaved(true, settingsText('dynamic.msg_logs_cleared', 'Logs cleared'), settingsText('dynamic.msg_logs_cleared_desc', 'All log files were truncated.'));
+          } catch (err) {
+            if (statusEl) statusEl.textContent = settingsText('dynamic.msg_clear_failed', 'Clear failed');
+            markSaved(false, settingsText('dynamic.msg_log_clear_failed', 'Log clear failed'), settingsErrorText(err));
+          } finally {
+            clearBtn.disabled = false;
+            clearBtn.textContent = originalText;
+            fetchLogs();
+          }
+        });
+      }
+
+      const logsSection = document.getElementById('section-logs');
+      if (logsSection) {
+        new MutationObserver(() => {
+          if (logsSection.classList.contains('is-active')) fetchLogs();
+        }).observe(logsSection, { attributes: true, attributeFilter: ['class'] });
+        if (logsSection.classList.contains('is-active')) fetchLogs();
+      }
+    }
+ 
+    // ─── Sitemap ─────────────────────────────────────────────────────────────
+    function initNativeSitemap() {
+      const sitemapSearchInput   = document.getElementById('sitemapSearchInput');
+      const sitemapCategorySelect = document.getElementById('sitemapCategorySelect');
+      const sitemapMethodSelect  = document.getElementById('sitemapMethodSelect');
+      const sitemapStatusText    = document.getElementById('sitemapStatusText');
+      const sitemapStats         = document.getElementById('sitemapStats');
+      const sitemapGroups        = document.getElementById('sitemapGroups');
+      if (!sitemapStatusText) return;
+ 
+      let sitemapData = [];
+ 
+      function renderSitemap() {
+        if (!sitemapGroups || !sitemapStats) return;
+        const q      = normalizeSearchText(sitemapSearchInput ? sitemapSearchInput.value : '');
+        const cat    = sitemapCategorySelect ? sitemapCategorySelect.value : 'all';
+        const method = sitemapMethodSelect ? sitemapMethodSelect.value : 'all';
+ 
+        const filtered = sitemapData.filter((item) => {
+          if (cat !== 'all' && item.category !== cat) return false;
+          if (method !== 'all' && !(Array.isArray(item.methods) ? item.methods : [item.method || 'GET']).includes(method)) return false;
+          if (q && !normalizeSearchText(JSON.stringify(item)).includes(q)) return false;
+          return true;
+        });
+ 
+        const groups = {};
+        for (const item of filtered) {
+          const g = item.category || 'General';
+          if (!groups[g]) groups[g] = [];
+          groups[g].push(item);
+        }
+ 
+        sitemapStats.innerHTML = [
+          { label: settingsText('global.total_endpoints', 'Total endpoints'), value: sitemapData.length },
+          { label: settingsText('global.filtered', 'Filtered'), value: filtered.length },
+          { label: settingsText('global.category', 'Categories'), value: Object.keys(groups).length },
+          { label: settingsText('global.get_methods', 'GET methods'), value: filtered.filter((r) => (Array.isArray(r.methods) ? r.methods : [r.method || 'GET']).includes('GET')).length },
+        ].map((s) => `<div class="native-stat"><div class="native-stat-k">${escapeHtml(s.label)}</div><div class="native-stat-v">${s.value}</div></div>`).join('');
+ 
+        sitemapGroups.innerHTML = Object.entries(groups).map(([groupName, items]) => `
+          <div class="native-group">
+            <div class="native-group-head"><h3>${escapeHtml(groupName)}</h3><span class="native-meta">${settingsRecordsText(items.length)}</span></div>
+            <div style="padding:16px;display:grid;gap:12px;">
+              ${items.map((item) => `
+                <div class="native-item">
+                  <div class="native-item-top">
+                    <span class="native-title">${escapeHtml(item.title || item.name || item.path)}</span>
+                    <div class="native-chips">
+                      ${(Array.isArray(item.methods) ? item.methods : [item.method || 'GET']).map((m) => `<span class="native-chip">${escapeHtml(m)}</span>`).join('')}
+                    </div>
+                  </div>
+                  <div class="native-path">${escapeHtml(item.path || '')}</div>
+                  ${item.description ? `<div style="font-size:13px;color:var(--text-soft);margin-bottom:8px;">${escapeHtml(item.description)}</div>` : ''}
+                  ${(item.examples || []).map((ex) => `
+                    <div class="native-example">
+                      <span class="native-example-url">${escapeHtml(ex.url || '')}</span>
+                      <a href="${escapeHtml(ex.url || '#')}" target="_blank" style="font-size:12px;font-weight:700;color:var(--accent);">${escapeHtml(settingsText('global.open', 'Open'))}</a>
+                    </div>`).join('')}
+                </div>`).join('')}
+            </div>
+          </div>`).join('');
+      }
+ 
+      async function fetchSitemap() {
+        if (sitemapStatusText) sitemapStatusText.textContent = settingsText('dynamic.msg_loading', 'Loading...');
+        try {
+          const res = await fetch('/sitemap/data', { cache: 'no-store' });
+          if (!res.ok) throw new Error();
+          const data = await res.json();
+          sitemapData = Array.isArray(data) ? data : (Array.isArray(data && data.items) ? data.items : []);
+          if (!Array.isArray(sitemapData)) sitemapData = [];
+          const cats = [...new Set(sitemapData.map((r) => r.category).filter(Boolean))];
+          if (sitemapCategorySelect) {
+            sitemapCategorySelect.innerHTML = `<option value="all">${escapeHtml(settingsText('extra.all_categories', 'All categories'))}</option>` + cats.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+          }
+          renderSitemap();
+          if (sitemapStatusText) sitemapStatusText.textContent = `${settingsText('dynamic.updated_at', 'Updated:')} ${new Date().toLocaleTimeString('tr-TR')}`;
+        } catch {
+          if (sitemapStatusText) sitemapStatusText.textContent = settingsText('global.api_error', 'API error');
+          if (sitemapGroups) sitemapGroups.innerHTML = `<p style="text-align:center;color:var(--text-muted);padding:24px;">${escapeHtml(settingsText('dynamic.empty_sitemap', 'Sitemap could not be loaded.'))}</p>`;
+        }
+      }
+ 
+      if (sitemapSearchInput)    sitemapSearchInput.addEventListener('input', renderSitemap);
+      if (sitemapCategorySelect) sitemapCategorySelect.addEventListener('change', renderSitemap);
+      if (sitemapMethodSelect)   sitemapMethodSelect.addEventListener('change', renderSitemap);
+ 
+      const sitemapSection = document.getElementById('section-sitemap');
+      if (sitemapSection) {
+        new MutationObserver(() => {
+          if (sitemapSection.classList.contains('is-active')) fetchSitemap();
+        }).observe(sitemapSection, { attributes: true, attributeFilter: ['class'] });
+        if (sitemapSection.classList.contains('is-active')) fetchSitemap();
+      }
+    }
+ 
+    function initTuyaSourcePanel() {
+      const tuyaSection = document.getElementById('section-tuya');
+      if (!tuyaSection) return;
+      new MutationObserver(() => {
+        if (tuyaSection.classList.contains('is-active')) refreshTuyaSourceCards(currentSettings || {});
+      }).observe(tuyaSection, { attributes: true, attributeFilter: ['class'] });
+      if (tuyaSection.classList.contains('is-active')) refreshTuyaSourceCards(currentSettings || {});
+    }
+ 
+    // ─── Event listeners ────────────────────────────────────────────────────
+    document.addEventListener('click', async (event) => {
+      const moveButton = event.target.closest('.tuya-device-move');
+      if (!moveButton) return;
+      event.preventDefault();
+      const deviceKey = String(moveButton.dataset.deviceKey || '').trim();
+      const direction = String(moveButton.dataset.direction || '').trim();
+      if (!deviceKey || !direction) return;
+      const selectedKeys = collectSelectedTuyaDeviceKeys();
+      const currentIndex = selectedKeys.indexOf(deviceKey);
+      if (currentIndex < 0) return;
+      const targetIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+      const nextOrder = moveArrayItem(selectedKeys, currentIndex, targetIndex);
+      await ensureTuyaDeviceOptionsLoaded(nextOrder);
+      markSaved(false, settingsText('dynamic.msg_changed', 'Changed'), settingsText('dynamic.msg_tuya_changed', 'Tuya device order updated. Save to persist.'));
+    });
+ 
+    document.addEventListener('change', async (event) => {
+      const checkbox = event.target.closest('.tuya-visible-device');
+      if (!checkbox) return;
+      const selectedKeys = collectSelectedTuyaDeviceKeys();
+      await ensureTuyaDeviceOptionsLoaded(selectedKeys);
+      markSaved(false, settingsText('dynamic.msg_changed', 'Changed'), settingsText('dynamic.msg_tuya_visibility_changed', 'Tuya device visibility updated. Save to persist.'));
+    });
+ 
+    initSettingsTheme();
+    if (typeof applySettingsLanguage === 'function') applySettingsLanguage();
+ 
+    document.getElementById('saveBtn').addEventListener('click', saveSettings);
+ 
+    document.getElementById('panelRefreshBtn').addEventListener('click', async () => {
+      try {
+        const res = await fetch('/trigger_refresh');
+        if (!res.ok) throw new Error('Panel refresh failed');
+        markSaved(true, settingsText('dynamic.msg_refresh_ok', 'Refresh triggered'), settingsText('dynamic.msg_refresh_ok_desc', 'A refresh signal was sent to the panel.'));
+      } catch (err) {
+        markSaved(false, settingsText('dynamic.msg_refresh_fail', 'Refresh failed'), settingsText('dynamic.msg_refresh_fail_desc', 'The panel refresh endpoint did not respond.'));
+      }
+    });
+ 
+    document.getElementById('panelRestartBtn').addEventListener('click', async () => {
+      if (!confirm(typeof t === 'function' ? t('dynamic.confirm_restart', 'Restart the panel application?') : 'Restart the panel application?')) return;
+      try {
+        const res = await fetch('/restart_app');
+        if (!res.ok) throw new Error('Panel restart failed');
+        markSaved(true, settingsText('dynamic.msg_restart_ok', 'Restart triggered'), settingsText('dynamic.msg_restart_ok_desc', 'The panel application is restarting.'));
+      } catch (err) {
+        markSaved(false, settingsText('dynamic.msg_restart_fail', 'Restart failed'), settingsText('dynamic.msg_restart_fail_desc', 'The restart endpoint did not respond.'));
+      }
+    });
+
+    const clearLogsConfigBtn = document.getElementById('clearLogsConfigBtn');
+    const clearLogsConfigStatus = document.getElementById('clearLogsConfigStatus');
+    if (clearLogsConfigBtn) {
+      clearLogsConfigBtn.addEventListener('click', async () => {
+        const originalText = clearLogsConfigBtn.textContent;
+        try {
+          if (!confirm(settingsText('dynamic.confirm_clear_logs', 'Clear all log files?'))) return;
+          clearLogsConfigBtn.disabled = true;
+          clearLogsConfigBtn.textContent = settingsText('dynamic.msg_clearing', 'Clearing...');
+          const res = await fetch('/api/logs/clear', { method: 'POST' });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || !data || data.ok !== true) throw new Error((data && data.error) || `HTTP ${res.status}`);
+          if (clearLogsConfigStatus) clearLogsConfigStatus.textContent = settingsText('dynamic.msg_logs_cleared_desc', 'Logs cleared successfully.');
+          markSaved(true, settingsText('dynamic.msg_logs_cleared', 'Logs cleared'), settingsText('dynamic.msg_logs_cleared_desc', 'All log files were truncated.'));
+        } catch (err) {
+          if (clearLogsConfigStatus) clearLogsConfigStatus.textContent = `${settingsText('dynamic.msg_clear_failed', 'Clear failed')}: ${settingsErrorText(err)}`;
+          markSaved(false, settingsText('dynamic.msg_log_clear_failed', 'Log clear failed'), settingsErrorText(err));
+        } finally {
+          clearLogsConfigBtn.disabled = false;
+          clearLogsConfigBtn.textContent = originalText;
+        }
+      });
+    }
+
+    const hwinfoRestartBtn = document.getElementById('hwinfoRestartBtn');
+    const hwinfoRestartStatus = document.getElementById('hwinfoRestartStatus');
+    if (hwinfoRestartBtn) {
+      hwinfoRestartBtn.addEventListener('click', async () => {
+        if (!confirm(settingsText('dynamic.confirm_hwinfo_restart', 'Close and reopen HWiNFO?'))) return;
+        const originalText = hwinfoRestartBtn.textContent;
+        try {
+          hwinfoRestartBtn.disabled = true;
+          hwinfoRestartBtn.textContent = settingsText('dynamic.msg_hwinfo_restarting', 'Restarting...');
+          if (hwinfoRestartStatus) hwinfoRestartStatus.textContent = settingsText('dynamic.msg_hwinfo_reopening', 'Closing and reopening HWiNFO...');
+          const res = await fetch('/api/hwinfo/restart', { method: 'POST' });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || !data || data.ok !== true) throw new Error((data && data.error) || `HTTP ${res.status}`);
+          const after = data.after || {};
+      const uptime = after.uptime_text || 'just restarted';
+          if (hwinfoRestartStatus) hwinfoRestartStatus.textContent = `${settingsText('dynamic.msg_hwinfo_restart_ok', 'HWiNFO restarted')}. ${settingsText('dynamic.msg_hwinfo_uptime', 'HWiNFO uptime:')} ${uptime}`;
+          refreshHwinfoSettingsStatus();
+          markSaved(true, settingsText('dynamic.msg_hwinfo_restart_ok', 'HWiNFO restarted'), `${settingsText('dynamic.msg_hwinfo_uptime', 'HWiNFO uptime:')} ${uptime}`);
+        } catch (err) {
+          if (hwinfoRestartStatus) hwinfoRestartStatus.textContent = `${settingsText('dynamic.msg_hwinfo_restart_failed', 'HWiNFO restart failed')}: ${settingsErrorText(err)}`;
+          markSaved(false, settingsText('dynamic.msg_hwinfo_restart_failed', 'HWiNFO restart failed'), settingsErrorText(err));
+        } finally {
+          hwinfoRestartBtn.disabled = false;
+          hwinfoRestartBtn.textContent = originalText;
+        }
+      });
+    }
+
+    const shiftRefreshBtn = document.getElementById('shiftRefreshBtn');
+    const shiftRefreshStatus = document.getElementById('shiftRefreshStatus');
+    if (shiftRefreshBtn) {
+      shiftRefreshBtn.addEventListener('click', async () => {
+        const originalText = shiftRefreshBtn.textContent;
+        try {
+          shiftRefreshBtn.disabled = true;
+          shiftRefreshBtn.textContent = settingsText('dynamic.msg_shift_refreshing', 'Refreshing...');
+          if (shiftRefreshStatus) shiftRefreshStatus.textContent = settingsText('dynamic.msg_shift_downloading', 'Downloading latest shift workbook...');
+          const res = await fetch('/api/shift/refresh', { method: 'POST' });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || !data || data.ok !== true) throw new Error((data && data.error) || `HTTP ${res.status}`);
+          const shiftLabel = String(data.shift_text || '--');
+          const shiftDate = String(data.shift_subtitle || data.target_date || '-');
+          if (shiftRefreshStatus) shiftRefreshStatus.textContent = `${settingsText('dynamic.updated_at', 'Updated:')} ${shiftLabel} (${shiftDate})`;
+          markSaved(true, settingsText('dynamic.msg_shift_refreshed', 'Shift refreshed'), `${settingsText('dynamic.msg_shift_refreshed_desc', 'Latest shift data loaded.')} ${shiftDate}`);
+        } catch (err) {
+          if (shiftRefreshStatus) shiftRefreshStatus.textContent = `${settingsText('dynamic.msg_shift_refresh_failed', 'Shift refresh failed')}: ${settingsErrorText(err)}`;
+          markSaved(false, settingsText('dynamic.msg_shift_refresh_failed', 'Shift refresh failed'), settingsErrorText(err));
+        } finally {
+          shiftRefreshBtn.disabled = false;
+          shiftRefreshBtn.textContent = originalText;
+        }
+      });
+    }
+ 
+    document.getElementById('resetBtn').addEventListener('click', async () => {
+      if (!confirm(typeof t === 'function' ? t('dynamic.confirm_reset', 'Reset all settings to default?') : 'Reset all settings to default?')) return;
+      try {
+        const res = await fetch('/api/settings/reset', { method: 'POST' });
+        if (!res.ok) throw new Error('Reset failed');
+        const data = await res.json();
+        currentSettings = data && typeof data === 'object' && data.settings ? data.settings : data;
+        await fillForm(currentSettings);
+        refreshHwinfoSettingsStatus();
+        if (summaryMode) summaryMode.textContent = 'API';
+        markSaved(true, settingsText('dynamic.msg_reset_ok', 'Defaults restored'), settingsText('dynamic.msg_reset_ok_desc', 'The form was refilled with default settings.'));
+      } catch (err) {
+        markSaved(false, settingsText('dynamic.msg_reset_fail', 'Reset failed'), settingsText('dynamic.msg_reset_fail_desc', 'The reset endpoint did not respond.'));
+      }
+    });
+ 
+    document.getElementById('exportBtn').addEventListener('click', exportJson);
+    document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
+    document.getElementById('importFile').addEventListener('change', (event) => {
+      const file = event.target.files && event.target.files[0];
+      if (file) importJson(file);
+    });
+ 
+    document.addEventListener('input', () => {
+      markSaved(false, settingsText('dynamic.msg_changed', 'Unsaved changes'), settingsText('dynamic.msg_changed_desc', 'There are unsaved fields in the form.'));
+    });
+
+    document.addEventListener('change', (event) => {
+      const target = event.target;
+      if (target && target.id === 'frontend.panel_language_top') {
+        syncPanelLanguageControls(target.value, 'top');
+        markSaved(false, settingsText('dynamic.msg_changed', 'Unsaved changes'), settingsText('dynamic.msg_changed_desc', 'Panel language changed. Save to apply.'));
+        return;
+      }
+      if (target && target.id === 'langToggleBtn') return;
+      if (target && target.id === 'frontend.panel_language') {
+        syncPanelLanguageControls(target.value, 'main');
+        markSaved(false, settingsText('dynamic.msg_changed', 'Unsaved changes'), settingsText('dynamic.msg_changed_desc', 'Panel language changed. Save to apply.'));
+        return;
+      }
+      if (target && target.id === 'frontend.settings_liquid_live_preview_enabled') {
+        syncSettingsLiquidLivePreview();
+        markSaved(false, settingsText('dynamic.msg_changed', 'Unsaved changes'), settingsText('dynamic.msg_changed_desc', 'There are unsaved fields in the form.'));
+        return;
+      }
+      if (target && target.id === 'frontend.settings_visual_effects_enabled') {
+        syncSettingsRenderMode();
+        markSaved(false, settingsText('dynamic.msg_changed', 'Unsaved changes'), settingsText('dynamic.msg_changed_desc', 'There are unsaved fields in the form.'));
+        return;
+      }
+      if (!target || !['tuya.read_mode', 'tuya.pc_plug_key'].includes(target.id)) return;
+      refreshTuyaSourceCards(collectForm());
+    });
+ 
+    initTabs();
+    initHomeQuickNav();
+    initSearch();
+    injectSectionHeadIcons();
+    initNativeHealthV2();
+    initNativeLogs();
+    initNativeSitemap();
+    initTuyaSourcePanel();
+    initTuyaMaintenanceTools();
+    document.addEventListener('settings-language-changed', () => {
+      if (typeof applySettingsLanguage === 'function') applySettingsLanguage();
+      const activeSection = document.querySelector('.section.is-active');
+      if (activeSection) activateTab(activeSection.id);
+    });
+    loadSettings();
+    document.addEventListener('change', (event) => {
+      const target = event.target;
+      if (!target || target.id !== 'window.target_monitor_device_proxy') return;
+      applyMonitorGeometryToWindowFields(target.value);
+    });
+
+  </script>
+ 
+</body>
+</html>
