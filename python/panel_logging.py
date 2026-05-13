@@ -1,4 +1,4 @@
-# File Version: 1.0
+# File Version: 1.1
 import os
 import time
 import threading
@@ -13,9 +13,8 @@ LOGGER = AsyncLineLogger(LOG_FILE, ERR_FILE, max_lines=1500)
 STARTUP_PROFILE_T0 = 0.0
 
 def log(text: str):
-    # We'll check settings via a helper to avoid circularity if possible, 
-    # or just log everything and let the logger handle it if it becomes too complex.
-    # For now, keeping it simple.
+    if not _logging_setting_enabled("debug_logging_enabled", True):
+        return
     LOGGER.log(text)
 
 def log_error(text: str):
@@ -31,10 +30,21 @@ def log_tuya(text: str):
     LOGGER._enqueue(TUYA_LOG_FILE, text)
 
 def log_ws_debug(text: str):
+    if not _logging_setting_enabled("websocket_logging_enabled", False):
+        return
     LOGGER.log(f"WS {text}")
 
 def log_perf(text: str):
+    if not _logging_setting_enabled("performance_logging_enabled", False):
+        return
     LOGGER.log(f"PERF {text}")
+
+def _logging_setting_enabled(name: str, default: bool):
+    try:
+        from panel_bootstrap import _get_setting_bool
+        return _get_setting_bool(f"logging.{name}", default)
+    except Exception:
+        return bool(default)
 
 def reset_startup_profile():
     global STARTUP_PROFILE_T0

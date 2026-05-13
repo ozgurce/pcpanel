@@ -1,4 +1,4 @@
-# File Version: 1.0
+# File Version: 1.1
 import os
 import ctypes
 import time
@@ -6,6 +6,7 @@ import asyncio
 import threading
 import datetime
 import urllib.parse
+import re
 import aiohttp
 from aiohttp import web
 
@@ -63,21 +64,76 @@ def _lyrics_cache_set(track_key, lyrics):
         while len(LYRICS_CACHE) > LYRICS_CACHE_MAX_ITEMS:
             LYRICS_CACHE.popitem(last=False)
 
+def _clean_lyrics_query(value):
+    text = str(value or "").strip()
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"\s*[-–—]\s*(official|lyrics?|audio|video|remaster(?:ed)?|live|visualizer).*$", "", text, flags=re.I)
+    text = re.sub(r"\((?:official|lyrics?|audio|video|remaster(?:ed)?|live|visualizer)[^)]*\)", "", text, flags=re.I)
+    text = re.sub(r"\[(?:official|lyrics?|audio|video|remaster(?:ed)?|live|visualizer)[^\]]*\]", "", text, flags=re.I)
+    return re.sub(r"\s+", " ", text).strip()
+
+def _lyrics_headers():
+    return {
+        "User-Agent": "pc-control-panel/1.1 (https://github.com/ozgurce/pcpanel)",
+        "Accept": "application/json",
+    }
+
+def _pick_lyrics_from_payload(data):
+    if isinstance(data, dict):
+        return data.get("syncedLyrics") or data.get("plainLyrics") or ""
+    return ""
+
+def _best_lyrics_search_result(items):
+    if not isinstance(items, list):
+        return None
+    for item in items:
+        if isinstance(item, dict) and (item.get("syncedLyrics") or item.get("plainLyrics")):
+            return item
+    return None
+
 async def fetch_lyrics_for_track(title, artist):
     track_key = f"{title}-{artist}"
     set_lyrics_state(track_key=track_key, lyrics="nihil infinitum est", fetching=True)
     try:
         session = _get_shared_http_session("lyrics")
-        url = f"https://lrclib.net/api/get?track_name={urllib.parse.quote(title)}&artist_name={urllib.parse.quote(artist)}"
-        async with session.get(url, timeout=5) as resp:
+        if session is None:
+            raise RuntimeError("lyrics HTTP session is not available")
+        timeout = aiohttp.ClientTimeout(total=12, connect=5, sock_read=8)
+        clean_title = _clean_lyrics_query(title)
+        clean_artist = _clean_lyrics_query(artist)
+        params = {
+            "track_name": clean_title or str(title or "").strip(),
+            "artist_name": clean_artist or str(artist or "").strip(),
+        }
+        url = "https://lrclib.net/api/get?" + urllib.parse.urlencode(params)
+        lyrics = ""
+        async with session.get(url, timeout=timeout, headers=_lyrics_headers()) as resp:
             if resp.status == 200:
                 data = await resp.json()
-                lyrics = data.get("syncedLyrics") or data.get("plainLyrics")
-                if lyrics:
-                    set_lyrics_state(lyrics=lyrics)
-                    _lyrics_cache_set(track_key, lyrics)
+                lyrics = _pick_lyrics_from_payload(data)
+            elif resp.status not in (404, 400):
+                text = await resp.text()
+                raise RuntimeError(f"LRCLIB get HTTP {resp.status}: {text[:160]}")
+
+        if not lyrics:
+            query = " ".join(part for part in (clean_title, clean_artist) if part).strip()
+            if query:
+                search_url = "https://lrclib.net/api/search?" + urllib.parse.urlencode({"q": query})
+                async with session.get(search_url, timeout=timeout, headers=_lyrics_headers()) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        lyrics = _pick_lyrics_from_payload(_best_lyrics_search_result(data))
+                    elif resp.status not in (404, 400):
+                        text = await resp.text()
+                        raise RuntimeError(f"LRCLIB search HTTP {resp.status}: {text[:160]}")
+
+        if lyrics:
+            set_lyrics_state(lyrics=lyrics, fetching=False)
+            _lyrics_cache_set(track_key, lyrics)
+        else:
+            set_lyrics_state(lyrics="nihil infinitum est", fetching=False)
     except Exception as e:
-        log_error(f"Lyrics fetch error: {e}")
+        log_error(f"Lyrics fetch error ({type(e).__name__}): {e!r}")
     finally:
         set_lyrics_state(fetching=False)
 

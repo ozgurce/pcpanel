@@ -1,4 +1,4 @@
-# File Version: 1.0
+# File Version: 1.1
 import threading
 import time
 import asyncio
@@ -19,6 +19,16 @@ def set_lyrics_state(*, track_key=None, lyrics=None, fetching=None):
         if track_key is not None: panel_globals.CURRENT_TRACK_KEY = track_key
         if lyrics is not None: panel_globals.CURRENT_LYRICS = lyrics
         if fetching is not None: panel_globals.LYRICS_FETCHING = bool(fetching)
+        current_lyrics = panel_globals.CURRENT_LYRICS
+        current_fetching = panel_globals.LYRICS_FETCHING
+    try:
+        with SENSOR_CACHE_LOCK:
+            SYSTEM_CACHE["lyrics"] = current_lyrics
+            SYSTEM_CACHE["lyrics_fetching"] = current_fetching
+            SYSTEM_CACHE["last_update"] = time.time()
+    except Exception:
+        pass
+    mark_system_cache_changed()
 
 def mark_system_cache_changed():
     try:
