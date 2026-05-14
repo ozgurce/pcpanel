@@ -1,4 +1,4 @@
-// File Version: 1.1
+// File Version: 1.2
 const sketchSvgTemplateCache = new Map();
 
 function createSketchSVGTemplate(width, height, radius) {
@@ -131,9 +131,8 @@ function handleCmd(el, url) {
     };
     if (typeof executePanelAction === 'function') return executePanelAction(action);
     pendingCmdUrl = url;
-    const msgEl = document.getElementById('confirmMessage');
-    if (!msgEl || !confirmOverlayEl) { cmd(url); return false; }
-    msgEl.textContent = action.confirmText || panelText('confirm_default') || 'Are you sure?';
+    if (!document.getElementById('confirmMessage') || !confirmOverlayEl) { cmd(url); return false; }
+    applyConfirmDialogLanguage(action.confirmText || panelText('confirm_default') || 'Are you sure?');
     confirmOverlayEl.classList.remove('confirm-hidden');
     return false;
 }
@@ -153,7 +152,7 @@ async function approveConfirm() {
     if (action && typeof runPanelAction === 'function') { await runPanelAction(action); return; }
     if (!url) return;
     if (typeof cmd === 'function') { cmd(url); }
-else { fetch(url, { cache: 'no-store' }).catch(err => { console.error(err); alert('Command could not be sent.'); }); }
+else { fetch(url, { cache: 'no-store' }).catch(err => { console.error(err); alert(panelText('command_send_failed') || 'Command could not be sent.'); }); }
 }
 
 document.addEventListener('keydown', function (e) {
@@ -290,7 +289,16 @@ const PANEL_I18N = {
         confirm_default: 'Are you sure?',
         confirm_sleep: 'Put the PC to sleep?',
         confirm_restart: 'Restart the computer?',
-        confirm_shutdown: 'Shut down the computer?'
+        confirm_shutdown: 'Shut down the computer?',
+        confirm_title: 'Confirm',
+        confirm_cancel: 'Cancel',
+        confirm_ok: 'Confirm',
+        close: 'Close',
+        power_on: 'On',
+        power_off: 'Off',
+        climate_api_level: 'API level',
+        climate_api_switch: 'API switch',
+        command_send_failed: 'Command could not be sent.'
     },
     tr: {
         title: 'PC Kontrol Paneli',
@@ -306,7 +314,16 @@ const PANEL_I18N = {
         confirm_default: 'Emin misin?',
         confirm_sleep: 'Bilgisayar uyku moduna alınsın mı?',
         confirm_restart: 'Bilgisayar yeniden başlatılsın mı?',
-        confirm_shutdown: 'Bilgisayar kapatılsın mı?'
+        confirm_shutdown: 'Bilgisayar kapatılsın mı?',
+        confirm_title: 'Onay',
+        confirm_cancel: 'Vazgeç',
+        confirm_ok: 'Onayla',
+        close: 'Kapat',
+        power_on: 'Aç',
+        power_off: 'Kapat',
+        climate_api_level: 'API seviye',
+        climate_api_switch: 'API anahtar',
+        command_send_failed: 'Komut gönderilemedi.'
     }
 };
 
@@ -327,6 +344,20 @@ function applyPanelLanguageStatic() {
         const value = panelText(el.getAttribute('data-panel-i18n-aria'));
         if (value) setAttrIfChanged(el, 'aria-label', value);
     });
+    applyConfirmDialogLanguage();
+}
+
+function applyConfirmDialogLanguage(messageText = null) {
+    const titleEl = document.getElementById('confirmTitle');
+    const cancelEl = document.getElementById('confirmCancel');
+    const okEl = document.getElementById('confirmOk');
+    const msgEl = document.getElementById('confirmMessage');
+    if (titleEl) setTextIfChanged(titleEl, panelText('confirm_title') || 'Confirm');
+    if (cancelEl) setTextIfChanged(cancelEl, panelText('confirm_cancel') || 'Cancel');
+    if (okEl) setTextIfChanged(okEl, panelText('confirm_ok') || 'Confirm');
+    if (msgEl && messageText !== null) {
+        setTextIfChanged(msgEl, messageText || panelText('confirm_default') || 'Are you sure?');
+    }
 }
 
 function translatePanelCommandText(value, command, kind = 'label') {
@@ -688,8 +719,7 @@ async function executePanelAction(action) {
     if (action.confirmText) {
         const confirmText = translatePanelCommandText(action.confirmText, action.command, 'confirm');
         pendingAction = { ...action, confirmText };
-        const msgEl = document.getElementById('confirmMessage');
-        if (msgEl) msgEl.textContent = confirmText || panelText('confirm_default') || action.confirmText;
+        applyConfirmDialogLanguage(confirmText || panelText('confirm_default') || action.confirmText);
         if (confirmOverlayEl) confirmOverlayEl.classList.remove('confirm-hidden');
         else await runPanelAction(action);
         return false;
@@ -3606,7 +3636,7 @@ window.addEventListener('load', () => {
     function updateClimateDebug(rawLevel, rawPower) {
         const levelText = rawLevel == null ? '-' : String(rawLevel);
         const powerText = rawPower == null ? '-' : String(rawPower);
-        setTextIfChanged(climateStatusDebugEl, `API level: ${levelText}\nAPI switch: ${powerText}`);
+        setTextIfChanged(climateStatusDebugEl, `${panelText('climate_api_level') || 'API level'}: ${levelText}\n${panelText('climate_api_switch') || 'API switch'}: ${powerText}`);
     }
 
     async function fetchClimateStatus() {

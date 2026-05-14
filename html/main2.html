@@ -1,4 +1,4 @@
-<!-- File Version: 1.0 -->
+<!-- File Version: 1.1 -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -902,16 +902,16 @@ button:focus, button:active, button:focus-visible,
 }
 
 #confirmBox {
-  width: min(1240px, calc(100vw - 120px));
-  min-height: 460px; padding: 64px 70px;
+  width: min(920px, calc(100vw - 120px));
+  min-height: 330px; padding: 44px 52px;
   display: flex; flex-direction: column;
-  justify-content: center; gap: 42px;
+  justify-content: center; gap: 26px;
 }
 
-#confirmTitle   { font-size: 74px; font-weight: 800; line-height: 1; color: #fff; }
-#confirmMessage { font-size: 48px; line-height: 1.35; color: #ddd; }
+#confirmTitle   { font-size: 52px; font-weight: 800; line-height: 1; color: #fff; }
+#confirmMessage { font-size: 34px; line-height: 1.32; color: #ddd; }
 
-#confirmActions { display: flex; justify-content: center; gap: 32px; margin-top: 10px; }
+#confirmActions { display: flex; justify-content: center; gap: 20px; margin-top: 4px; }
 
 /* Shared button base for confirm + brightness */
 #confirmActions button,
@@ -922,7 +922,8 @@ button:focus, button:active, button:focus-visible,
   color: #fff; font-weight: 700; cursor: pointer;
 }
 
-#confirmActions button            { min-width: 320px; height: 112px; padding: 0 40px; font-size: 40px; }
+#confirmActions button            { min-width: 220px; height: 78px; padding: 0 30px; font-size: 28px; }
+#confirmActions button:hover      { background: linear-gradient(180deg, #363636, #171717); border-color: rgba(255,255,255,.28); }
 .tuya-brightness-actions button   { min-width: 240px; height: 88px;  padding: 0 28px; font-size: 34px; }
 .tuya-brightness-actions .sketch-button {
   position: relative;
@@ -1897,11 +1898,11 @@ button:focus, button:active, button:focus-visible,
 <div id="confirmOverlay" class="confirm-hidden">
     <div id="confirmBackdrop" onclick="closeConfirm()"></div>
     <div id="confirmBox">
-<div id="confirmTitle">Confirm</div>
+<div id="confirmTitle" data-panel-i18n="confirm_title">Confirm</div>
 <div id="confirmMessage">Are you sure?</div>
         <div id="confirmActions">
-<button type="button" id="confirmCancel" onclick="closeConfirm()">Cancel</button>
-<button type="button" id="confirmOk" onclick="approveConfirm()">Confirm</button>
+<button type="button" id="confirmCancel" onclick="closeConfirm()" data-panel-i18n="confirm_cancel">Cancel</button>
+<button type="button" id="confirmOk" onclick="approveConfirm()" data-panel-i18n="confirm_ok">Confirm</button>
         </div>
     </div>
 </div>
@@ -1916,7 +1917,7 @@ button:focus, button:active, button:focus-visible,
             <div id="tuyaBrightnessValue" class="tuya-brightness-value">100%</div>
         </div>
         <div class="tuya-brightness-actions">
-<button type="button" onclick="closeTuyaBrightnessPopup()">Close</button>
+<button type="button" onclick="closeTuyaBrightnessPopup()" data-panel-i18n="close">Close</button>
         </div>
     </div>
 </div>
@@ -1924,7 +1925,7 @@ button:focus, button:active, button:focus-visible,
 <div id="climateLevelOverlay" class="tuya-brightness-overlay confirm-hidden">
     <div class="tuya-brightness-backdrop" onclick="closeClimateLevelPopup()"></div>
     <div class="tuya-brightness-box climate-popup-box">
-<button type="button" class="climate-popup-close sketch-button climate-popup-action" onclick="closeClimateLevelPopup()" aria-label="Close">✕</button>
+<button type="button" class="climate-popup-close sketch-button climate-popup-action" onclick="closeClimateLevelPopup()" aria-label="Close" data-panel-i18n-aria="close">✕</button>
         <div class="tuya-brightness-title" data-panel-i18n="climate_settings">Climate Settings</div>
         <div class="tuya-brightness-name" id="climateLevelName" data-panel-i18n="climate_hint">18-23: Cooling 23-30: Heating</div>
         <div class="tuya-brightness-row">
@@ -1934,8 +1935,8 @@ button:focus, button:active, button:focus-visible,
         <div id="climateStatusDebug" class="tuya-brightness-name" style="margin-top:10px; font-size:22px; line-height:1.35; white-space:pre-line; opacity:.92;">API level: -
 API switch: -</div>
         <div class="tuya-brightness-actions climate-popup-actions">
-<button type="button" id="climatePowerOnBtn" class="sketch-button climate-popup-action">On</button>
-<button type="button" id="climatePowerOffBtn" class="sketch-button climate-popup-action">Off</button>
+<button type="button" id="climatePowerOnBtn" class="sketch-button climate-popup-action" data-panel-i18n="power_on">On</button>
+<button type="button" id="climatePowerOffBtn" class="sketch-button climate-popup-action" data-panel-i18n="power_off">Off</button>
         </div>
     </div>
 </div>
@@ -1943,7 +1944,7 @@ API switch: -</div>
 <div id="systemIssuesOverlay" class="tuya-brightness-overlay confirm-hidden">
     <div class="tuya-brightness-backdrop" onclick="closeSystemIssuesOverlay()"></div>
     <div class="tuya-brightness-box system-issues-box">
-        <button type="button" class="climate-popup-close sketch-button" onclick="closeSystemIssuesOverlay()" aria-label="Close">✕</button>
+        <button type="button" class="climate-popup-close sketch-button" onclick="closeSystemIssuesOverlay()" aria-label="Close" data-panel-i18n-aria="close">✕</button>
         <div class="tuya-brightness-title" style="margin-bottom:20px;">Sistem Günlüğü</div>
         <div id="systemIssuesList">
             <div class="no-issues-msg">Henüz bir kayıt yok.</div>
