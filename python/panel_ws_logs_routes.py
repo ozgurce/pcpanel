@@ -267,14 +267,14 @@ ROUTE_HINTS = {
     "/prev": {"title": "Previous Track", "description": "Returns to the previous media track.", "category": "Media"},
     "/spotify": {"title": "Open Spotify", "description": "Opens Spotify or brings it to the foreground.", "category": "App"},
     "/kill/spotify": {"title": "Close Spotify", "description": "Closes the Spotify process.", "category": "App"},
-    "/shorts": {"title": "YouTube Shorts", "description": "Opens the YouTube Shorts page.", "category": "App"},
-    "/kill/shorts": {"title": "Close Shorts", "description": "Closes the Shorts window.", "category": "App"},
     "/tiktok": {"title": "TikTok", "description": "Opens the TikTok page.", "category": "App"},
     "/chrome": {"title": "Chrome", "description": "Opens Chrome.", "category": "App"},
     "/settings": {"title": "Windows Settings", "description": "Opens the Windows settings screen.", "category": "System"},
     "/taskmgr": {"title": "Task Manager", "description": "Opens Task Manager.", "category": "System"},
     "/case_lights/on": {"title": "Case Lights On", "description": "Restores Nollie brightness and applies the L-Connect lights-on command.", "category": "System"},
     "/case_lights/off": {"title": "Case Lights Off", "description": "Sets Nollie brightness to zero and applies the L-Connect lights-off command.", "category": "System"},
+    "/lights/tuya/off": {"title": "Tuya Lights Off", "description": "Turns off Tuya devices configured as light or bulb.", "category": "System"},
+    "/lights/all/off": {"title": "All Lights and Monitor Off", "description": "Turns off Tuya lights, case lights, and the selected monitor.", "category": "System"},
     "/admincmd": {"title": "Admin CMD", "description": "Opens an elevated command prompt.", "category": "System"},
     "/shutdown": {"title": "Shut Down", "description": "Shuts down the computer.", "category": "Power"},
     "/restart": {"title": "Restart", "description": "Restarts the computer.", "category": "Power"},
@@ -788,5 +788,3 @@ async def api_tuya_reset(r):
 def _get_pc_plug_debug_info():
     from panel_tuya import _query_pc_plug_status_unified
     return _query_pc_plug_status_unified(force=True)
-
-

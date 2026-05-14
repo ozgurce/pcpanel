@@ -148,8 +148,6 @@
       "groups": {
         "playback": "Playback Timing",
         "playback_desc": "Media timing, seekbar flow, and idle behaviors.",
-        "yt": "YouTube Integration",
-        "yt_desc": "Target window for panel interaction.",
         "spot": "Spotify Integration",
         "spot_desc": "Target window for panel interaction."
       },
@@ -467,7 +465,6 @@
     "playback_cadence_desc": "Seekbar, lyrics, and progress update timing.",
     "media_card_behavior": "Media card behavior",
     "media_card_behavior_desc": "Now playing card visibility and idle text states.",
-    "youtube_integration_desc": "External YouTube window URL, title matching, and monitor target.",
     "spotify_integration_desc": "External Spotify window URL, title matching, and monitor target.",
     "application_window_desc": "Monitor, port, layout, size, and window flags.",
     "fallback_coordinates_desc": "Manual geometry used when monitor detection cannot resolve a target.",
@@ -830,7 +827,6 @@
   "Control now playing, lyrics, seekbar timing and idle media behavior.": "sections.ui.desc",
   "Playback Timing": "sections.ui.groups.playback",
   "Media timing, seekbar flow, and idle behaviors.": "sections.ui.groups.playback_desc",
-  "YouTube Integration": "sections.ui.groups.yt",
   "Target window for panel interaction.": "sections.ui.groups.spot_desc",
   "Spotify Integration": "sections.ui.groups.spot",
   "Seekbar update (ms)": "sections.ui.fields.seekbar",
@@ -1033,7 +1029,6 @@
   "Seekbar, lyrics, and progress update timing.": "extra.playback_cadence_desc",
   "Media card behavior": "extra.media_card_behavior",
   "Now playing card visibility and idle text states.": "extra.media_card_behavior_desc",
-  "External YouTube window URL, title matching, and monitor target.": "extra.youtube_integration_desc",
   "External Spotify window URL, title matching, and monitor target.": "extra.spotify_integration_desc",
   "Monitor, port, layout, size, and window flags.": "extra.application_window_desc",
   "Manual geometry used when monitor detection cannot resolve a target.": "extra.fallback_coordinates_desc",

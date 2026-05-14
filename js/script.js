@@ -659,7 +659,6 @@ function normalizePanelButtonConfig(raw, index = 0) {
 function panelButtonDomId(buttonId) {
     const id = String(buttonId || '').trim();
     if (id === 'climate') return 'climateLevelBtn';
-    if (id === 'youtube') return 'youtubeLaunchBtn';
     if (id === 'spotify') return 'spotifyLaunchBtn';
     return `panelButton_${id.replace(/[^a-zA-Z0-9_-]/g, '_')}`;
 }

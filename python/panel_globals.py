@@ -88,7 +88,7 @@ SYSTEM_CACHE = {
     'is_muted': None, 'fps': None, 'fps_1_low': None,
     'vram_percent': None, 'tuya_devices': [],
     'download_speed_mbps': None, 'upload_speed_mbps': None,
-    'media_source_app': '', 'media_is_youtube': False,
+    'media_source_app': '',
     'media_track_token': '', 'motherboard_temp': None,
     'vmos_temp': None, 'mobo_temp': None, 'vrm_temp': None, 'vrmos_temp': None, 'ram_slot_temps': [], 'disks_cde': {}, 'hwinfo_temp_rows_debug': [],
     'tomorrow_shift_text': None, 'tomorrow_shift_subtitle': None,
@@ -105,7 +105,6 @@ WORKER_STATE = {
 PUBLIC_STATUS_CACHE = {'signature': None, 'payload': None}
 LYRICS_CACHE = OrderedDict()
 LYRICS_CACHE_MAX_ITEMS = 128
-YOUTUBE_CONTEXT_CACHE = {'checked_at': 0.0, 'active': False}
 WS_CLIENTS = set()
 
 # Webview
@@ -138,7 +137,7 @@ PUBLIC_STATUS_FIELDS = (
     "cpu_percent", "ram_percent", "ram_used_gb", "gpu_util", "gpu_temp",
     "cpu_temp", "cpu_power", "gpu_power", "uptime", "media_title",
     "media_artist", "media_position", "media_duration", "media_is_playing",
-    "media_is_youtube", "lyrics", "volume_percent", "is_muted", "fps",
+    "lyrics", "volume_percent", "is_muted", "fps",
     "fps_1_low", "vram_percent", "tuya_devices", "download_speed_mbps",
     "upload_speed_mbps", "media_source_app", "media_track_token",
     "motherboard_temp", "mobo_temp", "vmos_temp", "vrm_temp", "vrmos_temp", "ram_slot_temps", "disks_cde", "hwinfo_temp_rows_debug",
@@ -176,7 +175,6 @@ PC_PLUG_CLOUD_QUERY_INTERVAL_SECONDS = 60.0
 MEDIA_POLL_ACTIVE_SECONDS = 1.25
 MEDIA_POLL_IDLE_SECONDS = 3.0
 MEDIA_POLL_ERROR_SECONDS = 5.0
-MEDIA_POLL_YOUTUBE_SECONDS = 2.5
 VOLUME_SYNC_INTERVAL_SECONDS = 5.0
 MEDIA_TIMELINE_UPDATE_SECONDS = 0.25
 HWI_BINDING_REFRESH_SECONDS = 300.0

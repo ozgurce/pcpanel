@@ -26,6 +26,78 @@ from panel_runtime_helpers import run_case_lights, _popen_hidden
 from panel_state import shutdown_runtime_resources, mark_system_cache_changed, set_mute_ws_burst_until
 import win_utils
 
+TUYA_LIGHT_TYPES = {"light", "bulb"}
+
+
+def _tuya_light_device_keys():
+    from tuya_runtime import get_tuya_devices_config
+    devices = get_tuya_devices_config()
+    keys = []
+    for key, cfg in (devices or {}).items():
+        if not isinstance(cfg, dict):
+            continue
+        dev_type = str(cfg.get("type") or "").strip().lower()
+        if dev_type in TUYA_LIGHT_TYPES:
+            keys.append(str(key))
+    return keys
+
+
+def _tuya_device_is_on(device_key):
+    from tuya_runtime import tuya_get_cached_device, tuya_get_device_status
+    try:
+        live = tuya_get_device_status(device_key)
+        if isinstance(live, dict) and live.get("is_on") is not None:
+            return bool(live.get("is_on")), live
+    except Exception:
+        live = None
+    cached = tuya_get_cached_device(device_key)
+    if isinstance(cached, dict) and cached.get("is_on") is not None:
+        return bool(cached.get("is_on")), cached
+    return False, live or cached or {}
+
+
+def turn_off_tuya_lights_only():
+    from tuya_runtime import tuya_set_device_power_fast
+    results = []
+    for device_key in _tuya_light_device_keys():
+        try:
+            is_on, state = _tuya_device_is_on(device_key)
+            if not is_on:
+                results.append({
+                    "device_key": device_key,
+                    "ok": True,
+                    "skipped": True,
+                    "reason": "already_off",
+                    "device": state,
+                })
+                continue
+            result = tuya_set_device_power_fast(device_key, False)
+            results.append(result if isinstance(result, dict) else {"device_key": device_key, "ok": False, "error": str(result)})
+        except Exception as exc:
+            results.append({"device_key": device_key, "ok": False, "error": str(exc)})
+    return {
+        "ok": all(item.get("ok") for item in results),
+        "action": "tuya_lights_off",
+        "count": len(results),
+        "devices": results,
+    }
+
+
+def turn_off_everything_lights_and_monitor():
+    steps = {}
+    steps["tuya_lights"] = turn_off_tuya_lights_only()
+    steps["case_lights"] = run_case_lights("off")
+    try:
+        from panelmkapa import POWER_OFF, set_panel_power
+        steps["monitor"] = set_panel_power(POWER_OFF)
+    except Exception as exc:
+        steps["monitor"] = {"ok": False, "error": str(exc)}
+    return {
+        "ok": all(isinstance(step, dict) and step.get("ok") for step in steps.values()),
+        "action": "all_lights_and_monitor_off",
+        "steps": steps,
+    }
+
 def run_dnsredir_cmd():
     if not DNSREDIR_CMD_DEFAULT or not os.path.exists(DNSREDIR_CMD_DEFAULT):
         return {"ok": False, "error": f"DNS Redir command file not found: {DNSREDIR_CMD_DEFAULT}"}
@@ -39,14 +111,6 @@ def launch_spotify_script():
 def kill_spotify_script():
     subprocess.run(["taskkill", "/F", "/IM", "Spotify.exe", "/T"], capture_output=True)
     return {"ok": True}
-
-def launch_youtube_script():
-    open_url("https://youtube.com")
-    return {"ok": True}
-
-def kill_youtube_script():
-    # Chrome tab killing is complex, skipping for now
-    return {"ok": True, "message": "Not implemented"}
 
 def _restart_guard_allows(reason=""):
     now = time.time()
@@ -258,12 +322,8 @@ def _run_command_sync(path, request=None):
             log_error(f"Lock error: {e}")
     elif path == "/spotify":
         return json.dumps(launch_spotify_script(), ensure_ascii=False)
-    elif path == "/shorts":
-        return json.dumps(launch_youtube_script(), ensure_ascii=False)
     elif path == "/kill/spotify":
         return json.dumps(kill_spotify_script(), ensure_ascii=False)
-    elif path == "/kill/shorts":
-        return json.dumps(kill_youtube_script(), ensure_ascii=False)
     elif path == "/taskmgr":
         try:
             os.startfile("taskmgr.exe")
@@ -284,6 +344,10 @@ def _run_command_sync(path, request=None):
         return json.dumps(run_case_lights("on"), ensure_ascii=False)
     elif path == "/case_lights/off":
         return json.dumps(run_case_lights("off"), ensure_ascii=False)
+    elif path == "/lights/tuya/off":
+        return json.dumps(turn_off_tuya_lights_only(), ensure_ascii=False)
+    elif path == "/lights/all/off":
+        return json.dumps(turn_off_everything_lights_and_monitor(), ensure_ascii=False)
     elif path == "/restart_app":
         ok = request_app_restart(reason="HTTP /restart_app", delay_seconds=1.0)
         return json.dumps({"ok": ok, "message": "restart scheduled" if ok else "restart already in progress"}, ensure_ascii=False)

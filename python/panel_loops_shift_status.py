@@ -12,7 +12,7 @@ from panel_globals import (
     BASE_DIR, SENSOR_CACHE_LOCK, SYSTEM_CACHE, SYSTEM_CACHE_EVENT,
     PUBLIC_STATUS_CACHE_LOCK, PUBLIC_STATUS_CACHE, PUBLIC_STATUS_FIELDS,
     SHIFT_CACHE_XLSX, SHIFT_CACHE_META_JSON, PC_PLUG_QUERY_CACHE,
-    PC_PLUG_QUERY_INTERVAL_SECONDS, MEDIA_POLL_YOUTUBE_SECONDS
+    PC_PLUG_QUERY_INTERVAL_SECONDS
 )
 from panel_bootstrap import (
     _get_setting_bool, _get_performance_int, _get_performance_interval_seconds,

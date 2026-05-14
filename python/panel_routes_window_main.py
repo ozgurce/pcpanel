@@ -39,7 +39,7 @@ from panel_runtime_helpers import (
 import win_utils
 
 # Rotalar icin handler'lar
-from panel_assets import root, root_dikey, serve_resimler_no_cache, serve_fonts_no_cache
+from panel_assets import root, root_dikey, serve_resimler_no_cache, serve_fonts_no_cache, serve_css_no_cache, serve_js_no_cache
 from panel_settings_smartthings import (
     serve_js, serve_liquid_themes_js, serve_settings_i18n_js,
     serve_settings_i18n_tr_js, serve_settings_i18n_en_js,
@@ -125,8 +125,12 @@ def register_routes():
     app.router.add_get("/fonts/{path:.*}", serve_fonts_no_cache)
     app.router.add_get("/assets/images/{path:.*}", serve_resimler_no_cache)
     app.router.add_get("/assets/fonts/{path:.*}", serve_fonts_no_cache)
-    for r in ["/shutdown", "/restart", "/sleep", "/lock", "/restart_app", "/spotify", "/shorts", "/kill/spotify", "/kill/shorts", "/taskmgr", "/case_lights/on", "/case_lights/off", "/tiktok", "/admincmd", "/chrome", "/settings", "/mute", "/volup", "/voldown", "/playpause", "/next", "/prev", "/setvolume"]:
+    app.router.add_get("/assets/css/{path:.*}", serve_css_no_cache)
+    app.router.add_get("/js/{path:.*}", serve_js_no_cache)
+    for r in ["/shutdown", "/restart", "/sleep", "/lock", "/restart_app", "/spotify", "/kill/spotify", "/taskmgr", "/case_lights/on", "/case_lights/off", "/lights/tuya/off", "/lights/all/off", "/tiktok", "/admincmd", "/chrome", "/settings", "/mute", "/volup", "/voldown", "/playpause", "/next", "/prev", "/setvolume"]:
         app.router.add_get(r, command)
+    app.router.add_post("/lights/tuya/off", command)
+    app.router.add_post("/lights/all/off", command)
     app.router.add_post("/dnsredir", command)
     app.router.add_get("/dnsredir", command)
     return app
@@ -374,7 +378,3 @@ if __name__ == "__main__":
     main()
 
 __all__ = [name for name in globals() if not name.startswith("__")]
-
-
-
-

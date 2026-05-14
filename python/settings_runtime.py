@@ -1,6 +1,7 @@
 # File Version: 1.1
 import json
 import os
+import re
 import threading
 from copy import deepcopy
 
@@ -45,6 +46,8 @@ DEFAULT_SETTINGS = {
         "liquid_animation_fps": 16,
         "liquid_animation_mode": "light",
         "liquid_wave_when_idle": False,
+        "settings_liquid_live_preview_enabled": True,
+        "settings_visual_effects_enabled": True,
         "liquid_theme_cpu": "default_glass",
         "liquid_theme_gpu": "default_glass",
         "liquid_theme_ram": "default_glass",
@@ -72,6 +75,8 @@ DEFAULT_SETTINGS = {
         "target_monitor_width": 1920,
         "target_monitor_height": 1080,
         "always_on_top": True,
+        "fit_to_monitor": True,
+        "confirm_close": False,
         "keep_window_alive_interval_ms": 2000,
         "keep_window_alive_min_interval_ms": 250,
         "hide_from_taskbar": True,
@@ -139,11 +144,6 @@ DEFAULT_SETTINGS = {
         }
     },
     "external_windows": {
-        "youtube": {
-            "url": "https://www.youtube.com/shorts/",
-            "window_title": "YouTube Ekrani",
-            "target_monitor_device": ""
-        },
         "spotify": {
             "url": "https://open.spotify.com/intl-tr/",
             "window_title": "Spotify Ekrani",
@@ -171,6 +171,11 @@ DEFAULT_SETTINGS = {
         "lian_merge_state_path": "",
         "lian_service_url": "http://127.0.0.1:11021/",
         "lian_timeout_seconds": 2.5
+    },
+    "monitor_power": {
+        "target_fingerprint": "",
+        "target_index": -1,
+        "target_description": ""
     },
     "panel": {
         "pc_plug_query_interval_seconds": 30.0,
@@ -220,15 +225,15 @@ DEFAULT_SETTINGS = {
                 "icon_svg": "<img src=\"resimler\\icon\\air-cooling.png\"/>"
             },
             {
-                "id": "youtube",
-                "label": "YouTube",
+                "id": "all_lights_off",
+                "label": "Lights Off",
                 "visible": True,
                 "variant": "white-glow",
-                "command": "/shorts",
-                "secondary_command": "/kill/shorts",
+                "command": "/lights/tuya/off",
+                "secondary_command": "/lights/all/off",
                 "method": "GET",
                 "confirm_text": "",
-                "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"80\" height=\"80\" fill=\"white\" paint-order=\"stroke fill\" stroke=\"black\" stroke-width=\"1\"><path d=\"M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z\"/></svg>"
+                "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"80\" height=\"80\" fill=\"none\" stroke=\"white\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6\"></path><path d=\"M10 22h4\"></path><path d=\"M12 2a7 7 0 0 0-4 12c.7.6 1 1.2 1 2h6c0-.8.3-1.4 1-2A7 7 0 0 0 12 2z\"></path><path d=\"M4 4l16 16\"></path></svg>"
             },
             {
                 "id": "spotify",
@@ -304,7 +309,7 @@ def _load_settings_from_disk():
                 loaded = _normalize_settings(json.load(f))
         except Exception:
             loaded = None
-    return _merge_settings(DEFAULT_SETTINGS, loaded)
+    return _sanitize_settings_by_schema(DEFAULT_SETTINGS, _merge_settings(DEFAULT_SETTINGS, loaded))
 
 
 def _ensure_settings_loaded_locked(force_reload=False):
@@ -329,6 +334,189 @@ def _merge_settings(defaults, loaded):
         else:
             result[key] = value
     return result
+
+
+_NUMERIC_LIMITS = {
+    "performance.ui_update_interval_ms": (50, 60000),
+    "performance.websocket_broadcast_interval_ms": (50, 60000),
+    "performance.status_poll_interval_ms": (100, 300000),
+    "performance.hwinfo_refresh_interval_ms": (100, 60000),
+    "performance.hwinfo_cache_read_interval_ms": (100, 60000),
+    "performance.media_refresh_interval_ms": (100, 60000),
+    "performance.volume_refresh_interval_ms": (100, 60000),
+    "performance.mute_refresh_interval_ms": (100, 60000),
+    "performance.fps_refresh_interval_ms": (50, 60000),
+    "performance.weather_refresh_interval_minutes": (1, 1440),
+    "performance.shift_cache_check_interval_minutes": (1, 1440),
+    "performance.network_refresh_interval_ms": (500, 300000),
+    "performance.uptime_refresh_interval_ms": (1000, 300000),
+    "performance.tuya_refresh_interval_ms": (500, 300000),
+    "performance.tuya_retry_count": (0, 10),
+    "frontend.seekbar_update_interval_ms": (50, 60000),
+    "frontend.lyrics_refresh_interval_ms": (250, 300000),
+    "frontend.liquid_animation_fps": (1, 60),
+    "frontend.media_progress_interval_playing_ms": (50, 60000),
+    "frontend.media_progress_interval_paused_ms": (100, 60000),
+    "frontend.lyrics_animation_interval_ms": (50, 60000),
+    "frontend.lyric_offset_sec": (-30, 30),
+    "frontend.volume_remote_sync_delay_ms": (0, 10000),
+    "frontend.mute_remote_sync_delay_ms": (0, 10000),
+    "frontend.tuya_pending_ms": (0, 30000),
+    "window.port": (1, 65535),
+    "window.target_monitor_left": (-100000, 100000),
+    "window.target_monitor_top": (-100000, 100000),
+    "window.target_monitor_width": (100, 100000),
+    "window.target_monitor_height": (100, 100000),
+    "window.keep_window_alive_interval_ms": (100, 300000),
+    "window.keep_window_alive_min_interval_ms": (50, 60000),
+    "window.panel_width": (100, 100000),
+    "window.panel_height": (100, 100000),
+    "tuya.brightness_popup_timeout_ms": (100, 30000),
+    "tuya.device_timeout_ms": (500, 60000),
+    "tuya.local_command_timeout_ms": (500, 60000),
+    "tuya.cloud_command_timeout_ms": (1000, 120000),
+    "tuya.max_parallel_status_workers": (1, 32),
+    "tuya.status_batch_size": (1, 64),
+    "logging.max_lines": (20, 20000),
+    "logging.cleanup_interval_seconds": (30, 86400),
+    "startup.initial_delay_seconds": (0, 300),
+    "api.shift.name_column": (1, 500),
+    "api.shift.date_row": (1, 500),
+    "api.meteo.latitude": (-90, 90),
+    "api.meteo.longitude": (-180, 180),
+    "api.smartthings.oauth_access_token_expires_at": (0, 4102444800),
+    "power.other_system_power_estimate_w": (0, 3000),
+    "hwinfo.auto_restart_max_uptime_hours": (1, 168),
+    "commands.lian_timeout_seconds": (0.5, 60),
+    "monitor_power.target_index": (-1, 128),
+    "panel.pc_plug_query_interval_seconds": (1, 3600),
+}
+
+_PANEL_BUTTON_FIELDS = {
+    "id": "",
+    "label": "",
+    "visible": True,
+    "variant": "white-glow",
+    "command": "",
+    "secondary_command": "",
+    "method": "GET",
+    "confirm_text": "",
+    "icon_svg": "",
+}
+_PANEL_BUTTON_METHODS = {"GET", "POST", "SPECIAL"}
+def _clamp_number(path, value):
+    limits = _NUMERIC_LIMITS.get(path)
+    if not limits:
+        return value
+    low, high = limits
+    try:
+        value = max(float(low), min(float(high), float(value)))
+    except Exception:
+        return value
+    return int(value) if isinstance(low, int) and isinstance(high, int) else value
+
+
+def _coerce_bool(value, default=False):
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return bool(value)
+    if isinstance(value, str):
+        return value.strip().lower() in {"1", "true", "yes", "on", "evet"}
+    return bool(default)
+
+
+def _coerce_number(path, value, default, as_int=False):
+    try:
+        if isinstance(value, str):
+            value = value.strip().replace(",", ".")
+        value = float(value)
+        value = _clamp_number(path, value)
+        return int(value) if as_int else float(value)
+    except Exception:
+        return deepcopy(default)
+
+
+def _sanitize_text(value, default="", max_len=4096):
+    if value is None:
+        value = default
+    text = str(value)
+    text = text.replace("\x00", "")
+    if len(text) > max_len:
+        text = text[:max_len]
+    return text
+
+
+def _sanitize_icon_markup(value):
+    text = _sanitize_text(value, "", 8000)
+    if not text:
+        return ""
+    text = re.sub(r"<\s*/?\s*(script|iframe|object|embed|link|meta|style|foreignobject)\b[^>]*>", "", text, flags=re.I)
+    text = re.sub(r"\s+on[a-zA-Z]+\s*=\s*(['\"]).*?\1", "", text, flags=re.I | re.S)
+    text = re.sub(r"\s+on[a-zA-Z]+\s*=\s*[^\s>]+", "", text, flags=re.I)
+    text = re.sub(r"javascript\s*:", "", text, flags=re.I)
+    text = re.sub(r"data\s*:\s*text/html[^'\"\s>]*", "", text, flags=re.I)
+    return text[:8000]
+
+
+def _sanitize_panel_button(button, index=0):
+    if not isinstance(button, dict):
+        button = {}
+    out = deepcopy(_PANEL_BUTTON_FIELDS)
+    out["id"] = re.sub(r"[^a-zA-Z0-9_-]+", "_", _sanitize_text(button.get("id"), f"button_{index + 1}", 80)).strip("_") or f"button_{index + 1}"
+    out["label"] = _sanitize_text(button.get("label"), f"Button {index + 1}", 120).strip() or f"Button {index + 1}"
+    out["visible"] = _coerce_bool(button.get("visible"), True)
+    out["variant"] = re.sub(r"[^a-zA-Z0-9_-]+", "", _sanitize_text(button.get("variant"), "white-glow", 80)) or "white-glow"
+    out["command"] = _sanitize_text(button.get("command"), "", 512).strip()
+    out["secondary_command"] = _sanitize_text(button.get("secondary_command"), "", 512).strip()
+    method = _sanitize_text(button.get("method"), "GET", 20).strip().upper()
+    out["method"] = method if method in _PANEL_BUTTON_METHODS else "GET"
+    out["confirm_text"] = _sanitize_text(button.get("confirm_text"), "", 300).strip()
+    out["icon_svg"] = _sanitize_icon_markup(button.get("icon_svg"))
+    return out
+
+
+def _sanitize_panel_buttons(value):
+    items = value if isinstance(value, list) else DEFAULT_SETTINGS["panel"]["left_buttons"]
+    out = []
+    seen_ids = set()
+    for index, item in enumerate(items[:24]):
+        button = _sanitize_panel_button(item, index)
+        if button["id"] in seen_ids:
+            button["id"] = f"{button['id']}_{index + 1}"
+        seen_ids.add(button["id"])
+        out.append(button)
+    return out
+
+
+def _sanitize_list(path, value, default):
+    if path == "panel.left_buttons":
+        return _sanitize_panel_buttons(value)
+    if not isinstance(value, list):
+        value = default if isinstance(default, list) else []
+    if path == "tuya.visible_device_keys":
+        return [_sanitize_text(item, "", 160).strip() for item in value[:64] if _sanitize_text(item, "", 160).strip()]
+    return deepcopy(value)
+
+
+def _sanitize_settings_by_schema(schema, value, path=""):
+    if isinstance(schema, dict):
+        source = value if isinstance(value, dict) else {}
+        return {
+            key: _sanitize_settings_by_schema(default, source.get(key, default), f"{path}.{key}" if path else key)
+            for key, default in schema.items()
+        }
+    if isinstance(schema, list):
+        return _sanitize_list(path, value, schema)
+    if isinstance(schema, bool):
+        return _coerce_bool(value, schema)
+    if isinstance(schema, int) and not isinstance(schema, bool):
+        return _coerce_number(path, value, schema, as_int=True)
+    if isinstance(schema, float):
+        return _coerce_number(path, value, schema, as_int=False)
+    if isinstance(schema, str):
+        return _sanitize_text(value, schema)
+    return deepcopy(value if value is not None else schema)
 
 
 def load_settings(force_reload=False):
@@ -357,6 +545,7 @@ def save_settings(new_settings, replace=False):
     with SETTINGS_LOCK:
         base = DEFAULT_SETTINGS if replace else _ensure_settings_loaded_locked(force_reload=True)
         merged = _merge_settings(DEFAULT_SETTINGS, _merge_settings(base, _normalize_settings(new_settings)))
+        merged = _sanitize_settings_by_schema(DEFAULT_SETTINGS, merged)
         os.makedirs(os.path.dirname(SETTINGS_PATH), exist_ok=True)
         with open(SETTINGS_PATH, 'w', encoding='utf-8') as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)

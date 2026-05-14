@@ -92,6 +92,7 @@ def _read_monitor_info(monitor):
         caps = {}
 
     info = _caps_to_safe(caps)
+    info["description"] = str(getattr(getattr(monitor, "vcp", None), "description", "") or "")
     info["fingerprint"] = _fingerprint(info)
     info["ddc"] = bool(caps)
     return info

@@ -148,8 +148,6 @@
       "groups": {
         "playback": "Oynatma Zamanlaması",
         "playback_desc": "Medya zamanlaması, seekbar akışı ve boş durum davranışları.",
-        "yt": "YouTube Entegrasyonu",
-        "yt_desc": "Panel üzerinden açılacak pencere hedefi.",
         "spot": "Spotify Entegrasyonu",
         "spot_desc": "Panel üzerinden açılacak pencere hedefi."
       },
@@ -467,7 +465,6 @@
     "playback_cadence_desc": "Seekbar, söz ve ilerleme güncelleme zamanlaması.",
     "media_card_behavior": "Medya kartı davranışı",
     "media_card_behavior_desc": "Çalan kartı görünürlüğü ve boşta metin durumları.",
-    "youtube_integration_desc": "Harici YouTube pencere URL'si, başlık eşleşmesi ve monitör hedefi.",
     "spotify_integration_desc": "Harici Spotify pencere URL'si, başlık eşleşmesi ve monitör hedefi.",
     "application_window_desc": "Monitör, port, düzen, boyut ve pencere seçenekleri.",
     "fallback_coordinates_desc": "Monitör algılama hedef bulamazsa kullanılan manuel geometri.",
@@ -829,7 +826,6 @@
   "Çalan medya, şarkı sözleri, ilerleme çubuğu zamanlaması ve medya boş durumundaki görünümleri burada toplanır.": "sections.ui.desc",
   "Oynatma Zamanlaması": "sections.ui.groups.playback",
   "Medya zamanlaması, seekbar akışı ve boş durum davranışları.": "sections.ui.groups.playback_desc",
-  "YouTube Entegrasyonu": "sections.ui.groups.yt",
   "Panel üzerinden açılacak pencere hedefi.": "sections.ui.groups.spot_desc",
   "Spotify Entegrasyonu": "sections.ui.groups.spot",
   "İlerleme çubuğu güncelleme (ms)": "sections.ui.fields.seekbar",
@@ -1034,7 +1030,6 @@
   "Seekbar, söz ve ilerleme güncelleme zamanlaması.": "extra.playback_cadence_desc",
   "Medya kartı davranışı": "extra.media_card_behavior",
   "Çalan kartı görünürlüğü ve boşta metin durumları.": "extra.media_card_behavior_desc",
-  "Harici YouTube pencere URL'si, başlık eşleşmesi ve monitör hedefi.": "extra.youtube_integration_desc",
   "Harici Spotify pencere URL'si, başlık eşleşmesi ve monitör hedefi.": "extra.spotify_integration_desc",
   "Monitör, port, düzen, boyut ve pencere seçenekleri.": "extra.application_window_desc",
   "Monitör algılama hedef bulamazsa kullanılan manuel geometri.": "extra.fallback_coordinates_desc",

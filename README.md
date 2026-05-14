@@ -3,7 +3,7 @@
 
 A personal Windows-based PC monitoring, control, and automation dashboard.
 
-This panel brings together hardware monitoring, media controls, smart home devices, weather, shift information, external Spotify/YouTube windows, system power controls, logs, health checks, and a full settings interface in one local dashboard.
+This panel brings together hardware monitoring, media controls, smart home devices, weather, shift information, external Spotify windows, system power controls, logs, health checks, and a full settings interface in one local dashboard.
 
 It is designed for use on a second screen, small HDMI display, in-case display, desktop control monitor, or always-on information panel.
 
@@ -66,7 +66,7 @@ The main purpose of the panel is to:
 - Control a SmartThings-compatible climate device
 - Display weather information
 - Read and display Excel/SharePoint-based shift information
-- Launch separate Spotify and YouTube Shorts WebView windows
+- Launch a separate Spotify WebView window
 - Run system commands such as shutdown, restart, sleep, Task Manager, and custom commands
 - Monitor panel health and logs
 - Customize behavior through a full settings interface
@@ -105,7 +105,6 @@ The main purpose of the panel is to:
 - Mute control
 - Customizable panel buttons
 - Separate Spotify WebView window
-- Separate YouTube Shorts WebView window
 - Full settings page
 - Health report page
 - Logs page
@@ -187,7 +186,6 @@ The main dashboard can display the following information.
 - Next track
 - Shortcut buttons
 - Climate popup
-- YouTube launch/kill buttons
 - Spotify launch/kill buttons
 - System power controls
 
@@ -229,7 +227,7 @@ Main settings groups:
 | `logging` | Debug logs, WebSocket logs, Tuya/HWiNFO logs, cleanup behavior |
 | `startup` | Startup-related behavior |
 | `api` | Open-Meteo, Tuya Cloud, SmartThings, shift API settings |
-| `external_windows` | Spotify and YouTube WebView window settings |
+| `external_windows` | Spotify WebView window settings |
 | `power` | Additional system power estimation |
 | `hwinfo` | HWiNFO executable path, auto restart, FPS ignore list |
 | `commands` | Custom executable/script commands |
@@ -503,7 +501,6 @@ Default button examples:
 - DNS Redir
 - Climate
 - Task Manager
-- YouTube
 - Spotify
 - Sleep
 - Restart
@@ -1118,8 +1115,6 @@ Common button actions:
 - Run DNS redirect command
 - Open climate popup
 - Open Task Manager
-- Start YouTube Shorts window
-- Kill YouTube Shorts window
 - Start Spotify window
 - Kill Spotify window
 - Sleep PC
@@ -1143,37 +1138,6 @@ Button features:
 # External Windows
 
 The panel can open separate WebView windows.
-
----
-
-## YouTube Shorts Window
-
-Features:
-
-- YouTube Shorts URL setting
-- Separate frameless WebView window
-- Selected monitor targeting
-- Always-on-top behavior
-- Window title setting
-- Kill window endpoint
-- Custom CSS/JS adjustments for Shorts
-- WebView2 stability arguments
-- Fullscreen video styling
-- Scrollbar hiding
-
-Settings:
-
-```json
-{
-  "external_windows": {
-    "youtube": {
-      "url": "https://www.youtube.com/shorts/",
-      "window_title": "YouTube Ekrani",
-      "target_monitor_device": ""
-    }
-  }
-}
-```
 
 ---
 
@@ -1442,9 +1406,7 @@ GET   /sleep
 GET   /restart
 GET   /shutdown
 GET   /spotify
-GET   /shorts
 GET   /kill/spotify
-GET   /kill/shorts
 GET   /dnsredir
 POST  /dnsredir
 ```
@@ -1507,7 +1469,6 @@ For full functionality:
 - Open-Meteo access
 - Excel/SharePoint shift link
 - Spotify account/session if using Spotify WebView
-- YouTube access if using YouTube Shorts WebView
 
 ---
 
@@ -1578,14 +1539,6 @@ python hwinfo_worker.py
 python spotify.py
 ```
 
-## YouTube Shorts WebView
-
-```bash
-python youtube.py
-```
-
----
-
 # File Structure
 
 ```txt
@@ -1599,7 +1552,6 @@ hwinfo_worker.py          HWiNFO worker entry point
 audio_runtime.py          Windows audio and media command runtime
 tuya_runtime.py           Tuya local/cloud runtime
 spotify.py                Spotify WebView window
-youtube.py                YouTube Shorts WebView window
 win_utils.py              Windows monitor/window helpers
 app_logging.py            Logging utilities
 logs/                     Runtime logs
@@ -1692,7 +1644,7 @@ The code is modular:
 - `settings_runtime.py` handles settings
 - `tuya_runtime.py` handles Tuya devices
 - `audio_runtime.py` handles Windows audio/media controls
-- `youtube.py` and `spotify.py` handle external WebView windows
+- `spotify.py` handles the external WebView window
 - `win_utils.py` handles Windows monitor/window utilities
 
 ---

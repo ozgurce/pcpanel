@@ -69,9 +69,9 @@ async def serve_settings_theme_dark_css(r):
 async def command(r):
     result = await run_command(r.path, r)
     json_routes = (
-        "/setvolume", "/mute", "/spotify", "/shorts", "/kill/spotify", "/kill/shorts",
+        "/setvolume", "/mute", "/spotify", "/kill/spotify",
         "/dnsredir", "/case_lights/on", "/case_lights/off", "/restart_app",
-        "/shutdown", "/restart", "/sleep"
+        "/shutdown", "/restart", "/sleep", "/lights/tuya/off", "/lights/all/off"
     )
     if r.path in json_routes:
         return web.Response(text=result if isinstance(result, str) else json.dumps(result), content_type="application/json")

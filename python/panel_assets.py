@@ -4,7 +4,7 @@ import time
 import threading
 from aiohttp import web
 from panel_globals import (
-    BASE_DIR, HTML_FILE_PATH, HTML_VERTICAL_FILE_PATH, IMAGES_DIR, FONTS_DIR
+    BASE_DIR, HTML_FILE_PATH, HTML_VERTICAL_FILE_PATH, IMAGES_DIR, FONTS_DIR, CSS_DIR, JS_DIR
 )
 from panel_logging import log_error
 
@@ -47,6 +47,14 @@ async def serve_resimler_no_cache(request):
 async def serve_fonts_no_cache(request):
     return _safe_static_file(FONTS_DIR, request.match_info.get("path", ""))
 
+
+async def serve_css_no_cache(request):
+    return _safe_static_text_file(CSS_DIR, request.match_info.get("path", ""), "CSS asset", "text/css")
+
+
+async def serve_js_no_cache(request):
+    return _safe_static_text_file(JS_DIR, request.match_info.get("path", ""), "JavaScript asset", "application/javascript")
+
 def _load_text_asset_response(path: str, label: str, content_type: str):
     try:
         try:
@@ -68,6 +76,30 @@ def _load_text_asset_response(path: str, label: str, content_type: str):
     except Exception as e:
         log_error(f"{label} file could not be read: {e}")
         return web.Response(text=f"{label} an error occurred while loading: {e}", status=500)
+
+
+def _safe_static_text_file(root_dir: str, rel_path: str, label: str, content_type: str):
+    try:
+        root_abs = os.path.abspath(root_dir)
+        rel_path = str(rel_path or "").replace("\\", "/").lstrip("/")
+        file_path = os.path.abspath(os.path.join(root_abs, rel_path))
+
+        if not (file_path == root_abs or file_path.startswith(root_abs + os.sep)):
+            return web.Response(status=403, text="Forbidden", headers=NO_CACHE_HEADERS)
+
+        if not os.path.isfile(file_path):
+            return web.Response(status=404, text="Not found", headers=NO_CACHE_HEADERS)
+
+        response = _load_text_asset_response(file_path, label, content_type)
+        if isinstance(response.text, str):
+            response.text = response.text.replace("__ASSET_VERSION__", str(int(time.time())))
+        return response
+    except Exception as e:
+        try:
+            log_error(f"Static text file serve error: {e}")
+        except Exception:
+            pass
+        return web.Response(status=500, text=str(e), headers=NO_CACHE_HEADERS)
 
 
 def _load_html_response(path: str, label: str):
