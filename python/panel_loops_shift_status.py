@@ -204,7 +204,7 @@ def _download_shift_workbook_once_per_day(force=False):
 
 def _ensure_shift_schedule_loaded(force_download=False):
     downloaded = _download_shift_workbook_once_per_day(force=force_download)
-    if downloaded or not SHIFT_RUNTIME.get("schedule_by_date"):
+    if downloaded or force_download or not SHIFT_RUNTIME.get("schedule_by_date"):
         try:
             import openpyxl
             wb = openpyxl.load_workbook(SHIFT_CACHE_XLSX, data_only=True, read_only=True)
@@ -230,6 +230,32 @@ def _ensure_shift_schedule_loaded(force_download=False):
             return False
     return True
 
+def _get_shift_target_date(now_dt=None):
+    now_dt = now_dt or datetime.datetime.now()
+    return now_dt.date() if now_dt.hour < 9 else now_dt.date() + datetime.timedelta(days=1)
+
+def _format_shift_text(shift_text):
+    shift_text = str(shift_text or "--").strip() or "--"
+    if shift_text != "--":
+        shift_text = re.split(r'[-\u2014]', shift_text)[0].strip().replace('.', ':')
+    return shift_text
+
+def _refresh_shift_cache_now(force=False):
+    loaded = _ensure_shift_schedule_loaded(force_download=force)
+    target_date = _get_shift_target_date()
+    schedule = SHIFT_RUNTIME.get("schedule_by_date", {})
+    shift_text = _format_shift_text(schedule.get(target_date.isoformat(), "--"))
+    shift_subtitle = target_date.strftime("%d.%m")
+    if loaded:
+        update_system_cache(tomorrow_shift_text=shift_text, tomorrow_shift_subtitle=shift_subtitle)
+    return {
+        "ok": bool(loaded),
+        "shift_text": shift_text,
+        "shift_subtitle": shift_subtitle,
+        "target_date": target_date.isoformat(),
+        "schedule_count": len(schedule) if isinstance(schedule, dict) else 0,
+    }
+
 
 
 def _get_performance_interval_seconds(key, default_ms, min_ms):
@@ -250,12 +276,9 @@ def _get_uptime_refresh_interval_seconds():
 
 
 def _update_shift_cache_tick(now_ts):
-    now_dt = datetime.datetime.now()
-    target_date = now_dt.date() if now_dt.hour < 9 else now_dt.date() + datetime.timedelta(days=1)
+    target_date = _get_shift_target_date()
     _ensure_shift_schedule_loaded()
-    shift_text = SHIFT_RUNTIME.get('schedule_by_date', {}).get(target_date.isoformat(), '--')
-    if shift_text != '--':
-        shift_text = re.split(r'[-—]', shift_text)[0].strip().replace('.', ':')
+    shift_text = _format_shift_text(SHIFT_RUNTIME.get('schedule_by_date', {}).get(target_date.isoformat(), '--'))
     update_system_cache(tomorrow_shift_text=shift_text, tomorrow_shift_subtitle=target_date.strftime('%d.%m'))
     from panel_bootstrap import _get_performance_int
     return now_ts + float(_get_performance_int('shift_cache_check_interval_minutes', 30)) * 60.0
